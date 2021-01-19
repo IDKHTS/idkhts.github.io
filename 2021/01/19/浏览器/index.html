@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>浏览器 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="主要构成部分：  用户界面 浏览器引擎（WebCore）负责窗口管理、Tab进程管理 渲染引擎，也叫内核，负责html解析、页面渲染 Js引擎，JsCore，js的解释执行   浏览器为  多进程有四种：渲染进程、插件进程、GPU进程、浏览器进程  多线程（js引擎才是单线程）,主要看渲染进程，它包括  GUI线程，负责解析html、css和渲染页面 相关的 JS引擎线程，负责js的解释执行（统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器">
+<meta property="og:url" content="http://example.com/2021/01/19/%E6%B5%8F%E8%A7%88%E5%99%A8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="主要构成部分：  用户界面 浏览器引擎（WebCore）负责窗口管理、Tab进程管理 渲染引擎，也叫内核，负责html解析、页面渲染 Js引擎，JsCore，js的解释执行   浏览器为  多进程有四种：渲染进程、插件进程、GPU进程、浏览器进程  多线程（js引擎才是单线程）,主要看渲染进程，它包括  GUI线程，负责解析html、css和渲染页面 相关的 JS引擎线程，负责js的解释执行（统">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-19T14:30:51.155Z">
+<meta property="article:modified_time" content="2021-01-19T14:31:46.713Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="浏览器">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-浏览器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/19/%E6%B5%8F%E8%A7%88%E5%99%A8/" class="article-date">
+  <time class="dt-published" datetime="2021-01-19T14:30:51.155Z" itemprop="datePublished">2021-01-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      浏览器
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>主要构成部分：</p>
+<ul>
+<li>用户界面</li>
+<li>浏览器引擎（WebCore）负责窗口管理、Tab进程管理</li>
+<li>渲染引擎，也叫内核，负责html解析、页面渲染</li>
+<li>Js引擎，JsCore，js的解释执行</li>
+</ul>
+</li>
+<li><p>浏览器为</p>
+<ul>
+<li><p>多进程有四种：渲染进程、插件进程、GPU进程、浏览器进程</p>
+</li>
+<li><p>多线程（js引擎才是单线程）,主要看渲染进程，它包括</p>
+<ul>
+<li>GUI线程，负责解析html、css和渲染页面 相关的</li>
+<li>JS引擎线程，负责js的解释执行（统一时期只能有一个此类线程执行）</li>
+<li>事件线程，控制事件循环相关逻辑（定时器和异步请求的回调）</li>
+<li>定时器线程，处理定时器相关逻辑</li>
+<li>异步请求线程，发起Ajax时会生成该线程</li>
+</ul>
+<p>注意：GUI线程和Js引擎线程是互斥的，即当GUI线程执行时，js引擎会停下，反之亦然。</p>
+<p>这里说一下自我理解的js为什么设计为单线程吧，首先js是一门脚本语言，它只是需要在浏览器中运行，所以应该尽可能的简单，抛弃了一些多线程操作（这样就可以减少因为操作同一资源而使用锁，等复杂情况）设计成了单线程。同时因为是单线程且js是面向用户的，用户使用体验提高是刚需，所以js又需要是异步的，不用阻塞等待。</p>
+<p>总的来说就是：简单的脚本——》单线程——》异步；</p>
+<p>应该也是这个原因——不能同时操作一个资源，DOM要么被GUI线程操作（计算布局）要么被js操作（增删改DOM），所以才有上面的注意，js和GUI线程在同一时刻只能执行一个。</p>
+</li>
+</ul>
+</li>
+<li><p>页面渲染：</p>
+<ul>
+<li>解析html生成Dom树（中间遇到js，停下，执行js）</li>
+<li>解析css生成css对象模型树（CSSOM）</li>
+<li>合并DOM和CSSOM生成渲染树（render树）</li>
+<li>根据渲染树进行计算布局（layout）然后绘制（painting）得到页面</li>
+</ul>
+<p>在应用被使用的过程中可能会产生一些增减DOM节点的操作，由上面过程可以知道，DOM树会被改变，这时就需要重新构建渲染树，再进行渲染，而这过程称重排或者回流（reflowing）；倘若DOM节点改变的只是一些字体背景颜色，不影响布局，不需要重新计算时，只需要重新绘制，这个操作称重绘。</p>
+<p>重排则必定包含重绘；当改变的无关布局的（字体颜色等），则会触发重绘而不必重排</p>
+</li>
+<li><p>浏览器缓存</p>
+<ul>
+<li><p>由浏览器实现的http缓存：</p>
+<ul>
+<li>强缓存</li>
+<li>协商缓存</li>
+</ul>
+</li>
+<li><p>强缓存：其实就一种比较强制性的匹配缓存规则而已</p>
+<ul>
+<li>概述：总的的来说就是，服务端第一次响应客户端发送的请求时给予客户端一个时间，表明这些数据在这个时间内一定不会改变数据（改变也可以，但客户端不需要知道），可以直接读缓存，<strong>不用再次发送http请求</strong></li>
+<li>具体使用：<ul>
+<li>http1.0时使用的字段<code>Express</code>，它的值是一个绝对时间，如<code> Wed, 21 Oct 2020 07:28:00 GMT</code>。第一次时，http响应头带着这个字段，浏览器就会缓存下这些数据，并且在应用在这个时间，<code>2020.10.21 07:28:00</code> 前，再次请求这个url时读缓存中的这些数据返回，不发送http请求</li>
+<li>http1.1时使用的字段是<code>Cache-Control</code>,它的值是一个相对的时间，如<code>max-age=3600</code>。第一次请求时，http响应头带着这个字段，浏览器会缓存下这些数据，并且在应用在过了这个相对时间，3600秒前，再次请求这个url时读缓存中的这些数据返回，不发送http请求</li>
+</ul>
+</li>
+<li>http1.1的记录的相对时间会比绝对时间好一点，因为客户端的时间（用户的电脑）可以是不准确的，如果偏后，那么浏览器就可能读不到缓存直接再次请求数据，缓存就失效了。使用相对时间，无论如何，距离上次请求的一段时间都读缓存，客户端时间无法再干扰到了。</li>
+</ul>
+</li>
+<li><p>协商缓存：另一种的匹配缓存规则</p>
+<ul>
+<li><p>概述：相对强缓存由浏览器判断是否读缓冲，协商缓存把这个判断放到了服务端，即<strong>客户端请求会到达服务端</strong>，这个是和强缓存最大的区别。客户端请求时，服务端会返回一个标记，客户端再次请求时，请求头应该带上这个标记，服务端根据这个标记判断客户端上次请求的数据是否还能用，能用就返回一个http状态码，让浏览器读缓存里的数据，不能用就返回能用的数据。</p>
+</li>
+<li><p>具体使用：</p>
+<ul>
+<li>使用<code>Last-Modified</code>/<code>If-Modified-Since</code>这一对字段。第一次响应时，服务端在响应头里增加<code>Last-Modified</code>字段，值是时间，表示数据最新的更改时间；下一次再请求相同的数据，浏览器会在请求头里增加字段<code>If-Modified-Since</code>，值就是<code>Last-Modified</code>的时间，请求到达服务端后，服务端就读到<code>If-Modified-Since</code>这个字段的时间比对数据更新的最新时间，相同就返回304，让浏览器读缓存里的数据，不然就返回最新的数据。</li>
+</ul>
+</li>
+<li><p>使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ETag</span><br></pre></td></tr></table></figure>
+<p>/</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">If-None-Match</span><br></pre></td></tr></table></figure>
+<p>这一对字段。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ETag</span><br></pre></td></tr></table></figure>
+<p>的值是一段内容摘要（hash）。类似的，第一次响应的响应头部也会带上一个</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ETag</span><br></pre></td></tr></table></figure>
+<p>字段，下次请求在请求头部加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">If-None-Match</span><br></pre></td></tr></table></figure>
+<p>带上这个</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ETag</span><br></pre></td></tr></table></figure>
+<p>的值，服务端拿着和现在的数据摘要对比，相同则返回304，不同则返回最新数据；</p>
+<ul>
+<li><code>ETag</code>/<code>If-None-Match</code>相比<code>Last-Modified</code>/<code>If-Modified-Since</code>是一种更强的校验器，<code>Last-Modified</code>的时间只能精确到秒。同时<code>ETag</code>/<code>If-None-Match</code>也比<code>Last-Modified</code>/<code>If-Modified-Since</code>优先级更高。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>随记：</p>
+<ul>
+<li>这些缓存都是针对get，head这些读数据的方法而言，那些字段也有自身的一些其它用法</li>
+</ul>
+</li>
+</ul>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Caching_FAQ">HTTP 缓存</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Expires">Expires</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Cache-Control">Cache-Control</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/ETag">ETag</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/If-None-Match">If-None-Match</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/If-Match">If-Match</a></p>
+<p><a target="_blank" rel="noopener" href="https://web.dev/http-cache/">Prevent unnecessary network requests with the HTTP Cache</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904021308735502#heading-4">(1.6w字)浏览器灵魂之问，请问你能接得住几个？</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/19/%E6%B5%8F%E8%A7%88%E5%99%A8/" data-id="ckk44e4gk000kxwuz4ukxglp8" data-title="浏览器" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/19/SSO/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          SSO
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/17/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 15px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/19/Web%20Worker/">Web Worker</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/19/node%E5%BC%80%E5%8F%91cli/">node开发cli</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/19/npm%E5%8C%85%E5%8F%91%E5%B8%83/">npm包发布</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/19/DNS/">DNS</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/19/TCP%E5%92%8CUDP/">TCP与UDP</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

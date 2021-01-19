@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>vue-cli的vue.config.js | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="vue-cli管理vue项目，一些配置写在vue.config.js下。vue-cli内置了webpack作为打包工具，这些配置也是写在vue.config.js了。  一些简单配置。。。看官方文档吧  使用webpack的optimization.splitChunks.cacheGroups来指定打包拆分规则 12345678910111213141516171819202122232425">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue-cli的vue.config.js">
+<meta property="og:url" content="http://example.com/2021/01/19/vue-cli%E7%9A%84vue.config.js/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="vue-cli管理vue项目，一些配置写在vue.config.js下。vue-cli内置了webpack作为打包工具，这些配置也是写在vue.config.js了。  一些简单配置。。。看官方文档吧  使用webpack的optimization.splitChunks.cacheGroups来指定打包拆分规则 12345678910111213141516171819202122232425">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-19T14:37:44.554Z">
+<meta property="article:modified_time" content="2021-01-19T14:38:49.901Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="vue">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-vue-cli的vue.config.js" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/19/vue-cli%E7%9A%84vue.config.js/" class="article-date">
+  <time class="dt-published" datetime="2021-01-19T14:37:44.554Z" itemprop="datePublished">2021-01-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      vue-cli的vue.config.js
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>vue-cli管理vue项目，一些配置写在vue.config.js下。vue-cli内置了webpack作为打包工具，这些配置也是写在vue.config.js了。</p>
+</li>
+<li><p>一些简单配置。。。看官方文档吧</p>
+</li>
+<li><p>使用webpack的optimization.splitChunks.cacheGroups来指定打包拆分规则</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    &#x2F;&#x2F;configureWebpack是vue-cli3后自己维护的，最终通过webpackMerge合并到webpack配置对象</span><br><span class="line">    configureWebpack: config &#x3D;&gt; &#123;</span><br><span class="line">        &#x2F;** cacheGroups的子属性是一个对象，这个对象的属性指定具体的打包规则</span><br><span class="line">         *  name：指定打包后文件的名称，具体打包后还会加上一个hash</span><br><span class="line">         *  test：匹配规则</span><br><span class="line">         *  chunks：指定哪些文件可以应用这个规则优化，值域：&#39;all&#39;、&#39;initial&#39;、&#39;async&#39;，all为所有模块都应用这个规则，initial为初始化模块才应用这个规则，即第一次加载时就需要用到文件，&#39;async&#39;异步，即按需加载的模块</span><br><span class="line">         * 【这样调用config.optimization.splitChunks(&#123;cacheGroups:&#123;common:&#123;name:...&#125;&#125;&#125;)</span><br><span class="line">         * 但是遇到TypeError:config.optimization.splitChunks is not a function报错</span><br><span class="line">         * 所以写成以下这样，事实上config.optimization.splitChunks就是一个对象而已的子属性</span><br><span class="line">         * 而已，所以肯定不可以把splitChunks对象当函数来用】</span><br><span class="line">         *&#x2F;</span><br><span class="line">        config.optimization.splitChunks.cacheGroups.common &#x3D; &#123;</span><br><span class="line">            name: &#39;echarts&#39;,</span><br><span class="line">            test: &#x2F;[\\&#x2F;]node_modules[\\&#x2F;]?echarts[\\&#x2F;]?&#x2F;, &#x2F;&#x2F; can customize your rules</span><br><span class="line">            minChunks: 1, &#x2F;&#x2F;  minimum common number</span><br><span class="line">            priority:5,</span><br><span class="line">            reuseExistingChunk: true,</span><br><span class="line">            minSize:1,</span><br><span class="line">            chunks:&#39;all&#39;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  </span><br><span class="line">    &#x2F;&#x2F;vue.config.js中还可以使用webpack-chain这个库（github上）来配置webpack</span><br><span class="line">    chainWebpack: config &#x3D;&gt; &#123;</span><br><span class="line">        config.optimization.splitChunks(&#123;</span><br><span class="line">            vendors:&#123;</span><br><span class="line">                name&#39;chunk-vendors&#39;,</span><br><span class="line">                test:&#x2F;[\\&#x2F;]node_module[\\&#x2F;]&#x2F;,</span><br><span class="line">                priority: -5,</span><br><span class="line">            	chunks:&#39;all&#39;</span><br><span class="line">            &#125;,</span><br><span class="line">            commons:&#123;</span><br><span class="line">                ....</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>拆分完包，似乎还未能完成；多页面应用中，拆出来的chunk，html要怎么知道哪些chunk它需要用？</p>
+<ul>
+<li>答案是使用webpack的htmlwebpackplugin</li>
+</ul>
+</li>
+<li><p>额外的，可以使用<code>npx vue-cli-service inspect</code>查看本配置文件最终得到的webpack配置，可直接写到一个文件里面查看<code>npx vue-cli-service inspect &gt; config.js</code></p>
+</li>
+</ul>
+<h4 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h4><p><a target="_blank" rel="noopener" href="https://cli.vuejs.org/zh/guide/webpack.html">简单的配置方式</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903680307625997">webpack SplitChunksPlugin实用指南</a></p>
+<p><a target="_blank" rel="noopener" href="https://webpack.js.org/plugins/split-chunks-plugin/#splitchunkschunks">webpack optimization.splitchunks</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.ahwgs.cn/vue-cli3-build.html#2splitChunks">基于Vue-cli3一些常见的优化</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/19/vue-cli%E7%9A%84vue.config.js/" data-id="ckk44e4gb000dxwuz3hte7atr" data-title="vue-cli的vue.config.js" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/" rel="tag">vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/19/vue%E9%9A%8F%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          vue随记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/19/Vue%E7%BB%84%E4%BB%B6%E7%9A%84Api%E7%BB%84%E4%BB%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Vue组件的Api组件</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 15px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/19/Web%20Worker/">Web Worker</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/19/node%E5%BC%80%E5%8F%91cli/">node开发cli</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/19/npm%E5%8C%85%E5%8F%91%E5%B8%83/">npm包发布</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/19/DNS/">DNS</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/19/TCP%E5%92%8CUDP/">TCP与UDP</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>node开发cli | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="一个公司，大概率上，会定义很多开发规则，而且在开发习惯上也会有很多相似的地方。这样每个项目类似的目录结构和配置。每一次搭建新项目就需要重新写一遍，这即“重复性工作”。为了减少这些“重复性工作”，cli（command line interface）出现，少量的参数即可自动搭建出一个项目雏形。著名的CLI有vue-cli，create-react-app等  利用node的npm来实现一个cli非">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node开发cli">
+<meta property="og:url" content="http://example.com/2021/01/19/node%E5%BC%80%E5%8F%91cli/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一个公司，大概率上，会定义很多开发规则，而且在开发习惯上也会有很多相似的地方。这样每个项目类似的目录结构和配置。每一次搭建新项目就需要重新写一遍，这即“重复性工作”。为了减少这些“重复性工作”，cli（command line interface）出现，少量的参数即可自动搭建出一个项目雏形。著名的CLI有vue-cli，create-react-app等  利用node的npm来实现一个cli非">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-19T14:43:06.701Z">
+<meta property="article:modified_time" content="2021-01-19T14:43:43.429Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="node">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-node开发cli" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/19/node%E5%BC%80%E5%8F%91cli/" class="article-date">
+  <time class="dt-published" datetime="2021-01-19T14:43:06.701Z" itemprop="datePublished">2021-01-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      node开发cli
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>一个公司，大概率上，会定义很多开发规则，而且在开发习惯上也会有很多相似的地方。这样每个项目类似的目录结构和配置。每一次搭建新项目就需要重新写一遍，这即“重复性工作”。为了减少这些“重复性工作”，cli（command line interface）出现，少量的参数即可自动搭建出一个项目雏形。著名的CLI有vue-cli，create-react-app等</p>
+</li>
+<li><p>利用node的npm来实现一个cli非常简单而且使用也非常方便</p>
+<ul>
+<li><p>首先创建一个npm包，<code>npm init</code></p>
+<p>当前目录下会出现package.json</p>
+</li>
+<li><p>在package.json下添加“bin”属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;idkhts-cli-demo&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.0&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;lll&quot;,</span><br><span class="line">  &quot;main&quot;: &quot;index.js&quot;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;author&quot;: &quot;hgg&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;ISC&quot;,</span><br><span class="line">    </span><br><span class="line">  &#x2F;&#x2F;添加bin</span><br><span class="line">  &quot;bin&quot;:&#123;</span><br><span class="line">      &quot;cli&quot;:&quot;.&#x2F;index.js&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>package.json的bin是npm提供的一个把执行文件快速注册到PATH的便捷方式，npm在下载的时候就会把bin属性下的值——执行的文件，符号链接（软链）到</p>
+<ul>
+<li>并且添加到npm的PATH路径变量下——全局安装</li>
+<li><code>./node_modules/.bin</code>——局部安装</li>
+</ul>
+<p>全局安装后，执行对应的命令，<code>cli</code>，命令行后会查询PATH然后找到对应的文件执行；</p>
+<p>若是局部安装，直接执行命令<code>cli</code>会报错，因为在PATH路径变量中并没有存在对应的可执行文件或软链。这种情况只能自己复制或者使用<code>npm run</code>,在package.json文件的scripts属性加上自己的命令，如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; package.json</span><br><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><br><span class="line">    &#x2F;&#x2F;添加自定义命令</span><br><span class="line">    &quot;nrcli&quot;:&quot;cli&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  ...</span><br><span class="line">  &#x2F;&#x2F;添加bin</span><br><span class="line">  &quot;bin&quot;:&#123;</span><br><span class="line">      &quot;cli&quot;:&quot;.&#x2F;index.js&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>局部安装会把bin的定义的key生成文件名，所以在scripts定义的命令内容也是写cli，因为npm run是自动去寻找<code>./node_modules/.bin</code>文件，所以执行<code>npm run nrcli</code>意为“执行文件./node_modules/.bin/cli”</p>
+</li>
+<li><p>接下来，定义入口文件。因为前面只是配置了命令执行什么文件，但是系统还不知道要怎么执行文件，这样如果不是可执行文件都会报错。配置用node.js执行，在入口文件的顶部加上：</p>
+<p><code>index.js</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#! &#x2F;usr&#x2F;bin&#x2F;env node</span><br><span class="line">&#x2F;&#x2F; do something ...</span><br></pre></td></tr></table></figure>
+<p>这样，当系统执行文件时，读取第一行就知道当前文件应该在node环境下执行。</p>
+</li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://idkhts.github.io/2020/12/19/npm%E5%8C%85%E5%8F%91%E5%B8%83/">推送到npm</a>：<code>npm publish</code></p>
+</li>
+<li><p>使用</p>
+<ul>
+<li>局部安装<ul>
+<li>安装<code>npm i &lt;cli-name&gt; --save-dev</code></li>
+<li>修改package.json的<code>script</code>属性: 添加<code>&quot;nr-cmd&quot;:&quot;cli-cmd&quot;</code></li>
+<li>执行<code>npm run nr-cmd</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>全局安装:</p>
+<ul>
+<li>安装<code>npm i &lt;cli-name&gt; -g</code></li>
+<li>执行命令<code>&lt;cli-name&gt;</code> 即可</li>
+</ul>
+<h4 id="随记"><a href="#随记" class="headerlink" title="随记"></a>随记</h4><ul>
+<li><p>比较好用的开发命令行工具的包<a target="_blank" rel="noopener" href="https://github.com/tj/commander.js/">commdaner.js</a>，</p>
+<ul>
+<li>version可以这样定义<code>program.version(require(&quot;./package.json&quot;).version)</code>自动和package.json的version对应</li>
+<li>没有定义的命令，自带提示“错误命令”；自带<code>-h | --help</code>命令支持</li>
+<li>踩过的坑是，最后一定要执行一句<code>program.parse(process.argv)</code></li>
+</ul>
+</li>
+<li><p>npm发布前想要在本地测试，可以使用命令<code>npm link</code></p>
+<ul>
+<li><p>在需要发布的npm包目录下，执行命令<code>npm link</code>，然后npm就会把当前包生成软链添加到npm的全局路径下，并且添加入口文件的软链放npm的PATH路径变量下。若是写的包有定义bin属性，<code>npm link</code>就可以直接执行命令了；</p>
+</li>
+<li><p>若不是cli类的，需要加载到某个具体项目使用的，可以再在需要使用的项目根目录，执行命令<code>npm link &lt;package-name&gt;</code>，加载到具体的目录上；</p>
+<p>因为是软链，当在具体项目中<code>npm link &lt;packge-name&gt;</code>加载了某个本地npm包，然后在项目中修改node_module中依赖会直接修改本地npm包</p>
+</li>
+<li><p><code>npm link</code>的效果其实和<code>npm i -g</code>是一样的，只是前者来源是本地，后者是npm服务器；<code>npm link</code>生成的是<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%AC%A6%E5%8F%B7%E9%93%BE%E6%8E%A5">软链</a>，所以本地修改包的效果会直接同步（本来就是执行本地的文件）</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903831994630158">用一次就会爱上的cli工具开发</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.npmjs.com/cli/v6/configuring-npm/package-json#bin">package.json | npm Docs</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2016/10/npm_scripts.html">npm scripts使用指南</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/44003359">PATH环境变量</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/19/node%E5%BC%80%E5%8F%91cli/" data-id="ckk44e4g70009xwuze62j542m" data-title="node开发cli" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/" rel="tag">node</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/19/Web%20Worker/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Web Worker
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/19/npm%E5%8C%85%E5%8F%91%E5%B8%83/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">npm包发布</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 15px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/19/Web%20Worker/">Web Worker</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/19/node%E5%BC%80%E5%8F%91cli/">node开发cli</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/19/npm%E5%8C%85%E5%8F%91%E5%B8%83/">npm包发布</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/19/DNS/">DNS</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/19/TCP%E5%92%8CUDP/">TCP与UDP</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
