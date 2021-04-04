@@ -4,22 +4,22 @@
   <meta charset="utf-8">
   
   
-  <title>Vue组件的Api组件 | Hexo</title>
+  <title>Vue组件的Api组件 | idkhts&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="在使用vue框架时，正常的组件调用都是直接使用模板或使用选择器渲染，但在项目中有遇到，直接在js中用api弹出对话框的业务（公共逻辑的一个js文件夹中，代码使用了一个其它库，js直接弹出对话框）；使用了vue框架，为了弹窗不必再引入其他库，就需要了解到vue组件的api式调用。  api式调用，指的就是可以在一段js代码中，直接渲染组件，比如这里的例子弹窗 12345&#x2F;&#x2F;xx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue组件的Api组件">
 <meta property="og:url" content="http://example.com/2021/01/19/Vue%E7%BB%84%E4%BB%B6%E7%9A%84Api%E7%BB%84%E4%BB%B6/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="idkhts&#39;s blog">
 <meta property="og:description" content="在使用vue框架时，正常的组件调用都是直接使用模板或使用选择器渲染，但在项目中有遇到，直接在js中用api弹出对话框的业务（公共逻辑的一个js文件夹中，代码使用了一个其它库，js直接弹出对话框）；使用了vue框架，为了弹窗不必再引入其他库，就需要了解到vue组件的api式调用。  api式调用，指的就是可以在一段js代码中，直接渲染组件，比如这里的例子弹窗 12345&#x2F;&#x2F;xx">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-01-19T14:36:06.462Z">
-<meta property="article:modified_time" content="2021-01-19T14:37:15.335Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:modified_time" content="2021-04-04T07:41:54.044Z">
+<meta property="article:author" content="idkhts">
 <meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="idkhts's blog" type="application/atom+xml">
   
   
     <link rel="shortcut icon" href="/favicon.png">
@@ -47,7 +47,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">idkhts&#39;s blog</a>
       </h1>
       
     </div>
@@ -62,12 +62,12 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
       </div>
     </div>
   </div>
@@ -109,7 +109,7 @@
 <li><p>利用Vue.extend()构建一个带挂载的vue对象，这里扩展了Vue类（Vue构造函数）；理解extend，先理解两点：</p>
 <ol>
 <li>返回的是一个构造函数（constructor）而不是一个对象，想要这种类型的对象还需要用<code>new</code>操作符；</li>
-<li>Vue.extend()接收一个参数，是一个组件的选项对象，extend做的操作大概就是像new Vue()一样——把这个组件的选项对象的初始化构造一个vue对象。但是和new构造不同点是extend返回的是一个经过这样初始化的<strong>构造函数</strong>而不是对象。也即，由这个构造函数构造的对象是肯定会经过之前那个组件的选项对象初始化的vue对象，有点类似延迟函数的方式，先进行了一层初始化。是Vue对象的一个“子类”。</li>
+<li>Vue.extend()接收一个参数，是一个组件的选项对象，extend做的操作大概就是像new Vue()一样——用这个组件的选项对象的去构造一个vue对象。但是和new构造不同点是extend返回的是一个经过这样初始化的<strong>构造函数</strong>而不是对象。也即，由这个构造函数构造出来的对象是肯定会经过之前那个组件的选项对象初始化的vue对象，有点类似延迟函数的方式，先进行了一层初始化。是Vue对象的一个“子类”。</li>
 </ol>
 <ul>
 <li>2中这样有什么用？如同extend这个词的原来意思，扩展，Vue.extend得到的构造函数构造的对象无疑是vue对象，但是这个对象比原生的vue多初始化了一些东西，也即扩展了也些东西。除此之外，返回了一个构造函数，意味着这个是独立于原生Vue构造函数的，对原生Vue没有任何影响（这一点是和mixin的本质区别，mixin就是影响原生Vue的）</li>
@@ -134,7 +134,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/19/Vue%E7%BB%84%E4%BB%B6%E7%9A%84Api%E7%BB%84%E4%BB%B6/" data-id="ckk44e4g40004xwuz0uejccqq" data-title="Vue组件的Api组件" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/19/Vue%E7%BB%84%E4%BB%B6%E7%9A%84Api%E7%BB%84%E4%BB%B6/" data-id="ckn2vt9760004gwuz6bnhh38l" data-title="Vue组件的Api组件" class="article-share-link">分享</a>
       
       
       
@@ -147,7 +147,7 @@
 <nav id="article-nav">
   
     <a href="/2021/01/19/vue-cli%E7%9A%84vue.config.js/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">前一篇</strong>
       <div class="article-nav-title">
         
           vue-cli的vue.config.js
@@ -157,7 +157,7 @@
   
   
     <a href="/2021/01/19/SSO/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">后一篇</strong>
       <div class="article-nav-title">SSO</div>
     </a>
   
@@ -176,7 +176,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">标签</h3>
     <div class="widget">
       <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
     </div>
@@ -186,7 +186,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
       <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 15px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
     </div>
@@ -195,9 +195,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li></ul>
     </div>
   </div>
 
@@ -205,7 +205,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
         
@@ -242,7 +242,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       
-      &copy; 2021 John Doe<br>
+      &copy; 2021 idkhts<br>
       Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

@@ -4,22 +4,22 @@
   <meta charset="utf-8">
   
   
-  <title>浏览器 | Hexo</title>
+  <title>浏览器 | idkhts&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="主要构成部分：  用户界面 浏览器引擎（WebCore）负责窗口管理、Tab进程管理 渲染引擎，也叫内核，负责html解析、页面渲染 Js引擎，JsCore，js的解释执行   浏览器为  多进程有四种：渲染进程、插件进程、GPU进程、浏览器进程  多线程（js引擎才是单线程）,主要看渲染进程，它包括  GUI线程，负责解析html、css和渲染页面 相关的 JS引擎线程，负责js的解释执行（统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浏览器">
 <meta property="og:url" content="http://example.com/2021/01/19/%E6%B5%8F%E8%A7%88%E5%99%A8/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="idkhts&#39;s blog">
 <meta property="og:description" content="主要构成部分：  用户界面 浏览器引擎（WebCore）负责窗口管理、Tab进程管理 渲染引擎，也叫内核，负责html解析、页面渲染 Js引擎，JsCore，js的解释执行   浏览器为  多进程有四种：渲染进程、插件进程、GPU进程、浏览器进程  多线程（js引擎才是单线程）,主要看渲染进程，它包括  GUI线程，负责解析html、css和渲染页面 相关的 JS引擎线程，负责js的解释执行（统">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-01-19T14:30:51.155Z">
-<meta property="article:modified_time" content="2021-01-19T14:31:46.713Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:modified_time" content="2021-04-04T08:02:09.120Z">
+<meta property="article:author" content="idkhts">
 <meta property="article:tag" content="浏览器">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="idkhts's blog" type="application/atom+xml">
   
   
     <link rel="shortcut icon" href="/favicon.png">
@@ -47,7 +47,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">idkhts&#39;s blog</a>
       </h1>
       
     </div>
@@ -62,12 +62,12 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
       </div>
     </div>
   </div>
@@ -163,18 +163,8 @@
 </ul>
 </li>
 <li><p>使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ETag</span><br></pre></td></tr></table></figure>
-<p>/</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">If-None-Match</span><br></pre></td></tr></table></figure>
-<p>这一对字段。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ETag</span><br></pre></td></tr></table></figure>
-<p>的值是一段内容摘要（hash）。类似的，第一次响应的响应头部也会带上一个</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ETag</span><br></pre></td></tr></table></figure>
-<p>字段，下次请求在请求头部加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">If-None-Match</span><br></pre></td></tr></table></figure>
-<p>带上这个</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ETag</span><br></pre></td></tr></table></figure>
-<p>的值，服务端拿着和现在的数据摘要对比，相同则返回304，不同则返回最新数据；</p>
+<p><code>ETag</code>/<code>If-None-Match</code>这一对字段。</p>
+<p><code>ETag</code>的值是一段内容摘要（hash）。类似的，第一次响应的响应头部也会带上一个<code>ETag</code>字段，下次请求在请求头部加<code>If-None-Match</code>带上这个<code>Etag</code>的值，服务端拿着和现在的数据摘要对比，相同则返回304，不同则返回最新数据；</p>
 <ul>
 <li><code>ETag</code>/<code>If-None-Match</code>相比<code>Last-Modified</code>/<code>If-Modified-Since</code>是一种更强的校验器，<code>Last-Modified</code>的时间只能精确到秒。同时<code>ETag</code>/<code>If-None-Match</code>也比<code>Last-Modified</code>/<code>If-Modified-Since</code>优先级更高。</li>
 </ul>
@@ -183,6 +173,8 @@
 </li>
 </ul>
 </li>
+</ul>
+<ul>
 <li><p>随记：</p>
 <ul>
 <li>这些缓存都是针对get，head这些读数据的方法而言，那些字段也有自身的一些其它用法</li>
@@ -201,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/19/%E6%B5%8F%E8%A7%88%E5%99%A8/" data-id="ckk44e4gk000kxwuz4ukxglp8" data-title="浏览器" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/19/%E6%B5%8F%E8%A7%88%E5%99%A8/" data-id="ckn2vt982000igwuz7qfnc2ye" data-title="浏览器" class="article-share-link">分享</a>
       
       
       
@@ -214,7 +206,7 @@
 <nav id="article-nav">
   
     <a href="/2021/01/19/SSO/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">前一篇</strong>
       <div class="article-nav-title">
         
           SSO
@@ -222,11 +214,6 @@
       </div>
     </a>
   
-  
-    <a href="/2021/01/17/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
-    </a>
   
 </nav>
 
@@ -243,7 +230,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">标签</h3>
     <div class="widget">
       <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
     </div>
@@ -253,7 +240,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
       <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 15px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
     </div>
@@ -262,9 +249,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li></ul>
     </div>
   </div>
 
@@ -272,7 +259,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
         
@@ -309,7 +296,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       
-      &copy; 2021 John Doe<br>
+      &copy; 2021 idkhts<br>
       Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
