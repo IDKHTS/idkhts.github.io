@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        
+        排序
+    </title>
+    <!-- 引入font-awesome图标 -->
+    
+<link rel="stylesheet" href="/css/font-awesome-4.7.0/css/font-awesome.min.css">
+  
+
+    
+<link rel="stylesheet" href="/css/common.css">
+  
+    
+<link rel="stylesheet" href="/css/layout.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/post.css">
+
+        
+<link rel="stylesheet" href="/css/directory.css">
+
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <div class="navi-bar">
+    
+        
+            <a class="navi-item" href="/" >
+                首页
+            </a>
+            <!-- onclick="selectMenu('/')" -->
+        
+            <a class="navi-item" href="/archives" >
+                归档
+            </a>
+            <!-- onclick="selectMenu('/archives')" -->
+        
+            <a class="navi-item" href="/demo/index.html" >
+                vue2.x
+            </a>
+            <!-- onclick="selectMenu('/demo/index.html')" -->
+        
+            <a class="navi-item" href="/" >
+                vue3.x
+            </a>
+            <!-- onclick="selectMenu('/')" -->
+        
+            <a class="navi-item" href="/" >
+                计算机网络
+            </a>
+            <!-- onclick="selectMenu('/')" -->
+        
+    
+</div>
+    
+    <div class="wrapper">
+        <div class="tools-bar">	
+            
+                
+                
+                    <a target="_blank" rel="noopener" href="https://github.com/IDKHTS"><i class="fa fa-github tools-bar-icon"></i></a>
+                
+            
+            <!-- <a href=""><i class="fa fa-weibo"></i></a>
+            <a target="_blank" rel="noopener" href="https://github.com/IDKHTS"><i class="fa fa-github"></i></a> -->
+            <i class="fa fa-angle-double-up tools-bar-icon" onclick="onScrollTop()"></i>
+            <i class="fa fa-angle-double-down tools-bar-icon" onclick="onScrollBottom()"></i>
+        </div>
+        <div class="left">
+            <div class="dirctory py-2 px-1 bg-white">
+                
+                    <div class="dirctory-text px-2 py-1 mb-1">目录</div>
+                    
+    
+        <a class="d-level-3 d-item" id="冒泡算法-h" href="#%E5%86%92%E6%B3%A1%E7%AE%97%E6%B3%95" onclick="onJumpPart('冒泡算法')">冒泡算法</a>
+    
+        <a class="d-level-3 d-item" id="选择排序-h" href="#%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F" onclick="onJumpPart('选择排序')">选择排序</a>
+    
+        <a class="d-level-3 d-item" id="插入排序-h" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F" onclick="onJumpPart('插入排序')">插入排序</a>
+    
+        <a class="d-level-3 d-item" id="希尔排序-h" href="#%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F" onclick="onJumpPart('希尔排序')">希尔排序</a>
+    
+        <a class="d-level-3 d-item" id="归并排序-h" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F" onclick="onJumpPart('归并排序')">归并排序</a>
+    
+        <a class="d-level-3 d-item" id="快速排序-h" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F" onclick="onJumpPart('快速排序')">快速排序</a>
+    
+        <a class="d-level-3 d-item" id="堆排序-h" href="#%E5%A0%86%E6%8E%92%E5%BA%8F" onclick="onJumpPart('堆排序')">堆排序</a>
+    
+        <a class="d-level-3 d-item" id="桶排序-h" href="#%E6%A1%B6%E6%8E%92%E5%BA%8F" onclick="onJumpPart('桶排序')">桶排序</a>
+    
+        <a class="d-level-4 d-item" id="参考：-h" href="#%E5%8F%82%E8%80%83%EF%BC%9A" onclick="onJumpPart('参考：')">参考：</a>
+    
+
+                
+            </div>
+        </div >
+        <div class="right">
+            <div class="bg-white px-3 pb-3">
+    <!-- 为了方便目录的渲染，不用h1等，直接写样式 -->
+    <div class="post-h1 py-2">排序</div>
+
+    <div>
+        <ul>
+<li>理解排序的稳定性：<ul>
+<li>  定义：序列[1,<strong><em>4\</em></strong>,3,6,5,4,2]排序后为[1,2,3,4,<strong><em>4\</em></strong>,5,6]则为不稳定，因为<strong>*4***与 4 的相对位置变了，*</strong>4<strong>*…4 变成了，4…***4*</strong></li>
+<li>  判断要点：主要看算法是否有“间隔置换”，比如选择排序，<strong><em>4</em></strong>第一次与 2 置换后来到了 4 的后面（如果是相邻的交换就不会），最终也没能换回到 4 的前面，所以选择排序是不稳定的；希尔排序/快排也是，某一次增量/基准是可能有“间隔置换”，把原来的相对位置打乱了，所以是不稳定的；如冒泡没有间隔置换，相邻的操作可以保持相对位置不变，所以是稳定的（唯一例外，插入排序，虽然也是间隔交换，但是它保持了相对位置）</li>
+</ul>
+</li>
+</ul>
+<h3 id="冒泡算法"><a href="#冒泡算法" class="headerlink" title="冒泡算法"></a>冒泡算法</h3><ul>
+<li>  两两比较，相邻两个元素比较，n 个元素需要 n 轮（每轮有 n 次）；数据都像泡泡流（冒……）向合适的地方</li>
+<li>  时间复杂度 O(n^2)，空间复杂度 O(1)，稳定</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">let arr &#x3D; [1,5,9,7,5,6,7,4,6,57,65,48,4,65,4,987,999];</span><br><span class="line">for(let i&#x3D;0;i&lt;arr.length;i++)&#123;</span><br><span class="line">	for(let j&#x3D;0;j&lt;arr.length-1;j++)&#123;</span><br><span class="line">    	if(arr[j]&gt;arr[j+1])&#123;</span><br><span class="line">            arr[j] &#x3D; arr[j] + arr[j+1];</span><br><span class="line">            arr[j+1] &#x3D; arr[j]-arr[j+1];</span><br><span class="line">            arr[j] &#x3D; arr[j]-arr[j+1];</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">console.log(arr);</span><br><span class="line">&#x2F;&#x2F;[1, 4, 4, 4, 5, 5, 6, 6, 7, 7, 9, 48, 57, 65, 65, 987, 999]</span><br></pre></td></tr></table></figure>
+
+<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><ul>
+<li>  从数组第一个位置开始，遍历剩余（未排序的，应该都在这个位置后）数组元素选择一个最合适的数放在这个位置。</li>
+<li>  时间复杂度 O(n^2)，空间复杂度 O(1)，不稳定（因为会置换）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">let arr &#x3D; [1,5,9,7,5,6,7,4,6,57,65,48,4,65,4,987,999];</span><br><span class="line">for(let i&#x3D;0;i&lt;arr.length-1;i++)&#123;</span><br><span class="line">	for(let j&#x3D;i+1;j&lt;arr.length;j++)&#123;</span><br><span class="line">        if(arr[i] &gt; arr[j])&#123;</span><br><span class="line">            arr[i] &#x3D; arr[i] + arr[j];</span><br><span class="line">            arr[j] &#x3D; arr[i]-arr[j];</span><br><span class="line">            arr[i] &#x3D; arr[i]-arr[j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">console.log(arr);</span><br><span class="line">&#x2F;&#x2F;[1, 4, 4, 4, 5, 5, 6, 6, 7, 7, 9, 48, 57, 65, 65, 987, 999]</span><br></pre></td></tr></table></figure>
+
+<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><ul>
+<li>  （排升序，以下算法是）从第二个开始，认为前面的已经是有序的了，当前位置的在排好序的前面的元素比较，小于的就插入，不然继续往前；不断插入到前面，插入——代表相对位置已经确定。这里的和选择排序的区别是，插入排序排的每次排是相对位置，选择排序是每次都是排最终位置。</li>
+<li>  时间复杂度是 O(n^2)，空间复杂度为 O(1)，稳定</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let arr &#x3D; [1,5,9,7,5,6,7,4,6,57,65,48,4,65,4,987,999];</span><br><span class="line">for(let i&#x3D;1;i&lt;arr.length;i++)&#123;</span><br><span class="line">	for(let j&#x3D;i;j&gt;&#x3D;0;j--)&#123;&#x2F;&#x2F;向前寻找，找到当前元素小的，说明需要插入到这个元素后</span><br><span class="line">        if(arr[i] &gt; arr[j])&#123;</span><br><span class="line">           	let tmp &#x3D; arr.splice(i,1);&#x2F;&#x2F;从数组取出（数组长度减一）</span><br><span class="line">           	arr.splice(j+1,0,tmp[0]);&#x2F;&#x2F;插入</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">console.log(arr);</span><br></pre></td></tr></table></figure>
+
+<h3 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h3><ul>
+<li><p>  其实是升级版的插入排序，对插入排序做了优化，插入排序对有序度高的数组排序快，那么优化点就可以是序列的有序程度。希尔排序从“数组个数”和“数组有序度”去优化了插入排序。</p>
+</li>
+<li><p>  整个数组的个数除于 2 得到一个分组数（增量一），然后在每个分组里面进行插入排序，排序后，这样一轮即完成了；然后第二轮，用第一轮（上一轮）的增量（增量一）除于 2，然后每个分组里面在进行插入排序，排序后结束本轮；重复步骤，知道增量变成&lt;1，排序完成；</p>
+</li>
+<li><p>比如数组 1-8，一共 8 个元素，8/2=4，记增量为 4，所以分成四组，也即每组只有两个元素；同组元素时要分（因为分开才会整个数组都……怎么描述），所以这样分【1，5】、【2，6】、【3，7】、【4，8】，所以第<code>i</code>个元素的同组元素是<code>i+增量</code>；</p>
+<p>  编程时考虑不拆分原数组，所以为了“每个分组里排序”，那么需要利用<code>i+增量</code>是同组这个属性</p>
+</li>
+<li><p>  时间复杂度是 O(n^1.3)，空间复杂度为 O(1)，不稳定（因为会置换）</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">let testArr &#x3D; [1, 5, 9, 7, 5, 6, 7, 4, 6, 57, 65, 48, 4, 65, 4, 987, 999];</span><br><span class="line">&#x2F;&#x2F;首先划分增量</span><br><span class="line">for (let n &#x3D; Math.floor(testArr.length &#x2F; 2); n &gt;&#x3D; 1; n &#x3D; Math.floor(n &#x2F; 2)) &#123;</span><br><span class="line">    &#x2F;&#x2F;然后按增量间隔对这些元素进行插入排序</span><br><span class="line">    for (let i &#x3D; n; i &lt; testArr.length; i++) &#123;</span><br><span class="line">        &#x2F;&#x2F;“j-&#x3D;n”注意是跳增量n个，而不是1个，为1就是直接插入排序了；</span><br><span class="line">        for (let j &#x3D; i; j &gt;&#x3D; 0; j-&#x3D;n) &#123;</span><br><span class="line">            if (testArr[i] &gt; testArr[j]) &#123;</span><br><span class="line">                let tmp &#x3D; testArr.splice(i, 1);</span><br><span class="line">                testArr.splice(j + n, 0, tmp[0]);&#x2F;&#x2F;前一位也是跳增量的</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">console.log(testArr);</span><br></pre></td></tr></table></figure>
+
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><ul>
+<li>  分而治之思想，大序列划分为小序列，小序列再划分为更小的序列，直到最后只有一个的时候就很简单两个比较；这样的比较对排序</li>
+<li>  时间复杂度 O(n ㏒2 n),空间复杂度为 O(n)，稳定</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">let testArr &#x3D; [1, 5, 9, 7, 5, 6, 7, 4, 6, 57, 65, 48, 4, 65, 4, 987, 999];</span><br><span class="line">&#x2F;&#x2F;归并排序</span><br><span class="line">function MergeSort(arr) &#123;</span><br><span class="line">    if (arr.length &lt; 2) &#123;</span><br><span class="line">        return arr;</span><br><span class="line">    &#125;</span><br><span class="line">    let mid &#x3D; Math.floor(arr.length &#x2F; 2);</span><br><span class="line">    return merge(MergeSort(arr.slice(0, mid)), MergeSort(arr.slice(mid)))</span><br><span class="line">&#125;</span><br><span class="line">function merge(arr1, arr2) &#123;</span><br><span class="line">    let result &#x3D; [];</span><br><span class="line">    &#x2F;&#x2F;比较两个数组，小的先进结果集，大的和小的所在数组后一个元素进行再一轮比较，直到某个数组为空</span><br><span class="line">    while (arr1.length &gt; 0 &amp;&amp; arr2.length &gt; 0) &#123;</span><br><span class="line">        if (arr1[0] &gt; arr2[0]) &#123;</span><br><span class="line">            result.push(arr2.shift());</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            result.push(arr1.shift());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;可能某个数组为空了，则另一个数组可以直接加到结果集后</span><br><span class="line">    if (arr2.length !&#x3D; 0) &#123;</span><br><span class="line">        result &#x3D; result.concat(arr2)</span><br><span class="line">    &#125;</span><br><span class="line">    if (arr1.length !&#x3D; 0) &#123;</span><br><span class="line">        result &#x3D; result.concat(arr1)</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line">testArr &#x3D; MergeSort(testArr)</span><br><span class="line">console.log(testArr);</span><br></pre></td></tr></table></figure>
+
+<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><ul>
+<li>  也是分而治之思想，与归并排序的区别是，划分问题的方法：归并排序的划分子问题一般方法是从数组中间划分两端，然后递归划分直到一个；快速排序的划分是以一个元素作为一个基准，大于它和小于它分两半，然后递归划分直到一个。同时快排的主要操作是交换数组元素，使用的空间相对归并排序更少</li>
+<li>  实现：选择第一个元素作为基准，先从<code>数组尾</code>往回遍历，找到比基准小的与基准互换，互换后再<code>数组头+1</code>开始(第一个已经确定比基准小了，应该放基准左变)，找到比基准大的与基准互换，互换后又从右边<code>刚刚基准所在-1</code>找小于的，互换位置，从左边找大于再<code>刚刚基准所在+</code>1`。。。不断重复左右跳，直到没有元素可找，一轮结束；然后分别在基准两侧再进行刚刚的操作（更小粒度）。【比较乱，直接看代码吧】</li>
+<li>  平均时间复杂为 O(nlog₂n)，最差可以达到 O(n^2)，n 表示元素个数；空间复杂度为 O(1)，一个空间记录基准+双指针用了 2 个空间 = 3 =》O(1)；若用了递归可能性能还差点；不稳定（因为会置换）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;测试数组</span><br><span class="line">let testArr &#x3D; [1, 55, 68, 21, 598, 66, 221, 1554, 3879, 5216, 100, 8, 9, 5, 7, 6, 22, 21]</span><br><span class="line">  function quickSort(arr) &#123;</span><br><span class="line">        if (arr.length &lt;&#x3D; 1) return arr;</span><br><span class="line">        let low &#x3D; 0;</span><br><span class="line">        let hight &#x3D; arr.length - 1;</span><br><span class="line">        let pivot &#x3D; arr[0]; &#x2F;&#x2F;基准</span><br><span class="line">        let isRight &#x3D; true;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;按基准划分</span><br><span class="line">        while (low &lt; hight) &#123;</span><br><span class="line">            if (isRight) &#123;&#x2F;&#x2F;先寻找比基准小的</span><br><span class="line">                if (arr[hight] &gt; pivot) &#123;</span><br><span class="line">                    hight--;</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    arr[low] &#x3D; arr[hight];</span><br><span class="line">                    low++;</span><br><span class="line">                    isRight &#x3D; !isRight;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; else &#123;&#x2F;&#x2F;再寻比基准大的</span><br><span class="line">                if (arr[low] &gt; pivot) &#123;</span><br><span class="line">                    arr[hight] &#x3D; arr[low];</span><br><span class="line">                    hight--;</span><br><span class="line">                    isRight &#x3D; !isRight;</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    low++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[low] &#x3D; pivot;</span><br><span class="line">        let arr1 &#x3D; quickSort(arr.slice(0, low)); &#x2F;&#x2F;再在分块里面排序</span><br><span class="line">        let arr2 &#x3D; quickSort(arr.slice(low + 1)); &#x2F;&#x2F;再在分块里面排序</span><br><span class="line">        return arr1.concat([arr[low]], arr2) &#x2F;&#x2F;返回连接起来的数组</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(&#39;原数组&#39;, testArr)</span><br><span class="line">    console.log(&#39;排后数组&#39;, quickSort(testArr))</span><br></pre></td></tr></table></figure>
+
+<h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><ul>
+<li><p>前置知识：</p>
+<ul>
+<li><p>  完全二叉树：所有节点都先有左子树再有右子树的二叉树</p>
+</li>
+<li><p>堆，用<strong>数组</strong>来存储一颗有序的<strong>完全二叉树</strong>，分大根堆和小根堆</p>
+<ul>
+<li><p>  大根堆：根比左右子节点都大，但左右节点谁大没有规定</p>
+</li>
+<li><p>  小根堆：根比左右子节点都小，但左右节点谁小没有规定</p>
+</li>
+<li><p>怎么用数组存储一个完全二叉树？</p>
+<p>  完全二叉树有个性质，如果按先序遍历给每个节点一个从 0 开始的序号，那么第 i 号节点的左右子节点分别是 2<em>i+1、2</em>i+2；所以数组构造堆，就是遍历数组，让当前元素 i 和 2<em>i+1、2</em>i+2 比较大小，最大的/最小的换到当前位即可</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>  思想大概是利用堆这种结构排序，以大根堆为例，把数组构造成一个大根堆，取根节点，也即最大值，剩下的 n-1 个再构造一个大根堆，再取根节点，不断循环这样的操作就可以得到一个大到小的排序/小到大的排序</p>
+</li>
+<li><p>构造大根堆：</p>
+<ul>
+<li>  找 arr.length/2-1 的节点，即非叶子节点的从左到右的第一个节点，构造左右子节点都小于当前的节点，若是由子节点大于当前节点则交换，若交换后破坏了子节点的大根堆构造那么也要进行替换，直到最后</li>
+<li>  然后找第二个非叶子节点 arr.length/2-2，重复上面操作，直到多有非叶子节点都完成</li>
+<li></li>
+</ul>
+</li>
+<li><p>  堆排序是一种<strong>选择排序</strong>，堆其实就是帮助选择的数据结构而已</p>
+</li>
+<li><p>  时间复杂度：O(nlog₂n)</p>
+</li>
+<li><p>  空间复杂度：O(1)</p>
+</li>
+<li><p>是否稳定：不稳定</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;测试数组</span><br><span class="line">let testArr &#x3D; [1, 55, 68, 21, 598, 66, 221, 1554, 3879, 5216, 100, 8, 9, 5, 7, 6, 22, 21]</span><br><span class="line"></span><br><span class="line">function heapSort(arr)&#123;</span><br><span class="line">    &#x2F;&#x2F; 数组arr交换i,j的值</span><br><span class="line">    const swap &#x3D; (arr,i,j)&#x3D;&gt; &#123;</span><br><span class="line">        &#x2F;&#x2F; if(i &#x3D;&#x3D;&#x3D; j) return</span><br><span class="line">        arr[i] &#x3D; arr[i] + arr[j]</span><br><span class="line">        arr[j] &#x3D; arr[i] - arr[j]</span><br><span class="line">        arr[i] &#x3D; arr[i] - arr[j]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 堆调整</span><br><span class="line">    const heapify &#x3D; (arr,i,len) &#x3D;&gt; &#123;</span><br><span class="line">        let left &#x3D; i*2+1 &#x2F;&#x2F;左节点</span><br><span class="line">        let right &#x3D; i*2+2 &#x2F;&#x2F;右节点</span><br><span class="line">        let largest &#x3D; i &#x2F;&#x2F;最大值序号</span><br><span class="line"></span><br><span class="line">        if(left &lt; len &amp;&amp; arr[left] &gt; arr[largest])&#123;</span><br><span class="line">            largest &#x3D; left</span><br><span class="line">        &#125;</span><br><span class="line">        if(right &lt; len &amp;&amp; arr[right] &gt; arr[largest])&#123;</span><br><span class="line">            largest &#x3D; right</span><br><span class="line">        &#125;</span><br><span class="line">        if(largest !&#x3D;&#x3D; i)&#123;</span><br><span class="line">            swap(arr,i,largest)</span><br><span class="line">            heapify(arr,largest,len)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 构造大根堆</span><br><span class="line">    for(let i &#x3D; Math.floor(arr.length&#x2F;2);i&gt;&#x3D;0;i--)&#123;</span><br><span class="line">        heapify(arr,i,arr.length)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 取最大值</span><br><span class="line">    for(let i &#x3D; arr.length-1;i&gt;0;i--)&#123;</span><br><span class="line">        swap(arr,i,0)</span><br><span class="line">        heapify(arr,0,i)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return arr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(heapSort(testArr))</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h3><ul>
+<li>  主要就是利用数组下标排序，把原数组放到另一个按下对应值的下标的数组（称桶数组）中，在按序取得这个桶数组的非空元素即可。为了节约空间，原数组的值可以经过一个“提炼”（一定的换算）得到一个下标，压缩桶数组的长度，这样有可能多个元素命中一个桶，那么在放进桶里排下序即可；思想有点类似 hash 表</li>
+<li>  时间复杂度 O(n),空间 O(n)，稳定，是线性排序，没有 O（nlogn)限制，大数据很快，但是空间消耗也大</li>
+<li>实现：<ul>
+<li>  计划桶数组长度和原数组一样，可以取出原数组最大值和最小值（O(n))，求出它们的间隔，再除于原数组长度求每个桶的值间隔</li>
+<li>  遍历原数组，按照换算取得下标：下标 = 取整[ (元素 - 最小值) / 桶间隔 ] ； 看这个下标的桶是否有元素，有元素插入时稍微做个排序即可 O(m)，没有的直接作为第一个元素</li>
+<li>  遍历桶数组，从下标小到大获取，桶内元素也同样获取即可</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;测试数组</span><br><span class="line">let testArr &#x3D; [1, 55, 68, 21, 598, 66, 221, 1554, 3879, 5216, 100, 8, 9, 5, 7, 6, 22, 21]</span><br><span class="line"></span><br><span class="line">function BucketSort(arr) &#123;</span><br><span class="line">    const buckets &#x3D; Array(arr.length)</span><br><span class="line">    const max &#x3D; Math.max(...arr) &#x2F;&#x2F;最大值</span><br><span class="line">    const min &#x3D; Math.min(...arr) &#x2F;&#x2F;最小值</span><br><span class="line">    const BkLength &#x3D; Math.floor((max + min) &#x2F; arr.length) + 1 &#x2F;&#x2F;桶间隔</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;构造桶数组</span><br><span class="line">    for (let i &#x3D; 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">        const index &#x3D; Math.floor((arr[i] - min) &#x2F; BkLength) &#x2F;&#x2F;数组从0开始，这里可以不用+1</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 桶为空，可以直接作为第一个</span><br><span class="line">        if (!buckets[index]) &#123;</span><br><span class="line">            buckets[index] &#x3D; [arr[i]]</span><br><span class="line">            continue</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 桶不为空，插入到桶里面对应的位置</span><br><span class="line">        let isInsert &#x3D; false</span><br><span class="line">        for (let j &#x3D; 0; j &lt; buckets[index].length; j++) &#123;</span><br><span class="line">            if (buckets[index][j] &gt; arr[i]) &#123;</span><br><span class="line">                buckets[index].splice(j, 0, arr[i])</span><br><span class="line">                isInsert &#x3D; true</span><br><span class="line">                break</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        !isInsert &amp;&amp; (buckets[index].push(arr[i]))</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;取出元素</span><br><span class="line">    arr &#x3D; []</span><br><span class="line">    for (let i &#x3D; 0; i &lt; buckets.length; i++) &#123;</span><br><span class="line">        if (!buckets[i]) &#123;</span><br><span class="line">            continue</span><br><span class="line">        &#125;</span><br><span class="line">        arr.push(...buckets[i])</span><br><span class="line">    &#125;</span><br><span class="line">  return arr</span><br><span class="line">&#125;</span><br><span class="line">console.log(BucketSort(testArr))</span><br></pre></td></tr></table></figure>
+
+<h4 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h4><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/onepixel/p/7674659.html">十大经典排序算法（动图演示）</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/heap-sort.html">堆排序</a>——<a target="_blank" rel="noopener" href="https://www.runoob.com/">菜鸟教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/45725214">算法从入门到“放弃”（10）- 堆排序</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html">https://www.cs.usfca.edu/~galles/visualization/Algorithms.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%A1%B6%E6%8E%92%E5%BA%8F">桶排序</a></p>
+
+    </div>
+</div>
+
+    <section class="comments" id="comments">
+        <div id="gitalk-container"></div>
+        <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script> -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+        <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+        <script>
+            var gitalk = new Gitalk({
+                clientID: '884f505b74829948187e',
+                clientSecret: '101a71b526c2f66e58c4b86ca1c92abc972b978a',
+                repo: 'idkhts.github.io',
+                owner: 'IDKHTS',
+                admin: 'IDKHTS',
+                id: (location.pathname).split("/").pop().substring(0, 49),//location.pathname,  // Ensure uniqueness and length less than 50
+                perPage: 50,
+                distractionFreeMode: 'false'
+            })
+
+            gitalk.render('gitalk-container')
+        </script>
+    </section>
+    
+
+<!-- 
+    page的属性
+'title',          '_content',
+'source',         'raw',
+'slug',           'published',
+'date',           'updated',
+'comments',       'layout',
+'photos',         'link',
+'_id',            'content',
+'site',           'excerpt',
+'more',           'path',
+'permalink',      'full_source',
+'asset_dir',      'tags',
+'categories',     'next',
+'__post',         'lang',
+'canonical_path' -->
+        </div>
+    </div>
+
+    
+
+    
+<script src="/js/layout.js"></script>
+
+    
+<script src="/js/music.js"></script>
+
+    
+    
+        
+<script src="/js/post.js"></script>
+
+    
+</body>
+
+</html>

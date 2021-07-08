@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        
+        monorepo和lerna
+    </title>
+    <!-- 引入font-awesome图标 -->
+    
+<link rel="stylesheet" href="/css/font-awesome-4.7.0/css/font-awesome.min.css">
+  
+
+    
+<link rel="stylesheet" href="/css/common.css">
+  
+    
+<link rel="stylesheet" href="/css/layout.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/post.css">
+
+        
+<link rel="stylesheet" href="/css/directory.css">
+
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <div class="navi-bar">
+    
+        
+            <a class="navi-item" href="/" >
+                首页
+            </a>
+            <!-- onclick="selectMenu('/')" -->
+        
+            <a class="navi-item" href="/archives" >
+                归档
+            </a>
+            <!-- onclick="selectMenu('/archives')" -->
+        
+            <a class="navi-item" href="/demo/index.html" >
+                vue2.x
+            </a>
+            <!-- onclick="selectMenu('/demo/index.html')" -->
+        
+            <a class="navi-item" href="/" >
+                vue3.x
+            </a>
+            <!-- onclick="selectMenu('/')" -->
+        
+            <a class="navi-item" href="/" >
+                计算机网络
+            </a>
+            <!-- onclick="selectMenu('/')" -->
+        
+    
+</div>
+    
+    <div class="wrapper">
+        <div class="tools-bar">	
+            
+                
+                
+                    <a target="_blank" rel="noopener" href="https://github.com/IDKHTS"><i class="fa fa-github tools-bar-icon"></i></a>
+                
+            
+            <!-- <a href=""><i class="fa fa-weibo"></i></a>
+            <a target="_blank" rel="noopener" href="https://github.com/IDKHTS"><i class="fa fa-github"></i></a> -->
+            <i class="fa fa-angle-double-up tools-bar-icon" onclick="onScrollTop()"></i>
+            <i class="fa fa-angle-double-down tools-bar-icon" onclick="onScrollBottom()"></i>
+        </div>
+        <div class="left">
+            <div class="dirctory py-2 px-1 bg-white">
+                
+                    <div class="dirctory-text px-2 py-1 mb-1">目录</div>
+                    
+    <div>不存在的...</div>
+
+                
+            </div>
+        </div >
+        <div class="right">
+            <div class="bg-white px-3 pb-3">
+    <!-- 为了方便目录的渲染，不用h1等，直接写样式 -->
+    <div class="post-h1 py-2">monorepo和lerna</div>
+
+    <div>
+        <ul>
+<li><p>随着前端的不断发展，代码变得越来越繁杂，为方便管理，减小维护成本，也为了方便复用，大代码库被地划分为更小粒度的代码。那这些小代码库应该如何管理？大致有两类解决方案：</p>
+<ul>
+<li>multi reop 即一个包一个库<ul>
+<li>  每个包都有独立的库管理，开发自由度高</li>
+<li>  调用时，要像第三方包一样被调用；</li>
+<li>  修改时，源代码要到被调用的库修改，然后由调用者修改调用方式</li>
+</ul>
+</li>
+<li>monorepo 即一个仓库中管理所有包（小代码库）<ul>
+<li>  所有代码由一个库管理，统一配置和组织方式</li>
+<li>  调用时，同目录调用</li>
+<li>  修改时，源代码的修改，改的作用通过调用的库显示出来，所以需要修改调用代码</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>monorepo 方式的一个工具库 lerna</p>
+<ul>
+<li><p>安装</p>
+<p>  <code>npm i lerna -g</code></p>
+</li>
+<li><p>初始化项目</p>
+<p>  <code>lerna init</code></p>
+<p>  执行命令后会在当前目录下出现</p>
+<ul>
+<li><p>一个<code>lerna.json</code>文件，配置 lerna:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;package&quot;:[</span><br><span class="line">        &quot;packages&#x2F;*&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;version&quot;:&quot;0.0.0&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>  一个标志为 npm 管理方式的<code>package.json</code></p>
+</li>
+<li><p>  一个命名为 packages 空目录，在这里存放需要管理的包</p>
+</li>
+</ul>
+</li>
+<li><p>处理各个包之间的依赖</p>
+<p>  <code>lerna bootstrap</code></p>
+<ul>
+<li>  执行后自动下载和链接好各个包（通过查看各个包的 package.json 的 dependencies 属性，分辨是否是内置的包，内置的用 npm link 链接，外部的第三方用 npm i）</li>
+</ul>
+</li>
+<li><p>git commit 和发布包：</p>
+<p>  <code>lerna publish</code></p>
+<ul>
+<li>  执行后自动打 tag，更新各个包的版本（默认情况下，无论有无更改都会改版本号）</li>
+<li>  因为是绑定了 git，所以一定要有远程 git 仓库才能成功</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/65533186">精读《Monorepo 的优势》</a></p>
+<p><a target="_blank" rel="noopener" href="https://lerna.js.org/">lerna</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/8q6parispv_ovjueltsr">npm 官宣：未来将支持 monorepo 特性，带来源码管理新姿势！</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.gigamonkeys.com/mono-vs-multi/">REPO STYLE WARS: MONO VS MULTI</a>——&gt;<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/31289463">中文翻译</a></p>
+
+    </div>
+</div>
+
+    <section class="comments" id="comments">
+        <div id="gitalk-container"></div>
+        <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script> -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+        <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+        <script>
+            var gitalk = new Gitalk({
+                clientID: '884f505b74829948187e',
+                clientSecret: '101a71b526c2f66e58c4b86ca1c92abc972b978a',
+                repo: 'idkhts.github.io',
+                owner: 'IDKHTS',
+                admin: 'IDKHTS',
+                id: (location.pathname).split("/").pop().substring(0, 49),//location.pathname,  // Ensure uniqueness and length less than 50
+                perPage: 50,
+                distractionFreeMode: 'false'
+            })
+
+            gitalk.render('gitalk-container')
+        </script>
+    </section>
+    
+
+<!-- 
+    page的属性
+'title',          '_content',
+'source',         'raw',
+'slug',           'published',
+'date',           'updated',
+'comments',       'layout',
+'photos',         'link',
+'_id',            'content',
+'site',           'excerpt',
+'more',           'path',
+'permalink',      'full_source',
+'asset_dir',      'tags',
+'categories',     'next',
+'__post',         'lang',
+'canonical_path' -->
+        </div>
+    </div>
+
+    
+
+    
+<script src="/js/layout.js"></script>
+
+    
+<script src="/js/music.js"></script>
+
+    
+    
+        
+<script src="/js/post.js"></script>
+
+    
+</body>
+
+</html>

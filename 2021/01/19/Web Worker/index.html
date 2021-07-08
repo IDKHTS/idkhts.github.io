@@ -1,101 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <meta charset="utf-8">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        
+        Web Worker
+    </title>
+    <!-- 引入font-awesome图标 -->
+    
+<link rel="stylesheet" href="/css/font-awesome-4.7.0/css/font-awesome.min.css">
   
-  
-  <title>Web Worker | idkhts&#39;s blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="面试的时候有被问到一个场景：一个页面渲染程的需要计算上亿的次的计算，如何可以将页面尽量快的完成渲染  一开始以为是考&lt;script&gt;写的位置（body的底部），或者defer属性（先下载渲染后再加载），但是似乎都不是面试官想要的答案 直到学习到了Web Worker…   Web Worker  概述：由浏览器提供的web Api，主要是为了个js提供多线程的能力，另开一线程执行代码">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Web Worker">
-<meta property="og:url" content="http://example.com/2021/01/19/Web%20Worker/index.html">
-<meta property="og:site_name" content="idkhts&#39;s blog">
-<meta property="og:description" content="面试的时候有被问到一个场景：一个页面渲染程的需要计算上亿的次的计算，如何可以将页面尽量快的完成渲染  一开始以为是考&lt;script&gt;写的位置（body的底部），或者defer属性（先下载渲染后再加载），但是似乎都不是面试官想要的答案 直到学习到了Web Worker…   Web Worker  概述：由浏览器提供的web Api，主要是为了个js提供多线程的能力，另开一线程执行代码">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-01-19T14:44:59.915Z">
-<meta property="article:modified_time" content="2021-04-04T07:38:23.791Z">
-<meta property="article:author" content="idkhts">
-<meta property="article:tag" content="其他">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="idkhts's blog" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
+
+    
+<link rel="stylesheet" href="/css/common.css">
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+<link rel="stylesheet" href="/css/layout.css">
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
     
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    
+        
+<link rel="stylesheet" href="/css/post.css">
 
-  
-<meta name="generator" content="Hexo 5.3.0"></head>
+        
+<link rel="stylesheet" href="/css/directory.css">
+
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">idkhts&#39;s blog</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+    <div class="navi-bar">
+    
         
-          <a class="main-nav-link" href="/">Home</a>
+            <a class="navi-item" href="/" >
+                首页
+            </a>
+            <!-- onclick="selectMenu('/')" -->
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+            <a class="navi-item" href="/archives" >
+                归档
+            </a>
+            <!-- onclick="selectMenu('/archives')" -->
         
-      </nav>
-      <nav id="sub-nav">
+            <a class="navi-item" href="/demo/index.html" >
+                vue2.x
+            </a>
+            <!-- onclick="selectMenu('/demo/index.html')" -->
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+            <a class="navi-item" href="/" >
+                vue3.x
+            </a>
+            <!-- onclick="selectMenu('/')" -->
         
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
+            <a class="navi-item" href="/" >
+                计算机网络
+            </a>
+            <!-- onclick="selectMenu('/')" -->
+        
+    
+</div>
+    
+    <div class="wrapper">
+        <div class="tools-bar">	
+            
+                
+                
+                    <a target="_blank" rel="noopener" href="https://github.com/IDKHTS"><i class="fa fa-github tools-bar-icon"></i></a>
+                
+            
+            <!-- <a href=""><i class="fa fa-weibo"></i></a>
+            <a target="_blank" rel="noopener" href="https://github.com/IDKHTS"><i class="fa fa-github"></i></a> -->
+            <i class="fa fa-angle-double-up tools-bar-icon" onclick="onScrollTop()"></i>
+            <i class="fa fa-angle-double-down tools-bar-icon" onclick="onScrollBottom()"></i>
+        </div>
+        <div class="left">
+            <div class="dirctory py-2 px-1 bg-white">
+                
+                    <div class="dirctory-text px-2 py-1 mb-1">目录</div>
+                    
+    <div>不存在的...</div>
 
-      <div class="outer">
-        <section id="main"><article id="post-Web Worker" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/01/19/Web%20Worker/" class="article-date">
-  <time class="dt-published" datetime="2021-01-19T14:44:59.915Z" itemprop="datePublished">2021-01-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      Web Worker
-    </h1>
-  
+                
+            </div>
+        </div >
+        <div class="right">
+            <div class="bg-white px-3 pb-3">
+    <!-- 为了方便目录的渲染，不用h1等，直接写样式 -->
+    <div class="post-h1 py-2">Web Worker</div>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
+    <div>
         <ul>
 <li><p>面试的时候有被问到一个场景：一个页面渲染程的需要计算上亿的次的计算，如何可以将页面尽量快的完成渲染</p>
 <ul>
@@ -116,10 +112,12 @@
 <li>main.js</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; main.js </span><br><span class="line">        if (window.Worker) &#123;</span><br><span class="line">            const ww &#x3D; new Worker(&#39;.&#x2F;worker.js&#39;);</span><br><span class="line">            let first &#x3D; document.querySelector(&#39;#first&#39;)</span><br><span class="line">                ww.postMessage(&#39;go&#39;)</span><br><span class="line">            &#x2F;&#x2F; first.onchange &#x3D; function (v) &#123;</span><br><span class="line">                &#x2F;&#x2F; console.log(v.target.value)</span><br><span class="line">                &#x2F;&#x2F; ww.postMessage(v.target.value)</span><br><span class="line">            &#x2F;&#x2F; &#125;</span><br><span class="line">            ww.onmessage &#x3D; function (e) &#123;</span><br><span class="line">                result &#x3D; e.data;</span><br><span class="line">                console.log(&#39;Message received from worker&#39;);</span><br><span class="line">                first.value &#x3D; result</span><br><span class="line">                ww.terminate();</span><br><span class="line">            &#125;</span><br><span class="line">            ww.onerror &#x3D; function(e)&#123;</span><br><span class="line">                console.log(&#39;get error %o&#39;,e)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            console.log(&#39;not support web worker&#39;)</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>worker.js</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; worker.js</span><br><span class="line">onmessage &#x3D; function (e) &#123;</span><br><span class="line">    console.log(&#39;Message received from main script&#39;);</span><br><span class="line">    const start &#x3D; new Date().getTime()</span><br><span class="line">    let sum &#x3D; 0</span><br><span class="line">    for(let i&#x3D;0;i&lt;10000000000;i++)&#123;</span><br><span class="line">        sum +&#x3D; i</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(new Date().getTime() - start)</span><br><span class="line">    console.log(&#39;Posting message back to main script&#39;);</span><br><span class="line">    postMessage(sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>使用后关闭主线程<code>worker.terminate()</code>，或这worker内部<code>close()</code></li>
 </ul>
@@ -148,141 +146,65 @@
 <p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2018/07/web-worker.html">Web Worker 使用教程</a></p>
 <p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Using_web_workers">使用 Web Workers</a></p>
 
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/19/Web%20Worker/" data-id="ckn2vt97b0005gwuz8aiq304v" data-title="Web Worker" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a></li></ul>
+</div>
 
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2021/01/19/node%E5%BC%80%E5%8F%91cli/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">后一篇</strong>
-      <div class="article-nav-title">node开发cli</div>
-    </a>
-  
-</nav>
+    <section class="comments" id="comments">
+        <div id="gitalk-container"></div>
+        <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script> -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+        <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+        <script>
+            var gitalk = new Gitalk({
+                clientID: '884f505b74829948187e',
+                clientSecret: '101a71b526c2f66e58c4b86ca1c92abc972b978a',
+                repo: 'idkhts.github.io',
+                owner: 'IDKHTS',
+                admin: 'IDKHTS',
+                id: (location.pathname).split("/").pop().substring(0, 49),//location.pathname,  // Ensure uniqueness and length less than 50
+                perPage: 50,
+                distractionFreeMode: 'false'
+            })
 
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
+            gitalk.render('gitalk-container')
+        </script>
+    </section>
     
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+<!-- 
+    page的属性
+'title',          '_content',
+'source',         'raw',
+'slug',           'published',
+'date',           'updated',
+'comments',       'layout',
+'photos',         'link',
+'_id',            'content',
+'site',           'excerpt',
+'more',           'path',
+'permalink',      'full_source',
+'asset_dir',      'tags',
+'categories',     'next',
+'__post',         'lang',
+'canonical_path' -->
+        </div>
     </div>
-  </div>
 
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 15px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2021/01/19/Web%20Worker/">Web Worker</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/19/node%E5%BC%80%E5%8F%91cli/">node开发cli</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/19/npm%E5%8C%85%E5%8F%91%E5%B8%83/">npm包发布</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/19/DNS/">DNS</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/19/TCP%E5%92%8CUDP/">TCP与UDP</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2021 idkhts<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
     
 
+    
+<script src="/js/layout.js"></script>
 
-<script src="/js/jquery-3.4.1.min.js"></script>
+    
+<script src="/js/music.js"></script>
 
+    
+    
+        
+<script src="/js/post.js"></script>
 
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
+    
 </body>
+
 </html>

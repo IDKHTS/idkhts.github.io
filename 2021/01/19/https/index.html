@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        
+        https
+    </title>
+    <!-- 引入font-awesome图标 -->
+    
+<link rel="stylesheet" href="/css/font-awesome-4.7.0/css/font-awesome.min.css">
+  
+
+    
+<link rel="stylesheet" href="/css/common.css">
+  
+    
+<link rel="stylesheet" href="/css/layout.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/post.css">
+
+        
+<link rel="stylesheet" href="/css/directory.css">
+
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <div class="navi-bar">
+    
+        
+            <a class="navi-item" href="/" >
+                首页
+            </a>
+            <!-- onclick="selectMenu('/')" -->
+        
+            <a class="navi-item" href="/archives" >
+                归档
+            </a>
+            <!-- onclick="selectMenu('/archives')" -->
+        
+            <a class="navi-item" href="/demo/index.html" >
+                vue2.x
+            </a>
+            <!-- onclick="selectMenu('/demo/index.html')" -->
+        
+            <a class="navi-item" href="/" >
+                vue3.x
+            </a>
+            <!-- onclick="selectMenu('/')" -->
+        
+            <a class="navi-item" href="/" >
+                计算机网络
+            </a>
+            <!-- onclick="selectMenu('/')" -->
+        
+    
+</div>
+    
+    <div class="wrapper">
+        <div class="tools-bar">	
+            
+                
+                
+                    <a target="_blank" rel="noopener" href="https://github.com/IDKHTS"><i class="fa fa-github tools-bar-icon"></i></a>
+                
+            
+            <!-- <a href=""><i class="fa fa-weibo"></i></a>
+            <a target="_blank" rel="noopener" href="https://github.com/IDKHTS"><i class="fa fa-github"></i></a> -->
+            <i class="fa fa-angle-double-up tools-bar-icon" onclick="onScrollTop()"></i>
+            <i class="fa fa-angle-double-down tools-bar-icon" onclick="onScrollBottom()"></i>
+        </div>
+        <div class="left">
+            <div class="dirctory py-2 px-1 bg-white">
+                
+                    <div class="dirctory-text px-2 py-1 mb-1">目录</div>
+                    
+    
+        <a class="d-level-4 d-item" id="参考：-h" href="#%E5%8F%82%E8%80%83%EF%BC%9A" onclick="onJumpPart('参考：')">参考：</a>
+    
+
+                
+            </div>
+        </div >
+        <div class="right">
+            <div class="bg-white px-3 pb-3">
+    <!-- 为了方便目录的渲染，不用h1等，直接写样式 -->
+    <div class="post-h1 py-2">https</div>
+
+    <div>
+        <ul>
+<li><p>  随着 web 发展，信息越来越多，拥有的功能也越来越多，数据安全问题越来越被重视。1994 年底网景，在 TCP/IP 协议基础上创建了一个额外的加密传输层：SSL；随着 web 应用程序的使用越来越广，可访问个人信息越来越多，加密需求高涨，SSL 加入了 http 中，https 应运而生。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/43789231">原理</a>：</p>
+<ul>
+<li><p>  对称加密：也即浏览器和服务器都有用一个加密的密钥，对数据进行加密和解密。这是最简单最容易想到的方法似乎逻辑上也能行得通过，因为只有服务器和浏览器知道这个密钥其他人除了破解就不可能解密拿到数据。但是问题是怎么保证只有服务器和浏览器拥有这个密钥。浏览器第一次向服务器发送请求，服务器此时还没密钥，服务器只能通过 http 响应传给浏览器密钥，而这里可以被劫持（http 传输肯定需要经过一些路由，电脑节点）。对称加密方式的缺点在于无法保证密钥只有通信的双方拥有。</p>
+</li>
+<li><p>  非对称加密：分为公钥和私钥，私钥是拥有者自己的不会进行传递，公钥是给通信对方的（可以说是公开的），数据用公钥加密后能用私钥解密，私钥加密的能用公钥解密。浏览器发起第一次 http 请求，服务器响应给浏览器公钥（公钥仍有可能被泄露），往后浏览器发送给服务器的数据都会用公钥加密，那么能解密的只有服务器的私钥，而私钥没有进行过传输，那么就不存泄露的危险，所以浏览器到服务器的数据安全得到保证了。但是由服务器发送给浏览器的数据因为公钥可能会泄露，所以服务器发送到浏览器的数据安全还是存在问题的</p>
+</li>
+<li><p>  两层加密方式，非对称加密保证了双向数据的单向安全，那么用两对公私钥就可以保证了双向的安全：浏览器第一次发送请求，服务器响应发送服务器的公钥 A 给浏览器，浏览器得到了公钥 A，第一次交互保证了浏览器到服务器的数据安全。然后浏览器用得到的公钥 A 加密自己的公钥 B 发送给服务器，服务器用私钥 A 解密得到了浏览器公钥——公钥 B，往后服务器发送给浏览器的数据都用公钥 B 加密，这些数据只能由私钥 B 解密，而私钥 B 只存在浏览器中没经过发送，所以服务器到浏览器的数据安全也得到了保证。这样服务器和浏览器的数据交互似乎就安全了。</p>
+</li>
+<li><p>两层加密方式里面，考虑到非对称加密的加密和解密算法过于复杂耗时，第二层其实可以用对称加密代替，因为有了第一层非对称加密保证的浏览器到服务数据安全，那么第二层的对称加密密钥传输安全是可以保证的，所以第二层用更简单的对称加密替换原来的非对称加密，这样的性能更好：浏览器第一次发送请求，服务器响应发送服务器的公钥 A 给浏览器，浏览器得到了公钥 A，第一次交互保证了浏览器到服务器的数据安全。然后浏览器用得到的公钥 A 加密一份对称加密的密钥发送给服务器，服务器用私钥 A 解密得到了对称加密的密钥。这样服务器和浏览器都有对称加密的密钥，而且这个密钥不可能在 http 传输中泄露，那么往后数据交互可以都用对称加密密钥加密，到达对方后解密即可。</p>
+<p>  这里的逻辑：非对称加密交互一次=》确定单向传输的安全=》用这个传输对称加密密钥=》对称加密密钥不会泄露=》往后都用对称加密加解密。</p>
+</li>
+<li><p>  所谓道高一尺，魔高一丈。心思缜密的黑客还是发现了漏洞：在浏览器向服务器发起第一次请求中，服务器需要明文给浏览器公钥 A，黑客利用这一点，http 经过其 ip 时，把这个公钥 A 保存下来，而且把传输的公钥 A 改成自己一个公钥 B，这样到达浏览器的就是黑客的公钥 B，而浏览器无法察觉只得以为这个公钥 B 就是服务的公钥。然后浏览器按上面所写的又发起了第二层，公钥 B 加密的对称加密密钥，当数据经过黑客的 ip 时，直接用直接的私钥 B 解开的加密，得到了对称加密密钥（芜湖~），然后用服务器给的公钥 A 加密这个对称加密密钥再发送给服务器。服务器接收到解密得到对称加密密钥，也无法发现泄露，往后使用了这个对称密钥加解密。。。这种数据在中间被替换了的攻击就是大名鼎鼎的——<strong>中间人攻击</strong></p>
+</li>
+<li><p>中间人攻击可行的原因在于，浏览器无法确定第一次接收的<strong>公钥是否来自请求的服务器</strong>，也即公钥来源是“身份问题”。身份问题的解决在现实中就是身份证，身份证是由公信力最高的政府颁发(!?)，这样你是 a 还是 b，给出身份证就行了。https 也基本是这样，一个有公信力的机构——<strong>”CA 机构“</strong>颁发<strong>数字证书</strong>，证书里面有<strong>证书持有者</strong>和<strong>证书持有者的公钥</strong>。</p>
+<ul>
+<li><p>证书的制作：</p>
+<p>  首先 CA 会有自己的一对公私钥，在一开始证书明文的信息会被进行 hash，hash 后再用 CA 自己的私钥进行加密，这样得到的一段数据称<strong>数字签名</strong>，然后证书明文信息和对应的数字签名就是数字证书了。</p>
+</li>
+<li><p>证书具体的使用：</p>
+<p>  服务器购买了证书，在浏览器第一次请求时，服务器会把证书发给浏览器，浏览器接收后把证书的明文部分用其中的 hash 函数进行 hash，得到一段 hash 值 C1，然后浏览器自己会存储一些可信的 CA 机构的公钥，用这个公钥去对接收到的证书的数字签名进行解密，也会得到一段 hash 值 C2，对比 C1 和 C2 是否相等，若相等则说明证书信息正确没被篡改，证书明文中的证书持有者（也即浏览器请求的服务器）公钥是正确的。至此公钥的身份问题就解决了，再进行前面提到的两层加密方式即可。</p>
+</li>
+<li><p>证书为什么不能被篡改？</p>
+<p>  由于数字签名是用 CA 的私钥进行加密的，私钥只有 CA 自己有，任何攻击者都无法获取 CA 的私钥。所以如果攻击者改变了证书明文部分的公钥那么他也需要改变证书里面的数字签名（不然对比明文 hash 和数字签名解密后 hash 不等，会被识破篡改了），但因为攻击者无法获取 CA 的私钥，他想再把篡改后的明文信息 hash 后进行加密就会失败（用 CA 的公钥加密，浏览器用的公钥无法解密），所以数字签名是无法被篡改的或者说篡改后一定会被识破，这里的关键就 CA 的私钥。所以如果 CA 泄露了私钥那么公信力就会丢失，证书也就不可信了，证书讨论是建立在 CA 私钥不可泄露的前提下的。</p>
+<p>  攻击者能不能给自己的证书浏览器？其实证书的明文部分里有证书的持有者（域名等）这一项，浏览器直接查看证书的持有者是否是自己请求的服务器（域名）就行了。</p>
+</li>
+</ul>
+</li>
+<li><p>  总结：也即 https 是利用了<strong>非对称加密+对称加密+数字证书</strong>构成加密过程的</p>
+</li>
+</ul>
+</li>
+<li><p>  可能还涉及了另外一些名词，证书链</p>
+</li>
+</ul>
+<h4 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h4><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/43789231">彻底搞懂 HTTPS 的加密机制</a></p>
+
+    </div>
+</div>
+
+    <section class="comments" id="comments">
+        <div id="gitalk-container"></div>
+        <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script> -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+        <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+        <script>
+            var gitalk = new Gitalk({
+                clientID: '884f505b74829948187e',
+                clientSecret: '101a71b526c2f66e58c4b86ca1c92abc972b978a',
+                repo: 'idkhts.github.io',
+                owner: 'IDKHTS',
+                admin: 'IDKHTS',
+                id: (location.pathname).split("/").pop().substring(0, 49),//location.pathname,  // Ensure uniqueness and length less than 50
+                perPage: 50,
+                distractionFreeMode: 'false'
+            })
+
+            gitalk.render('gitalk-container')
+        </script>
+    </section>
+    
+
+<!-- 
+    page的属性
+'title',          '_content',
+'source',         'raw',
+'slug',           'published',
+'date',           'updated',
+'comments',       'layout',
+'photos',         'link',
+'_id',            'content',
+'site',           'excerpt',
+'more',           'path',
+'permalink',      'full_source',
+'asset_dir',      'tags',
+'categories',     'next',
+'__post',         'lang',
+'canonical_path' -->
+        </div>
+    </div>
+
+    
+
+    
+<script src="/js/layout.js"></script>
+
+    
+<script src="/js/music.js"></script>
+
+    
+    
+        
+<script src="/js/post.js"></script>
+
+    
+</body>
+
+</html>

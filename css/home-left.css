@@ -1,0 +1,23 @@
+.home-left-box {
+    display: flex;
+    flex-direction: column;
+    justify-content:  flex-start;
+}
+.home-left-item {
+    text-align: center;
+    /* margin-top: 1rem ; */
+    border-bottom: 1px solid grey;
+    padding: 1rem;
+}
+.home-left-item:last-child {
+    text-align: center;
+    /* margin-top: 1rem ; */
+    border-bottom: 0px solid grey;
+}
+
+.avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: black 1px solid;
+}

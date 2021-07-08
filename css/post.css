@@ -1,0 +1,12 @@
+.post-h1 {
+    font-weight: bold;
+    font-size: 2rem;
+}
+.a{
+    width: 100%;
+    background-color: honeydew;
+}
+
+.header-active {
+    color: greenyellow !important;
+}
