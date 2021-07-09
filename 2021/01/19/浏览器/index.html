@@ -197,13 +197,18 @@
         <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
         <script>
             let admins = 'IDKHTS'
+            let arrPathName = (location.pathname).split("/")
+            let gitalkID = ''
+            for(let i = arrPathName.length-1;i >= 0 ;i--){
+                if(arrPathName[i] !== '/') gitalkID = arrPathName[i].substring(0, 49)
+            }
             var gitalk = new Gitalk({
                 clientID: '884f505b74829948187e',
                 clientSecret: '4e414213f820b3ddde39e15a53c2b5a70c301c5d',
                 repo: 'idkhts.github.io',
                 owner: 'IDKHTS',
                 admin: admins.split(','),
-                id: (location.pathname).split("/").pop().substring(0, 49),//location.pathname,  // Ensure uniqueness and length less than 50
+                id: gitalkID,//location.pathname,  // Ensure uniqueness and length less than 50
                 perPage: 50,
                 distractionFreeMode: 'false'
             })
