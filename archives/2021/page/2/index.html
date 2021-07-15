@@ -1,265 +1,472 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-        
-        idkhts&#39;s blog
-    </title>
-    <!-- 引入font-awesome图标 -->
-    
-<link rel="stylesheet" href="/css/font-awesome-4.7.0/css/font-awesome.min.css">
+  <meta charset="utf-8">
+  
+  <title>归档: 2021 | idkhts&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="IDKHTS,IDKHTS's Blog" />
+  
+  <meta name="description" content="idkhts">
+<meta property="og:type" content="website">
+<meta property="og:title" content="idkhts&#39;s blog">
+<meta property="og:url" content="https://idkhts.github.io/archives/2021/page/2/index.html">
+<meta property="og:site_name" content="idkhts&#39;s blog">
+<meta property="og:description" content="idkhts">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="idkhts">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
   
 
-    
-<link rel="stylesheet" href="/css/common.css">
   
-    
-<link rel="stylesheet" href="/css/layout.css">
+  
 
-    
-    
-        
-<link rel="stylesheet" href="/css/archive.css">
-
-        
-<link rel="stylesheet" href="/css/home-left.css">
-
-    
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
-    <div class="navi-bar">
-    
-        
-            <a class="navi-item" href="/" >
-                首页
-            </a>
-            <!-- onclick="selectMenu('/')" -->
-        
-            <a class="navi-item" href="/archives" >
-                归档
-            </a>
-            <!-- onclick="selectMenu('/archives')" -->
-        
-            <a class="navi-item" href="/demo/index.html" >
-                vue2.x
-            </a>
-            <!-- onclick="selectMenu('/demo/index.html')" -->
-        
-            <a class="navi-item" href="/" >
-                vue3.x
-            </a>
-            <!-- onclick="selectMenu('/')" -->
-        
-            <a class="navi-item" href="/" >
-                计算机网络
-            </a>
-            <!-- onclick="selectMenu('/')" -->
-        
-    
-</div>
-    
-    <div class="wrapper">
-        <div class="tools-bar">	
-            
-                
-                
-                    <a target="_blank" rel="noopener" href="https://github.com/IDKHTS"><i class="fa fa-github tools-bar-icon"></i></a>
-                
-            
-            <!-- <a href=""><i class="fa fa-weibo"></i></a>
-            <a target="_blank" rel="noopener" href="https://github.com/IDKHTS"><i class="fa fa-github"></i></a> -->
-            <i class="fa fa-angle-double-up tools-bar-icon" onclick="onScrollTop()"></i>
-            <i class="fa fa-angle-double-down tools-bar-icon" onclick="onScrollBottom()"></i>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">IDKHTS&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
         </div>
-        <div class="left">
-            <div class="dirctory py-2 px-1 bg-white">
-                
-                    <div class="home-left-box">
-    <div class="home-left-item">
-        <img class="avatar" src="/images/47650726.png" alt="头像">
-        <div>
-            idkhts
-        </div>
-    </div>
-    <div class="home-left-item">
-        音乐
-        <div>
-    <div id="songName">
-        烟花易冷 - 林志炫.mp3
-    </div>
-    <progress max=100 id="progress" value=0></progress>
-    <span id="time">00:00/00:00</span>
-    <div class="operator">
-        <i class="fa fa-step-backward music-icon" onclick="onPreSong()"></i>
-        <i class="fa fa-play-circle music-icon" id="play" onclick="onSetStatus('play')"></i>
-        <i class="fa fa-pause-circle music-icon" id="stop" onclick="onSetStatus('stop')" style="display: none;"></i>
-        <i class="fa fa-step-forward music-icon" onclick="onNextSong()"></i>
-    </div>
-
-
-    <div id="musics-list" class="py-2">
-        
-            <div class="musics-list-item py-1" data-src="/music/烟花易冷 - 林志炫.mp3" data-name="烟花易冷 - 林志炫.mp3" onclick="onClickSong('0')">
-                <span id="songName">
-                    烟花易冷 - 林志炫.mp3
-                </span>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/47650726.png" alt="logo">
+                </a>
             </div>
-            <!-- <div class="musics-list-item py-1" data-src="/music/烟花易冷 - 林志炫.mp3" data-name="烟花易冷 - 林志炫.mp3" >
-                <span id="songName" data-src="/music/烟花易冷 - 林志炫.mp3" data-name="烟花易冷 - 林志炫.mp3"> 烟花易冷 - 林志炫.mp3</span>
-            </div> -->
-            
-            <div class="musics-list-item py-1" data-src="/music/人质.mp3" data-name="人质-张惠妹" onclick="onClickSong('1')">
-                <span id="songName">
-                    人质-张惠妹
-                </span>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        IDKHTS&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        (⊙﹏⊙)
+                    </h3>
+                    
+                </div>
             </div>
-            <!-- <div class="musics-list-item py-1" data-src="/music/人质.mp3" data-name="人质-张惠妹" >
-                <span id="songName" data-src="/music/人质.mp3" data-name="人质-张惠妹"> 人质-张惠妹</span>
-            </div> -->
-            
-            <div class="musics-list-item py-1" data-src="/music/呪いは水色 - 大森靖子.mp3" data-name="呪いは水色 - 大森靖子.mp3" onclick="onClickSong('2')">
-                <span id="songName">
-                    呪いは水色 - 大森靖子.mp3
-                </span>
-            </div>
-            <!-- <div class="musics-list-item py-1" data-src="/music/呪いは水色 - 大森靖子.mp3" data-name="呪いは水色 - 大森靖子.mp3" >
-                <span id="songName" data-src="/music/呪いは水色 - 大森靖子.mp3" data-name="呪いは水色 - 大森靖子.mp3"> 呪いは水色 - 大森靖子.mp3</span>
-            </div> -->
-            
-
-    </div>
-
-    <audio id="audio" class="mian-audio" src="/music/烟花易冷 - 林志炫.mp3">
-        Your browser does not support the audio element.
-    </audio>
-    <!-- <audio src="https://callmesoul-blog.oss-cn-shenzhen.aliyuncs.com/music/%E5%91%A8%E6%9D%B0%E4%BC%A6%20-%20%E8%AF%B4%E5%A5%BD%E4%B8%8D%E5%93%AD.mp3
-    ">您的浏览器不支持音乐播放器Your browser does not support the audio element.</audio> -->
-    <!-- <audio src="">您的浏览器不支持音乐播放器Your browser does not support the audio element.</audio> -->
-    <!-- <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86
-        src="//music.163.com/outchain/player?type=2&id=454828889&auto=1&height=66"></iframe> -->
-</div>
-    </div>
-</div>
-
-
-<!-- 
-    
-        <a href="/2021/01/19/DNS/">
-            DNS
-        </a><br>
-    
-        <a href="/2021/01/19/SSO/">
-            SSO
-        </a><br>
-    
-        <a href="/2021/01/19/TCP%E5%92%8CUDP/">
-            TCP与UDP
-        </a><br>
-    
-        <a href="/2021/01/19/Vue%E7%BB%84%E4%BB%B6%E7%9A%84Api%E7%BB%84%E4%BB%B6/">
-            Vue组件的Api组件
-        </a><br>
-    
-        <a href="/2021/01/19/Web%20Worker/">
-            Web Worker
-        </a><br>
-    
-        <a href="/2021/01/19/http-%E5%89%8D%E7%AB%AF%E5%90%91/">
-            http-前端向
-        </a><br>
-    
-        <a href="/2021/01/19/https/">
-            https
-        </a><br>
-    
-        <a href="/2021/01/19/monorepo%E5%92%8Clerna/">
-            monorepo和lerna
-        </a><br>
-    
-        <a href="/2021/01/19/node%E5%BC%80%E5%8F%91cli/">
-            node开发cli
-        </a><br>
-    
-        <a href="/2021/01/19/npm%E5%8C%85%E5%8F%91%E5%B8%83/">
-            npm包发布
-        </a><br>
-    
-        <a href="/2021/01/19/vue-cli%E7%9A%84vue.config.js/">
-            vue-cli的vue.config.js
-        </a><br>
-    
-        <a href="/2021/01/19/vue%E9%9A%8F%E8%AE%B0/">
-            vue随记
-        </a><br>
-    
-        <a href="/2021/04/04/%E4%BA%8C%E5%8F%89%E6%A0%91/">
-            二叉树
-        </a><br>
-    
-        <a href="/2021/01/19/%E4%BA%94%E5%B1%82%E5%8D%8F%E8%AE%AE/">
-            五层协议
-        </a><br>
-    
-        <a href="/2021/01/19/%E6%8E%92%E5%BA%8F/">
-            排序
-        </a><br>
-    
-        <a href="/2021/01/19/%E6%B5%8F%E8%A7%88%E5%99%A8/">
-            浏览器
-        </a><br>
-    
- -->
-                
-            </div>
-        </div >
-        <div class="right">
-            
-<div class="content">
-    <section>
-        
-            
-                <h3>2021</h3>
-                <section>
+            <nav class="header-nav">
+                <div class="social">
                     
-                        <a style="text-decoration: none;" href="/2021/01/19/Vue%E7%BB%84%E4%BB%B6%E7%9A%84Api%E7%BB%84%E4%BB%B6/"> Vue组件的Api组件 </a><br>
+                        <a title="IDKHTS" target="_blank" href="/">
+                            <i class="fa fa-home fa-2x"></i></a>
                     
-                        <a style="text-decoration: none;" href="/2021/01/19/%E6%8E%92%E5%BA%8F/"> 排序 </a><br>
+                        <a title="Github" target="_blank" href="//github.com/IDKHTS">
+                            <i class="fa fa-github fa-2x"></i></a>
                     
-                        <a style="text-decoration: none;" href="/2021/01/19/SSO/"> SSO </a><br>
-                    
-                        <a style="text-decoration: none;" href="/2021/01/19/%E6%B5%8F%E8%A7%88%E5%99%A8/"> 浏览器 </a><br>
-                    
-                        <a style="text-decoration: none;" href="/2021/01/19/http-%E5%89%8D%E7%AB%AF%E5%90%91/"> http-前端向 </a><br>
-                    
-                        <a style="text-decoration: none;" href="/2021/01/19/https/"> https </a><br>
-                    
-                </section>
-        
-    </section>
-</div>
-
+                </div>
+            </nav>
         </div>
     </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap">
+  
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2021" class="archive-year">2021</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2021/01/19/Vue%E7%BB%84%E4%BB%B6%E7%9A%84Api%E7%BB%84%E4%BB%B6/" class="archive-article-date">
+  <time datetime="2021-01-19T14:36:06.462Z" itemprop="datePublished">01-19</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2021/01/19/Vue%E7%BB%84%E4%BB%B6%E7%9A%84Api%E7%BB%84%E4%BB%B6/"  >Vue组件的Api组件</a>
+    </h1>
+  
 
-    
+    </header>
+      
+        <div class="archive-post-footer">
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/vue/" class="color4">vue</a>
+      
+  </li>
 
-    
-<script src="/js/layout.js"></script>
+        </div>
+      
+  </div>
+</article>
 
+  
     
     
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2021/01/19/%E6%8E%92%E5%BA%8F/" class="archive-article-date">
+  <time datetime="2021-01-19T14:32:45.321Z" itemprop="datePublished">01-19</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2021/01/19/%E6%8E%92%E5%BA%8F/"  >排序</a>
+    </h1>
+  
+
+    </header>
+      
+        <div class="archive-post-footer">
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/算法/" class="color3">算法</a>
+      
+  </li>
+
+        </div>
+      
+  </div>
+</article>
+
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2021/01/19/SSO/" class="archive-article-date">
+  <time datetime="2021-01-19T14:31:57.129Z" itemprop="datePublished">01-19</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2021/01/19/SSO/"  >SSO</a>
+    </h1>
+  
+
+    </header>
+      
+        <div class="archive-post-footer">
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/其他/" class="color3">其他</a>
+      
+  </li>
+
+        </div>
+      
+  </div>
+</article>
+
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2021/01/19/%E6%B5%8F%E8%A7%88%E5%99%A8/" class="archive-article-date">
+  <time datetime="2021-01-19T14:30:51.155Z" itemprop="datePublished">01-19</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2021/01/19/%E6%B5%8F%E8%A7%88%E5%99%A8/"  >浏览器</a>
+    </h1>
+  
+
+    </header>
+      
+        <div class="archive-post-footer">
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/浏览器/" class="color4">浏览器</a>
+      
+  </li>
+
+        </div>
+      
+  </div>
+</article>
+
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2021/01/19/http-%E5%89%8D%E7%AB%AF%E5%90%91/" class="archive-article-date">
+  <time datetime="2021-01-19T14:29:28.816Z" itemprop="datePublished">01-19</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2021/01/19/http-%E5%89%8D%E7%AB%AF%E5%90%91/"  >http-前端向</a>
+    </h1>
+  
+
+    </header>
+      
+        <div class="archive-post-footer">
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/http/" class="color5">http</a>
+      
+  </li>
+
+        </div>
+      
+  </div>
+</article>
+
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2021/01/19/https/" class="archive-article-date">
+  <time datetime="2021-01-19T14:27:22.693Z" itemprop="datePublished">01-19</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2021/01/19/https/"  >https</a>
+    </h1>
+  
+
+    </header>
+      
+        <div class="archive-post-footer">
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/http/" class="color5">http</a>
+      
+  </li>
+
+        </div>
+      
+  </div>
+</article>
+
+  
+  
+    </div></section>
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/archives/2021/">&lt;&lt; Prev</a><a class="page-number" href="/archives/2021/">1</a><span class="page-number current">2</span>
+  </nav>
+</section>
         
-<script src="/js/index.js"></script>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
 
-        
-<script src="/js/music.js"></script>
 
-    
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2021 idkhts<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://idkhts.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 0
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+
+<script src="/js/search.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  
+<script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  
+<script src="/js/animate.js"></script>
+
+
+
+  
+<script src="/js/pop-img.js"></script>
+
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
 </body>
-
 </html>

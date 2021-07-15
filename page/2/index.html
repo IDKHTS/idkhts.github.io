@@ -1,478 +1,625 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-        
-        idkhts&#39;s blog
-    </title>
-    <!-- 引入font-awesome图标 -->
-    
-<link rel="stylesheet" href="/css/font-awesome-4.7.0/css/font-awesome.min.css">
+  <meta charset="utf-8">
+  
+  <title>idkhts&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="IDKHTS,IDKHTS's Blog" />
+  
+  <meta name="description" content="idkhts">
+<meta property="og:type" content="website">
+<meta property="og:title" content="idkhts&#39;s blog">
+<meta property="og:url" content="https://idkhts.github.io/page/2/index.html">
+<meta property="og:site_name" content="idkhts&#39;s blog">
+<meta property="og:description" content="idkhts">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="idkhts">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
   
 
-    
-<link rel="stylesheet" href="/css/common.css">
   
-    
-<link rel="stylesheet" href="/css/layout.css">
+  
 
-    
-    
-        
-<link rel="stylesheet" href="/css/index.css">
-
-        
-<link rel="stylesheet" href="/css/home-left.css">
-
-    
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
-    <div class="navi-bar">
-    
-        
-            <a class="navi-item" href="/" >
-                首页
-            </a>
-            <!-- onclick="selectMenu('/')" -->
-        
-            <a class="navi-item" href="/archives" >
-                归档
-            </a>
-            <!-- onclick="selectMenu('/archives')" -->
-        
-            <a class="navi-item" href="/demo/index.html" >
-                vue2.x
-            </a>
-            <!-- onclick="selectMenu('/demo/index.html')" -->
-        
-            <a class="navi-item" href="/" >
-                vue3.x
-            </a>
-            <!-- onclick="selectMenu('/')" -->
-        
-            <a class="navi-item" href="/" >
-                计算机网络
-            </a>
-            <!-- onclick="selectMenu('/')" -->
-        
-    
-</div>
-    
-    <div class="wrapper">
-        <div class="tools-bar">	
-            
-                
-                
-                    <a target="_blank" rel="noopener" href="https://github.com/IDKHTS"><i class="fa fa-github tools-bar-icon"></i></a>
-                
-            
-            <!-- <a href=""><i class="fa fa-weibo"></i></a>
-            <a target="_blank" rel="noopener" href="https://github.com/IDKHTS"><i class="fa fa-github"></i></a> -->
-            <i class="fa fa-angle-double-up tools-bar-icon" onclick="onScrollTop()"></i>
-            <i class="fa fa-angle-double-down tools-bar-icon" onclick="onScrollBottom()"></i>
-        </div>
-        <div class="left">
-            <div class="dirctory py-2 px-1 bg-white">
-                
-                    <div class="home-left-box">
-    <div class="home-left-item">
-        <img class="avatar" src="/images/47650726.png" alt="头像">
-        <div>
-            idkhts
-        </div>
-    </div>
-    <div class="home-left-item">
-        音乐
-        <div>
-    <div id="songName">
-        烟花易冷 - 林志炫.mp3
-    </div>
-    <progress max=100 id="progress" value=0></progress>
-    <span id="time">00:00/00:00</span>
-    <div class="operator">
-        <i class="fa fa-step-backward music-icon" onclick="onPreSong()"></i>
-        <i class="fa fa-play-circle music-icon" id="play" onclick="onSetStatus('play')"></i>
-        <i class="fa fa-pause-circle music-icon" id="stop" onclick="onSetStatus('stop')" style="display: none;"></i>
-        <i class="fa fa-step-forward music-icon" onclick="onNextSong()"></i>
-    </div>
-
-
-    <div id="musics-list" class="py-2">
-        
-            <div class="musics-list-item py-1" data-src="/music/烟花易冷 - 林志炫.mp3" data-name="烟花易冷 - 林志炫.mp3" onclick="onClickSong('0')">
-                <span id="songName">
-                    烟花易冷 - 林志炫.mp3
-                </span>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">IDKHTS&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
             </div>
-            <!-- <div class="musics-list-item py-1" data-src="/music/烟花易冷 - 林志炫.mp3" data-name="烟花易冷 - 林志炫.mp3" >
-                <span id="songName" data-src="/music/烟花易冷 - 林志炫.mp3" data-name="烟花易冷 - 林志炫.mp3"> 烟花易冷 - 林志炫.mp3</span>
-            </div> -->
-            
-            <div class="musics-list-item py-1" data-src="/music/人质.mp3" data-name="人质-张惠妹" onclick="onClickSong('1')">
-                <span id="songName">
-                    人质-张惠妹
-                </span>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/47650726.png" alt="logo">
+                </a>
             </div>
-            <!-- <div class="musics-list-item py-1" data-src="/music/人质.mp3" data-name="人质-张惠妹" >
-                <span id="songName" data-src="/music/人质.mp3" data-name="人质-张惠妹"> 人质-张惠妹</span>
-            </div> -->
-            
-            <div class="musics-list-item py-1" data-src="/music/呪いは水色 - 大森靖子.mp3" data-name="呪いは水色 - 大森靖子.mp3" onclick="onClickSong('2')">
-                <span id="songName">
-                    呪いは水色 - 大森靖子.mp3
-                </span>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        IDKHTS&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        (⊙﹏⊙)
+                    </h3>
+                    
+                </div>
             </div>
-            <!-- <div class="musics-list-item py-1" data-src="/music/呪いは水色 - 大森靖子.mp3" data-name="呪いは水色 - 大森靖子.mp3" >
-                <span id="songName" data-src="/music/呪いは水色 - 大森靖子.mp3" data-name="呪いは水色 - 大森靖子.mp3"> 呪いは水色 - 大森靖子.mp3</span>
-            </div> -->
-            
-
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="IDKHTS" target="_blank" href="/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/IDKHTS">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
     </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap">
+  
+    <article id="post-Vue组件的Api组件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/19/Vue%E7%BB%84%E4%BB%B6%E7%9A%84Api%E7%BB%84%E4%BB%B6/"  >Vue组件的Api组件</a>
+    </h1>
+  
 
-    <audio id="audio" class="mian-audio" src="/music/烟花易冷 - 林志炫.mp3">
-        Your browser does not support the audio element.
-    </audio>
-    <!-- <audio src="https://callmesoul-blog.oss-cn-shenzhen.aliyuncs.com/music/%E5%91%A8%E6%9D%B0%E4%BC%A6%20-%20%E8%AF%B4%E5%A5%BD%E4%B8%8D%E5%93%AD.mp3
-    ">您的浏览器不支持音乐播放器Your browser does not support the audio element.</audio> -->
-    <!-- <audio src="">您的浏览器不支持音乐播放器Your browser does not support the audio element.</audio> -->
-    <!-- <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86
-        src="//music.163.com/outchain/player?type=2&id=454828889&auto=1&height=66"></iframe> -->
-</div>
-    </div>
-</div>
-
-
-<!-- 
+          
+      </header>
     
-        <a href="/2021/01/19/DNS/">
-            DNS
-        </a><br>
-    
-        <a href="/2021/01/19/SSO/">
-            SSO
-        </a><br>
-    
-        <a href="/2021/01/19/TCP%E5%92%8CUDP/">
-            TCP与UDP
-        </a><br>
-    
-        <a href="/2021/01/19/Vue%E7%BB%84%E4%BB%B6%E7%9A%84Api%E7%BB%84%E4%BB%B6/">
-            Vue组件的Api组件
-        </a><br>
-    
-        <a href="/2021/01/19/Web%20Worker/">
-            Web Worker
-        </a><br>
-    
-        <a href="/2021/01/19/http-%E5%89%8D%E7%AB%AF%E5%90%91/">
-            http-前端向
-        </a><br>
-    
-        <a href="/2021/01/19/https/">
-            https
-        </a><br>
-    
-        <a href="/2021/01/19/monorepo%E5%92%8Clerna/">
-            monorepo和lerna
-        </a><br>
-    
-        <a href="/2021/01/19/node%E5%BC%80%E5%8F%91cli/">
-            node开发cli
-        </a><br>
-    
-        <a href="/2021/01/19/npm%E5%8C%85%E5%8F%91%E5%B8%83/">
-            npm包发布
-        </a><br>
-    
-        <a href="/2021/01/19/vue-cli%E7%9A%84vue.config.js/">
-            vue-cli的vue.config.js
-        </a><br>
-    
-        <a href="/2021/01/19/vue%E9%9A%8F%E8%AE%B0/">
-            vue随记
-        </a><br>
-    
-        <a href="/2021/04/04/%E4%BA%8C%E5%8F%89%E6%A0%91/">
-            二叉树
-        </a><br>
-    
-        <a href="/2021/01/19/%E4%BA%94%E5%B1%82%E5%8D%8F%E8%AE%AE/">
-            五层协议
-        </a><br>
-    
-        <a href="/2021/01/19/%E6%8E%92%E5%BA%8F/">
-            排序
-        </a><br>
-    
-        <a href="/2021/01/19/%E6%B5%8F%E8%A7%88%E5%99%A8/">
-            浏览器
-        </a><br>
-    
- -->
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2021/01/19/Vue%E7%BB%84%E4%BB%B6%E7%9A%84Api%E7%BB%84%E4%BB%B6/" >
                 
-            </div>
-        </div >
-        <div class="right">
-            
+                <img src="https://idkhts.github.io/images/banner.jpg" alt="Vue组件的Api组件" title="Vue组件的Api组件">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                 在使用vue框架时，正常的组件调用都是直接使用模板或使用选择器渲染，但在项目中有遇到，直接在js中用api弹出对话框的业务（公共逻辑的一个js文件夹中，代码使用了一个其它库，js直接弹出对话框）；使用了vue框架，为了弹窗不必再引入其他库，就需要了解到vue组件的api式调用。
 
-    
-        <div class="article-show-item mb-1 px-2 pt-1 pb-2" onclick="onPost('/2021/01/19/DNS/')">
-            <h3> DNS</h3>
-            
-            <!-- 标签 -->
-            <div >
-    
-        <div class="tag ft-l mr-1">计算机网络</div>
-    
-</div>
-            <!-- 时间 -->
-            <div class="p-0 ft-r c-fade">2021/01/19 10:42:20</div>
+api式调用，指的就是可以在一段js代码中，直接渲染组件，比如这里的例子弹窗
+12345&...
+            </p>
         </div>
-   
-        <div class="article-show-item mb-1 px-2 pt-1 pb-2" onclick="onPost('/2021/01/19/SSO/')">
-            <h3> SSO</h3>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
             
-            <!-- 标签 -->
-            <div >
-    
-        <div class="tag ft-l mr-1">其他</div>
-    
-</div>
-            <!-- 时间 -->
-            <div class="p-0 ft-r c-fade">2021/01/19 10:32:29</div>
-        </div>
-   
-        <div class="article-show-item mb-1 px-2 pt-1 pb-2" onclick="onPost('/2021/01/19/TCP%E5%92%8CUDP/')">
-            <h3> TCP与UDP</h3>
+                <li><i class="fa fa-calendar"></i>2021-01-19</li>
             
-            <!-- 标签 -->
-            <div >
-    
-        <div class="tag ft-l mr-1">计算机网络</div>
-    
-</div>
-            <!-- 时间 -->
-            <div class="p-0 ft-r c-fade">2021/01/19 10:41:46</div>
-        </div>
-   
-        <div class="article-show-item mb-1 px-2 pt-1 pb-2" onclick="onPost('/2021/01/19/Vue%E7%BB%84%E4%BB%B6%E7%9A%84Api%E7%BB%84%E4%BB%B6/')">
-            <h3> Vue组件的Api组件</h3>
             
-            <!-- 标签 -->
-            <div >
-    
-        <div class="tag ft-l mr-1">vue</div>
-    
-</div>
-            <!-- 时间 -->
-            <div class="p-0 ft-r c-fade">2021/04/04 03:41:54</div>
-        </div>
-   
-        <div class="article-show-item mb-1 px-2 pt-1 pb-2" onclick="onPost('/2021/01/19/Web%20Worker/')">
-            <h3> Web Worker</h3>
-            
-            <!-- 标签 -->
-            <div >
-    
-        <div class="tag ft-l mr-1">其他</div>
-    
-</div>
-            <!-- 时间 -->
-            <div class="p-0 ft-r c-fade">2021/04/04 03:38:23</div>
-        </div>
-   
-        <div class="article-show-item mb-1 px-2 pt-1 pb-2" onclick="onPost('/2021/01/19/http-%E5%89%8D%E7%AB%AF%E5%90%91/')">
-            <h3> http-前端向</h3>
-            
-            <!-- 标签 -->
-            <div >
-    
-        <div class="tag ft-l mr-1">http</div>
-    
-</div>
-            <!-- 时间 -->
-            <div class="p-0 ft-r c-fade">2021/04/04 04:46:20</div>
-        </div>
-   
-        <div class="article-show-item mb-1 px-2 pt-1 pb-2" onclick="onPost('/2021/01/19/https/')">
-            <h3> https</h3>
-            
-            <!-- 标签 -->
-            <div >
-    
-        <div class="tag ft-l mr-1">http</div>
-    
-</div>
-            <!-- 时间 -->
-            <div class="p-0 ft-r c-fade">2021/04/04 04:46:15</div>
-        </div>
-   
-        <div class="article-show-item mb-1 px-2 pt-1 pb-2" onclick="onPost('/2021/01/19/monorepo%E5%92%8Clerna/')">
-            <h3> monorepo和lerna</h3>
-            
-            <!-- 标签 -->
-            <div >
-    
-        <div class="tag ft-l mr-1">其他</div>
-    
-</div>
-            <!-- 时间 -->
-            <div class="p-0 ft-r c-fade">2021/04/04 04:46:41</div>
-        </div>
-   
-        <div class="article-show-item mb-1 px-2 pt-1 pb-2" onclick="onPost('/2021/01/19/node%E5%BC%80%E5%8F%91cli/')">
-            <h3> node开发cli</h3>
-            
-            <!-- 标签 -->
-            <div >
-    
-        <div class="tag ft-l mr-1">node</div>
-    
-</div>
-            <!-- 时间 -->
-            <div class="p-0 ft-r c-fade">2021/01/19 10:43:43</div>
-        </div>
-   
-        <div class="article-show-item mb-1 px-2 pt-1 pb-2" onclick="onPost('/2021/01/19/npm%E5%8C%85%E5%8F%91%E5%B8%83/')">
-            <h3> npm包发布</h3>
-            
-            <!-- 标签 -->
-            <div >
-    
-        <div class="tag ft-l mr-1">npm</div>
-    
-</div>
-            <!-- 时间 -->
-            <div class="p-0 ft-r c-fade">2021/04/04 03:50:37</div>
-        </div>
-   
-        <div class="article-show-item mb-1 px-2 pt-1 pb-2" onclick="onPost('/2021/01/19/vue-cli%E7%9A%84vue.config.js/')">
-            <h3> vue-cli的vue.config.js</h3>
-            
-            <!-- 标签 -->
-            <div >
-    
-        <div class="tag ft-l mr-1">vue</div>
-    
-</div>
-            <!-- 时间 -->
-            <div class="p-0 ft-r c-fade">2021/01/19 10:38:49</div>
-        </div>
-   
-        <div class="article-show-item mb-1 px-2 pt-1 pb-2" onclick="onPost('/2021/01/19/vue%E9%9A%8F%E8%AE%B0/')">
-            <h3> vue随记</h3>
-            
-            <!-- 标签 -->
-            <div >
-    
-        <div class="tag ft-l mr-1">vue</div>
-    
-</div>
-            <!-- 时间 -->
-            <div class="p-0 ft-r c-fade">2021/04/04 03:50:07</div>
-        </div>
-   
-        <div class="article-show-item mb-1 px-2 pt-1 pb-2" onclick="onPost('/2021/04/04/%E4%BA%8C%E5%8F%89%E6%A0%91/')">
-            <h3> 二叉树</h3>
-            
-            <!-- 标签 -->
-            <div >
-    <!-- <div class="c-fade ft-l mr-1">无标签，不一样的烟火</div> -->
-    <div class="c-fade ft-l mr-1">因为独一无二，所以无标签</div>
-</div>
-            <!-- 时间 -->
-            <div class="p-0 ft-r c-fade">2021/04/04 04:15:30</div>
-        </div>
-   
-        <div class="article-show-item mb-1 px-2 pt-1 pb-2" onclick="onPost('/2021/01/19/%E4%BA%94%E5%B1%82%E5%8D%8F%E8%AE%AE/')">
-            <h3> 五层协议</h3>
-            
-            <!-- 标签 -->
-            <div >
-    
-        <div class="tag ft-l mr-1">计算机网络</div>
-    
-</div>
-            <!-- 时间 -->
-            <div class="p-0 ft-r c-fade">2021/04/04 04:42:29</div>
-        </div>
-   
-        <div class="article-show-item mb-1 px-2 pt-1 pb-2" onclick="onPost('/2021/01/19/%E6%8E%92%E5%BA%8F/')">
-            <h3> 排序</h3>
-            
-            <!-- 标签 -->
-            <div >
-    
-        <div class="tag ft-l mr-1">算法</div>
-    
-</div>
-            <!-- 时间 -->
-            <div class="p-0 ft-r c-fade">2021/04/04 04:46:27</div>
-        </div>
-   
-        <div class="article-show-item mb-1 px-2 pt-1 pb-2" onclick="onPost('/2021/01/19/%E6%B5%8F%E8%A7%88%E5%99%A8/')">
-            <h3> 浏览器</h3>
-            
-            <!-- 标签 -->
-            <div >
-    
-        <div class="tag ft-l mr-1">浏览器</div>
-    
-</div>
-            <!-- 时间 -->
-            <div class="p-0 ft-r c-fade">2021/04/04 04:02:09</div>
-        </div>
-   
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/vue/" class="color4">vue</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2021/01/19/Vue%E7%BB%84%E4%BB%B6%E7%9A%84Api%E7%BB%84%E4%BB%B6/#more" class="article-more-link" >详细阅读 &gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
 
 
-<!-- 
-post的属性
-title,
-_content,
-source,
-raw,
-slug,
-published,
-date,
-updated,
-comments,
-layout,
-photos,
-link,
-_id,
-content,
-site,
-excerpt,
-more,
-path,
-permalink,
-full_source,
-asset_dir,
-tags,
-categories,
-prev,__post -->
+  
+    <article id="post-排序" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/19/%E6%8E%92%E5%BA%8F/"  >排序</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2021/01/19/%E6%8E%92%E5%BA%8F/" >
+                
+                <img src="https://idkhts.github.io/images/banner.jpg" alt="排序" title="排序">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                
+理解排序的稳定性：
+  定义：序列[1,4\,3,6,5,4,2]排序后为[1,2,3,4,4\,5,6]则为不稳定，因为*4***与 4 的相对位置变了，*4*…4 变成了，4…***4*
+  判断要点：主要看算法是否有“间隔置换”，比如选择排序，4第一次与 2 置换后来到了 4 的后面（如果是相邻的交换就不会），最终也没能换回到 4 的前面，所以选择排序是不稳定的；...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2021-01-19</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/算法/" class="color3">算法</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2021/01/19/%E6%8E%92%E5%BA%8F/#more" class="article-more-link" >详细阅读 &gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-SSO" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/19/SSO/"  >SSO</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2021/01/19/SSO/" >
+                
+                <img src="https://idkhts.github.io/images/banner.jpg" alt="SSO" title="SSO">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                SSO SSO，即Single Sign On单点登录，是一个多系统页面用户验证解决方案。过去web应用比较简单，应用可以建立在一个系统中，使用http+cookie等即可以实现，登录验证等功能；但现代的web应用越来越大，一个应用可能由多个子系统组成，多系统应用中单单使用cookie已经不能实现验证功能了（域名不同等原因），除非每进一个子系统都登录一次。。。SSO出现解...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2021-01-19</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/其他/" class="color3">其他</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2021/01/19/SSO/#more" class="article-more-link" >详细阅读 &gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-浏览器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/19/%E6%B5%8F%E8%A7%88%E5%99%A8/"  >浏览器</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2021/01/19/%E6%B5%8F%E8%A7%88%E5%99%A8/" >
+                
+                <img src="https://idkhts.github.io/images/banner.jpg" alt="浏览器" title="浏览器">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                
+主要构成部分：
+
+用户界面
+浏览器引擎（WebCore）负责窗口管理、Tab进程管理
+渲染引擎，也叫内核，负责html解析、页面渲染
+Js引擎，JsCore，js的解释执行
+
+
+浏览器为
+
+多进程有四种：渲染进程、插件进程、GPU进程、浏览器进程
+
+多线程（js引擎才是单线程）,主要看渲染进程，它包括
+
+GUI线程，负责解析html、css和渲染页面 相关的
+JS引擎线...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2021-01-19</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/浏览器/" class="color4">浏览器</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2021/01/19/%E6%B5%8F%E8%A7%88%E5%99%A8/#more" class="article-more-link" >详细阅读 &gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-http-前端向" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/19/http-%E5%89%8D%E7%AB%AF%E5%90%91/"  >http-前端向</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2021/01/19/http-%E5%89%8D%E7%AB%AF%E5%90%91/" >
+                
+                <img src="https://idkhts.github.io/images/banner.jpg" alt="http-前端向" title="http-前端向">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                
+  http 是应用层协议，在传输层使用 TCP 协议
+
+  http 发展：https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP
+
+http 多个版本不同
+
+在 http1.0 中每次连接传输数据完成后都会断开连接（TCP），称串行连接，但是现在的 web ...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2021-01-19</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/http/" class="color5">http</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2021/01/19/http-%E5%89%8D%E7%AB%AF%E5%90%91/#more" class="article-more-link" >详细阅读 &gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-https" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/19/https/"  >https</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2021/01/19/https/" >
+                
+                <img src="https://idkhts.github.io/images/banner.jpg" alt="https" title="https">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                
+  随着 web 发展，信息越来越多，拥有的功能也越来越多，数据安全问题越来越被重视。1994 年底网景，在 TCP/IP 协议基础上创建了一个额外的加密传输层：SSL；随着 web 应用程序的使用越来越广，可访问个人信息越来越多，加密需求高涨，SSL 加入了 http 中，https 应运而生。
+
+原理：
+
+  对称加密：也即浏览器和服务器都有用一个加密的密钥，对数据...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2021-01-19</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/http/" class="color5">http</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2021/01/19/https/#more" class="article-more-link" >详细阅读 &gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/">&lt;&lt; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2021 idkhts<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://idkhts.github.io",
+      animate: true,
+      isHome: true,
+      share: true,
+      reward: 0
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
         </div>
     </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
 
-    
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
 
-    
-<script src="/js/layout.js"></script>
+<script src="/js/search.js"></script>
 
-    
-    
-        
-<script src="/js/index.js"></script>
 
-        
-<script src="/js/music.js"></script>
+<script src="/js/main.js"></script>
 
-    
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  
+<script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  
+<script src="/js/animate.js"></script>
+
+
+
+  </div>
 </body>
-
 </html>
