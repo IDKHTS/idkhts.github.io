@@ -8,15 +8,15 @@
   
     <meta name="keywords" content="IDKHTS,IDKHTS's Blog" />
   
-  <meta name="description" content="随着 web 发展，信息越来越多，拥有的功能也越来越多，数据安全问题越来越被重视。1994 年底网景，在 TCP&#x2F;IP 协议基础上创建了一个额外的加密传输层：SSL；随着 web 应用程序的使用越来越广，可访问个人信息越来越多，加密需求高涨，SSL 加入了 http 中，https 应运而生。  原理：    对称加密：也即浏览器和服务器都有用一个加密的密钥，对数据进行加密和解密。这是最简单">
+  <meta name="description" content="诞生随着 web 发展，信息越来越多，拥有的功能也越来越多，数据安全问题越来越被重视。1994 年底网景，在 TCP&#x2F;IP 协议基础上创建了一个额外的加密传输层：SSL；随着 web 应用程序的使用越来越广，可访问个人信息越来越多，加密需求高涨，SSL 加入了 http 中，https 应运而生。 原理对称加密对称机密，也即浏览器和服务器都有用一个加密的密钥，对数据进行加密和解密。这是最简单最容易">
 <meta property="og:type" content="article">
 <meta property="og:title" content="https">
 <meta property="og:url" content="https://idkhts.github.io/2021/01/19/https/index.html">
 <meta property="og:site_name" content="idkhts&#39;s blog">
-<meta property="og:description" content="随着 web 发展，信息越来越多，拥有的功能也越来越多，数据安全问题越来越被重视。1994 年底网景，在 TCP&#x2F;IP 协议基础上创建了一个额外的加密传输层：SSL；随着 web 应用程序的使用越来越广，可访问个人信息越来越多，加密需求高涨，SSL 加入了 http 中，https 应运而生。  原理：    对称加密：也即浏览器和服务器都有用一个加密的密钥，对数据进行加密和解密。这是最简单">
+<meta property="og:description" content="诞生随着 web 发展，信息越来越多，拥有的功能也越来越多，数据安全问题越来越被重视。1994 年底网景，在 TCP&#x2F;IP 协议基础上创建了一个额外的加密传输层：SSL；随着 web 应用程序的使用越来越广，可访问个人信息越来越多，加密需求高涨，SSL 加入了 http 中，https 应运而生。 原理对称加密对称机密，也即浏览器和服务器都有用一个加密的密钥，对数据进行加密和解密。这是最简单最容易">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-01-19T14:27:22.693Z">
-<meta property="article:modified_time" content="2021-04-04T08:46:15.372Z">
+<meta property="article:modified_time" content="2021-07-15T15:52:41.309Z">
 <meta property="article:author" content="idkhts">
 <meta property="article:tag" content="http">
 <meta name="twitter:card" content="summary">
@@ -137,22 +137,14 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <ul>
-<li><p>  随着 web 发展，信息越来越多，拥有的功能也越来越多，数据安全问题越来越被重视。1994 年底网景，在 TCP/IP 协议基础上创建了一个额外的加密传输层：SSL；随着 web 应用程序的使用越来越广，可访问个人信息越来越多，加密需求高涨，SSL 加入了 http 中，https 应运而生。</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/43789231">原理</a>：</p>
+            <h2 id="诞生"><a href="#诞生" class="headerlink" title="诞生"></a>诞生</h2><p>随着 web 发展，信息越来越多，拥有的功能也越来越多，数据安全问题越来越被重视。1994 年底网景，在 TCP/IP 协议基础上创建了一个额外的加密传输层：SSL；随着 web 应用程序的使用越来越广，可访问个人信息越来越多，加密需求高涨，SSL 加入了 http 中，https 应运而生。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/43789231">原理</a></h2><h3 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h3><p>对称机密，也即浏览器和服务器都有用一个加密的密钥，对数据进行加密和解密。这是最简单最容易想到的方法似乎逻辑上也能行得通过，因为只有服务器和浏览器知道这个密钥其他人除了破解就不可能解密拿到数据。但是问题是怎么保证只有服务器和浏览器拥有这个密钥。浏览器第一次向服务器发送请求，服务器此时还没密钥，服务器只能通过 http 响应传给浏览器密钥，而这里可以被劫持（http 传输肯定需要经过一些路由，电脑节点）。对称加密方式的缺点在于无法保证密钥只有通信的双方拥有。</p>
+<h3 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h3><p>非对称加密，分为公钥和私钥，私钥是拥有者自己的不会进行传递，公钥是给通信对方的（可以说是公开的），数据用公钥加密后能用私钥解密，私钥加密的能用公钥解密。浏览器发起第一次 http 请求，服务器响应给浏览器公钥（公钥仍有可能被泄露），往后浏览器发送给服务器的数据都会用公钥加密，那么能解密的只有服务器的私钥，而私钥没有进行过传输，那么就不存泄露的危险，所以浏览器到服务器的数据安全得到保证了。但是由服务器发送给浏览器的数据因为公钥可能会泄露，所以服务器发送到浏览器的数据安全还是存在问题的</p>
+<h3 id="两层加密方式"><a href="#两层加密方式" class="headerlink" title="两层加密方式"></a>两层加密方式</h3><p>​        两层加密方式，非对称加密保证了双向数据的单向安全，那么用两对公私钥就可以保证了双向的安全：浏览器第一次发送请求，服务器响应发送服务器的公钥 A 给浏览器，浏览器得到了公钥 A，第一次交互保证了浏览器到服务器的数据安全。然后浏览器用得到的公钥 A 加密自己的公钥 B 发送给服务器，服务器用私钥 A 解密得到了浏览器公钥——公钥 B，往后服务器发送给浏览器的数据都用公钥 B 加密，这些数据只能由私钥 B 解密，而私钥 B 只存在浏览器中没经过发送，所以服务器到浏览器的数据安全也得到了保证。这样服务器和浏览器的数据交互似乎就安全了。</p>
+<p>​        两层加密方式里面，考虑到非对称加密的加密和解密算法过于复杂耗时，第二层其实可以用对称加密代替，因为有了第一层非对称加密保证的浏览器到服务数据安全，那么第二层的对称加密密钥传输安全是可以保证的，所以第二层用更简单的对称加密替换原来的非对称加密，这样的性能更好：浏览器第一次发送请求，服务器响应发送服务器的公钥 A 给浏览器，浏览器得到了公钥 A，第一次交互保证了浏览器到服务器的数据安全。然后浏览器用得到的公钥 A 加密一份对称加密的密钥发送给服务器，服务器用私钥 A 解密得到了对称加密的密钥。这样服务器和浏览器都有对称加密的密钥，而且这个密钥不可能在 http 传输中泄露，那么往后数据交互可以都用对称加密密钥加密，到达对方后解密即可。</p>
+<p>这里的逻辑：非对称加密交互一次=》确定单向传输的安全=》用这个传输对称加密密钥=》对称加密密钥不会泄露=》往后都用对称加密加解密。</p>
+<h3 id="中间人攻击和证书"><a href="#中间人攻击和证书" class="headerlink" title="中间人攻击和证书"></a>中间人攻击和证书</h3><p>​        所谓道高一尺，魔高一丈。心思缜密的黑客还是发现了漏洞：在浏览器向服务器发起第一次请求中，服务器需要明文给浏览器公钥 A，黑客利用这一点，http 经过其 ip 时，把这个公钥 A 保存下来，而且把传输的公钥 A 改成自己一个公钥 B，这样到达浏览器的就是黑客的公钥 B，而浏览器无法察觉只得以为这个公钥 B 就是服务的公钥。然后浏览器按上面所写的又发起了第二层，公钥 B 加密的对称加密密钥，当数据经过黑客的 ip 时，直接用直接的私钥 B 解开的加密，得到了对称加密密钥（芜湖~），然后用服务器给的公钥 A 加密这个对称加密密钥再发送给服务器。服务器接收到解密得到对称加密密钥，也无法发现泄露，往后使用了这个对称密钥加解密。。。这种数据在中间被替换了的攻击就是大名鼎鼎的——<strong>中间人攻击</strong></p>
 <ul>
-<li><p>  对称加密：也即浏览器和服务器都有用一个加密的密钥，对数据进行加密和解密。这是最简单最容易想到的方法似乎逻辑上也能行得通过，因为只有服务器和浏览器知道这个密钥其他人除了破解就不可能解密拿到数据。但是问题是怎么保证只有服务器和浏览器拥有这个密钥。浏览器第一次向服务器发送请求，服务器此时还没密钥，服务器只能通过 http 响应传给浏览器密钥，而这里可以被劫持（http 传输肯定需要经过一些路由，电脑节点）。对称加密方式的缺点在于无法保证密钥只有通信的双方拥有。</p>
-</li>
-<li><p>  非对称加密：分为公钥和私钥，私钥是拥有者自己的不会进行传递，公钥是给通信对方的（可以说是公开的），数据用公钥加密后能用私钥解密，私钥加密的能用公钥解密。浏览器发起第一次 http 请求，服务器响应给浏览器公钥（公钥仍有可能被泄露），往后浏览器发送给服务器的数据都会用公钥加密，那么能解密的只有服务器的私钥，而私钥没有进行过传输，那么就不存泄露的危险，所以浏览器到服务器的数据安全得到保证了。但是由服务器发送给浏览器的数据因为公钥可能会泄露，所以服务器发送到浏览器的数据安全还是存在问题的</p>
-</li>
-<li><p>  两层加密方式，非对称加密保证了双向数据的单向安全，那么用两对公私钥就可以保证了双向的安全：浏览器第一次发送请求，服务器响应发送服务器的公钥 A 给浏览器，浏览器得到了公钥 A，第一次交互保证了浏览器到服务器的数据安全。然后浏览器用得到的公钥 A 加密自己的公钥 B 发送给服务器，服务器用私钥 A 解密得到了浏览器公钥——公钥 B，往后服务器发送给浏览器的数据都用公钥 B 加密，这些数据只能由私钥 B 解密，而私钥 B 只存在浏览器中没经过发送，所以服务器到浏览器的数据安全也得到了保证。这样服务器和浏览器的数据交互似乎就安全了。</p>
-</li>
-<li><p>两层加密方式里面，考虑到非对称加密的加密和解密算法过于复杂耗时，第二层其实可以用对称加密代替，因为有了第一层非对称加密保证的浏览器到服务数据安全，那么第二层的对称加密密钥传输安全是可以保证的，所以第二层用更简单的对称加密替换原来的非对称加密，这样的性能更好：浏览器第一次发送请求，服务器响应发送服务器的公钥 A 给浏览器，浏览器得到了公钥 A，第一次交互保证了浏览器到服务器的数据安全。然后浏览器用得到的公钥 A 加密一份对称加密的密钥发送给服务器，服务器用私钥 A 解密得到了对称加密的密钥。这样服务器和浏览器都有对称加密的密钥，而且这个密钥不可能在 http 传输中泄露，那么往后数据交互可以都用对称加密密钥加密，到达对方后解密即可。</p>
-<p>  这里的逻辑：非对称加密交互一次=》确定单向传输的安全=》用这个传输对称加密密钥=》对称加密密钥不会泄露=》往后都用对称加密加解密。</p>
-</li>
-<li><p>  所谓道高一尺，魔高一丈。心思缜密的黑客还是发现了漏洞：在浏览器向服务器发起第一次请求中，服务器需要明文给浏览器公钥 A，黑客利用这一点，http 经过其 ip 时，把这个公钥 A 保存下来，而且把传输的公钥 A 改成自己一个公钥 B，这样到达浏览器的就是黑客的公钥 B，而浏览器无法察觉只得以为这个公钥 B 就是服务的公钥。然后浏览器按上面所写的又发起了第二层，公钥 B 加密的对称加密密钥，当数据经过黑客的 ip 时，直接用直接的私钥 B 解开的加密，得到了对称加密密钥（芜湖~），然后用服务器给的公钥 A 加密这个对称加密密钥再发送给服务器。服务器接收到解密得到对称加密密钥，也无法发现泄露，往后使用了这个对称密钥加解密。。。这种数据在中间被替换了的攻击就是大名鼎鼎的——<strong>中间人攻击</strong></p>
-</li>
 <li><p>中间人攻击可行的原因在于，浏览器无法确定第一次接收的<strong>公钥是否来自请求的服务器</strong>，也即公钥来源是“身份问题”。身份问题的解决在现实中就是身份证，身份证是由公信力最高的政府颁发(!?)，这样你是 a 还是 b，给出身份证就行了。https 也基本是这样，一个有公信力的机构——<strong>”CA 机构“</strong>颁发<strong>数字证书</strong>，证书里面有<strong>证书持有者</strong>和<strong>证书持有者的公钥</strong>。</p>
 <ul>
 <li><p>证书的制作：</p>
@@ -167,18 +159,29 @@
 </li>
 </ul>
 </li>
-<li><p>  总结：也即 https 是利用了<strong>非对称加密+对称加密+数字证书</strong>构成加密过程的</p>
-</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>也即 https 是利用了<strong>非对称加密+对称加密+数字证书</strong>构成加密过程的</p>
+<h2 id="https建立的过程（HTTPS-handshake）"><a href="#https建立的过程（HTTPS-handshake）" class="headerlink" title="https建立的过程（HTTPS handshake）"></a>https建立的过程（HTTPS handshake）</h2><ul>
+<li>基于TCP连接建立成功后开始</li>
+<li>在TCP三次握手的最后一次，客户端发送ACK确认建立连接，会顺带上一个ClientHello，包含着TLS的版本，支持的密码套件，以及一串客户端生成的随机数“客户端随机数”ClientRandom</li>
+<li>接着服务端回复ServerHello，SSL证书，服务器选择的密码套件，以及一串服务器生成的随机数“服务端随机数”ServerRandom</li>
+<li>客户端验证接受的证书（详细查看https章），获得服务端的公钥，此时客户端在生成一个随机数，利用三个随机组成对称密钥，往后使用这个密钥加密通话；当然，此时服务端还不知道最后一个随机数，所以客户端还需要再通过得到的公钥加密这个随机数发给服务端；</li>
+<li>这样，利用公钥加密发送个私钥的通道是安全的（非对称加密，保证的单向通道安全），可以保证第三个随机数不会被泄露，也即可以保证密钥不会被泄露，往后客户端和服务端通讯都用这个密钥（对称密钥即可）；</li>
+</ul>
+<h2 id="补充一些加密知识"><a href="#补充一些加密知识" class="headerlink" title="补充一些加密知识"></a>补充一些加密知识</h2><ul>
+<li>md5，一种hash算法，早期美国发明的，也是用来加密的。但是注意，这种加密是不可逆的（加密后解密不了的}，所以根本就不能用来做加密解密的工作，更多的是用于验证手段。（不过现在已经能被破解了。。。）<ul>
+<li>比如文件验证（文件指纹），不同时间的两个文件md5加密后对比一样则没有修改是同一个文件，否则就是被修改过/不是统一个文件；</li>
+<li>如密码，用户注册的时候，把密码md5加密后存储到数据库，下次用户登录输入密码，可以再次通过md5加密，结果与数据库对比，相同则密码正确，不同则不正确，这样系统开发者也不能知道密码（良心系统），也可以减低数据库数据泄露（sql注入）危害。</li>
 </ul>
 </li>
-<li><p>  可能还涉及了另外一些名词，证书链</p>
-</li>
+<li>sha-256：和md5一样也是一种hash算法，hash都是不可逆的（hash本身来说就是一对多，即解密答案有多个，而这怎么算解密呢），md5和sha-1/2/3等都是不同数据加密得到不同的hash值概率很高很高，所以hash后的值可以作为唯一标识。</li>
 </ul>
-<h4 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h4><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/43789231">彻底搞懂 HTTPS 的加密机制</a></p>
+<p>此外：可能还涉及了另外一些名词，证书链</p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/43789231">彻底搞懂 HTTPS 的加密机制</a></p>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2021年04月04日 16:46</p>
+        <p>最后更新： 2021年07月15日 23:52</p>
         <p>原始链接： <a class="post-url" href="/2021/01/19/https/" title="https">https://idkhts.github.io/2021/01/19/https/</a></p>
         <footer>
             <a href="https://idkhts.github.io">
@@ -265,7 +268,7 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%EF%BC%9A"><span class="post-toc-text">参考：</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AF%9E%E7%94%9F"><span class="post-toc-text">诞生</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8E%9F%E7%90%86"><span class="post-toc-text">原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="post-toc-text">对称加密</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="post-toc-text">非对称加密</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%A4%E5%B1%82%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F"><span class="post-toc-text">两层加密方式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E5%92%8C%E8%AF%81%E4%B9%A6"><span class="post-toc-text">中间人攻击和证书</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93"><span class="post-toc-text">总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#https%E5%BB%BA%E7%AB%8B%E7%9A%84%E8%BF%87%E7%A8%8B%EF%BC%88HTTPS-handshake%EF%BC%89"><span class="post-toc-text">https建立的过程（HTTPS handshake）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%A1%A5%E5%85%85%E4%B8%80%E4%BA%9B%E5%8A%A0%E5%AF%86%E7%9F%A5%E8%AF%86"><span class="post-toc-text">补充一些加密知识</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%EF%BC%9A"><span class="post-toc-text">参考：</span></a></li></ol>
         </nav>
     </aside>
     
@@ -372,7 +375,7 @@
             
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
+            <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -405,7 +408,7 @@
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
+            <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
         </div>
     </div>
 </div>

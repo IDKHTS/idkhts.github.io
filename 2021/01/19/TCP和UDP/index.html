@@ -8,15 +8,15 @@
   
     <meta name="keywords" content="IDKHTS,IDKHTS's Blog" />
   
-  <meta name="description" content="TCP&#x2F;UDP是传输层协议，主要是目标主机到目标主机的通信；  TCP是面向连接的、可靠的、基于字节流的传输  面向连接：两台计算机通讯需要建立一个通讯连接，建立过程就是“ 三次握手 ”：客户端发起连接请求，服务端确认连接，客户端确认服务端的应答，建立连接成功。结束关闭连接时利用“ 四次挥手 ”确保连接的中断。  需要三次握手的原因：假设只有两次即可建立，当客户端发送第一次连接请求网络延迟，客户">
+  <meta name="description" content="TCP&#x2F;UDP是传输层协议，主要是目标主机到目标主机的通信； TCPTCP是面向连接的、可靠的、基于字节流的传输  面向连接：两台计算机通讯需要建立一个通讯连接，建立过程就是“ 三次握手 ”：客户端发起连接请求，服务端确认连接，客户端确认服务端的应答，建立连接成功。结束关闭连接时利用“ 四次挥手 ”确保连接的中断。  需要三次握手的原因：假设只有两次即可建立，当客户端发送第一次连接请求网络延迟，客">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TCP与UDP">
 <meta property="og:url" content="https://idkhts.github.io/2021/01/19/TCP%E5%92%8CUDP/index.html">
 <meta property="og:site_name" content="idkhts&#39;s blog">
-<meta property="og:description" content="TCP&#x2F;UDP是传输层协议，主要是目标主机到目标主机的通信；  TCP是面向连接的、可靠的、基于字节流的传输  面向连接：两台计算机通讯需要建立一个通讯连接，建立过程就是“ 三次握手 ”：客户端发起连接请求，服务端确认连接，客户端确认服务端的应答，建立连接成功。结束关闭连接时利用“ 四次挥手 ”确保连接的中断。  需要三次握手的原因：假设只有两次即可建立，当客户端发送第一次连接请求网络延迟，客户">
+<meta property="og:description" content="TCP&#x2F;UDP是传输层协议，主要是目标主机到目标主机的通信； TCPTCP是面向连接的、可靠的、基于字节流的传输  面向连接：两台计算机通讯需要建立一个通讯连接，建立过程就是“ 三次握手 ”：客户端发起连接请求，服务端确认连接，客户端确认服务端的应答，建立连接成功。结束关闭连接时利用“ 四次挥手 ”确保连接的中断。  需要三次握手的原因：假设只有两次即可建立，当客户端发送第一次连接请求网络延迟，客">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-01-19T14:41:04.903Z">
-<meta property="article:modified_time" content="2021-01-19T14:41:46.559Z">
+<meta property="article:modified_time" content="2021-07-15T15:57:43.658Z">
 <meta property="article:author" content="idkhts">
 <meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary">
@@ -137,10 +137,8 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <ul>
-<li><p>TCP/UDP是传输层协议，主要是目标主机到目标主机的通信；</p>
-</li>
-<li><p>TCP是<strong>面向连接的、可靠的、基于字节流的传输</strong></p>
+            <p>TCP/UDP是传输层协议，主要是目标主机到目标主机的通信；</p>
+<h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><p>TCP是<strong>面向连接的、可靠的、基于字节流的传输</strong></p>
 <ul>
 <li><p>面向连接：两台计算机通讯需要建立一个通讯连接，建立过程就是“</p>
 <p>三次握手</p>
@@ -154,8 +152,6 @@
 <li>服务端B端接收确认关闭A-》B的信息流向通道（B不再接受本连接的A的信息）发送确认关闭信息，同时B端也发起关闭连接给A端【2】</li>
 <li>A端接收确认关闭B-》A信息流向通道（A不再接受本连接的B的信息）发送确认关闭信息。【1】</li>
 <li>这里注意最后一次挥手，A向B发确认，这时候A不能马上断开连接，还需要等待2MSL，MSL是报文段的最大生成时间，因为B还没收到A发的确认是还可以发送信息给A的，可能在此期间B又发送了数据，所以为了安全起见，A收到了结束请求发送确认还需要等2MSL才能关闭连接</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -189,18 +185,18 @@
 <li><p>基于字节流的传输：TCP中的数据就是一个流，没有明确的边界，也即，发送十次给客户端，因为没边界服务器不知道有几次数据在这里，所以可以一次就把这些数据读取了，也可分100次读取；而UDP的报文是直接加个首部直接发的，有边界，发送一次数据服务器就读一次数据</p>
 </li>
 </ul>
-<p>UDP：UDP是<strong>无连接传输</strong>，所以UDP<strong>不提供可靠传输</strong>也不需要建立连接，同时UDP是<strong>面向报文的</strong>，即对应用层的报文它只是加个UDP首部就交给IP层了，相对来说，TCP的消耗是更大的。总的来说它简单快捷，但是不可靠，功能单一。额外：UDP支持单播、多播、广播</p>
+</li>
+</ul>
+<h2 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h2><p>  UDP是<strong>无连接传输</strong>，所以UDP<strong>不提供可靠传输</strong>也不需要建立连接，同时UDP是<strong>面向报文的</strong>，即对应用层的报文它只是加个UDP首部就交给IP层了，相对来说，TCP的消耗是更大的。总的来说它简单快捷，但是不可靠，功能单一。额外：UDP支持单播、多播、广播</p>
 <ul>
 <li>主要可以用到电话会议这种实时性比较高的场景</li>
 </ul>
-</li>
-</ul>
-<h4 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h4><p><a target="_blank" rel="noopener" href="https://juejin.im/post/6844903958624878606#heading-9">面试官，不要问我三次握手和四次挥手</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://juejin.im/post/6844903958624878606#heading-9">面试官，不要问我三次握手和四次挥手</a></p>
 <p>计算机网络（第七版）——谢希仁</p>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2021年01月19日 22:41</p>
+        <p>最后更新： 2021年07月15日 23:57</p>
         <p>原始链接： <a class="post-url" href="/2021/01/19/TCP%E5%92%8CUDP/" title="TCP与UDP">https://idkhts.github.io/2021/01/19/TCP%E5%92%8CUDP/</a></p>
         <footer>
             <a href="https://idkhts.github.io">
@@ -287,7 +283,7 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%EF%BC%9A"><span class="post-toc-text">参考：</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TCP"><span class="post-toc-text">TCP</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#UDP"><span class="post-toc-text">UDP</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83"><span class="post-toc-text">参考</span></a></li></ol>
         </nav>
     </aside>
     
@@ -399,7 +395,7 @@
             
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
+            <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -432,7 +428,7 @@
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
+            <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
         </div>
     </div>
 </div>

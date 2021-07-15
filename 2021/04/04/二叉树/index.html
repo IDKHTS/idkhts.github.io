@@ -8,16 +8,17 @@
   
     <meta name="keywords" content="IDKHTS,IDKHTS's Blog" />
   
-  <meta name="description" content="idkhts">
+  <meta name="description" content="深度优先遍历（DFS） 先序遍历：当前节点，左节点，右节点中，先检查当前节点，再左节点，最后右节点 中序遍历：当前节点，左节点，右节点中，先检查左节点，再当前节点，最后右节点 二叉搜索树 节点的左子树的值都小于节点 节点的右子树的值都大于节点 当二叉树是二叉搜索树时，中序遍历的值是从小到大的；     后序遍历：当前节点，左节点，右节点中，先检查左节点，再右节点，最后当前节点  先中后，指的是当前">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二叉树">
 <meta property="og:url" content="https://idkhts.github.io/2021/04/04/%E4%BA%8C%E5%8F%89%E6%A0%91/index.html">
 <meta property="og:site_name" content="idkhts&#39;s blog">
-<meta property="og:description" content="idkhts">
+<meta property="og:description" content="深度优先遍历（DFS） 先序遍历：当前节点，左节点，右节点中，先检查当前节点，再左节点，最后右节点 中序遍历：当前节点，左节点，右节点中，先检查左节点，再当前节点，最后右节点 二叉搜索树 节点的左子树的值都小于节点 节点的右子树的值都大于节点 当二叉树是二叉搜索树时，中序遍历的值是从小到大的；     后序遍历：当前节点，左节点，右节点中，先检查左节点，再右节点，最后当前节点  先中后，指的是当前">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-04T08:15:30.000Z">
-<meta property="article:modified_time" content="2021-07-15T09:26:15.192Z">
+<meta property="article:modified_time" content="2021-07-15T15:40:21.576Z">
 <meta property="article:author" content="idkhts">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
   
   
@@ -136,10 +137,44 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            
+            <h4 id="深度优先遍历（DFS）"><a href="#深度优先遍历（DFS）" class="headerlink" title="深度优先遍历（DFS）"></a>深度优先遍历（DFS）</h4><ul>
+<li>先序遍历：当前节点，左节点，右节点中，先检查当前节点，再左节点，最后右节点</li>
+<li>中序遍历：当前节点，左节点，右节点中，先检查左节点，再当前节点，最后右节点<ul>
+<li>二叉搜索树<ul>
+<li>节点的左子树的值都<strong>小于</strong>节点</li>
+<li>节点的右子树的值都<strong>大于</strong>节点</li>
+<li>当二叉树是二叉搜索树时，中序遍历的值是<strong>从小到大</strong>的；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>后序遍历：当前节点，左节点，右节点中，先检查左节点，再右节点，最后当前节点</li>
+</ul>
+<p>先中后，指的是当前节点，左节点，右节点中当前节点的遍历顺序；先序即先遍历当前节点，中序即先左节点然后才当前节点，后序即先左、右节点后当前节点</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 先序遍历</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">node</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(node == <span class="literal">null</span>) <span class="keyword">return</span></span><br><span class="line">    <span class="built_in">console</span>.log(node.val)</span><br><span class="line">    dfs(node.left)</span><br><span class="line">    dfs(node.right)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 后序遍历</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">node</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(node == <span class="literal">null</span>) <span class="keyword">return</span></span><br><span class="line">    dfs(node.left)</span><br><span class="line">    dfs(node.right)</span><br><span class="line">    <span class="built_in">console</span>.log(node.val)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>迭代方法——深度遍历</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">node</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> stack = [node]</span><br><span class="line">    <span class="keyword">while</span>(stack.length !== <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> curr = stack.pop()</span><br><span class="line">        <span class="keyword">if</span>(curr.left)&#123;</span><br><span class="line">        	stack.push(curr.left)</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(curr.right)&#123;</span><br><span class="line">        	stack.push(curr.right)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        	<span class="built_in">console</span>.log(stack.pop())</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="广度优先遍历（WFS）"><a href="#广度优先遍历（WFS）" class="headerlink" title="广度优先遍历（WFS）"></a>广度优先遍历（WFS）</h4><ul>
+<li>利用一个队列（先进先出）确保每层按序遍历</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wfs</span>(<span class="params">root</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> queue = [root];</span><br><span class="line">  <span class="keyword">while</span> (queue.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> curNode = queue.shift();</span><br><span class="line">    <span class="built_in">console</span>.log(curNode.val);</span><br><span class="line">    curNode.left &amp;&amp; queue.push(curNode.left);</span><br><span class="line">    curNode.right &amp;&amp; queue.push(curNode.right);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// test</span></span><br><span class="line"><span class="keyword">let</span> testTree = &#123;</span><br><span class="line">  val: <span class="number">10</span>,</span><br><span class="line">  left: &#123;</span><br><span class="line">    val: <span class="number">9</span>,</span><br><span class="line">    left: &#123; <span class="attr">val</span>: <span class="number">2</span> &#125;,</span><br><span class="line">    right: &#123; <span class="attr">val</span>: <span class="number">1</span> &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  right: &#123;</span><br><span class="line">    val: <span class="number">8</span>,</span><br><span class="line">    left: &#123; <span class="attr">val</span>: <span class="number">52</span> &#125;,</span><br><span class="line">    right: &#123; <span class="attr">val</span>: <span class="number">14</span> &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">wfs(testTree);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>分层的广度遍历</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> levelOrder = <span class="function"><span class="keyword">function</span>(<span class="params">root</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> ret = [];</span><br><span class="line">    <span class="keyword">if</span> (!root) &#123;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> q = [];</span><br><span class="line">    q.push(root);</span><br><span class="line">    <span class="keyword">while</span> (q.length !== <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> currentLevelSize = q.length;</span><br><span class="line">        ret.push([]);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= currentLevelSize; ++i) &#123;</span><br><span class="line">            <span class="keyword">const</span> node = q.shift();</span><br><span class="line">            ret[ret.length - <span class="number">1</span>].push(node.val);</span><br><span class="line">            <span class="keyword">if</span> (node.left) q.push(node.left);</span><br><span class="line">            <span class="keyword">if</span> (node.right) q.push(node.right);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> testTree = &#123;</span><br><span class="line">  val: <span class="number">10</span>,</span><br><span class="line">  left: &#123;</span><br><span class="line">    val: <span class="number">9</span>,</span><br><span class="line">    left: &#123; <span class="attr">val</span>: <span class="number">2</span> &#125;,</span><br><span class="line">    right: &#123; <span class="attr">val</span>: <span class="number">1</span> &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  right: &#123;</span><br><span class="line">    val: <span class="number">8</span>,</span><br><span class="line">    left: &#123; <span class="attr">val</span>: <span class="number">52</span> &#125;,</span><br><span class="line">    right: &#123; <span class="attr">val</span>: <span class="number">14</span> &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">levelOrder(testTree);</span><br><span class="line"></span><br><span class="line"><span class="comment">//作者：LeetCode-Solution</span></span><br><span class="line"><span class="comment">//链接：https://leetcode-cn.com/problems/binary-tree-level-order-traversal/solution/er-cha-shu-de-ceng-xu-bian-li-by-leetcode-solution/</span></span><br><span class="line"><span class="comment">//来源：力扣（LeetCode）</span></span><br><span class="line"><span class="comment">//著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2021年07月15日 17:26</p>
+        <p>最后更新： 2021年07月15日 23:40</p>
         <p>原始链接： <a class="post-url" href="/2021/04/04/%E4%BA%8C%E5%8F%89%E6%A0%91/" title="二叉树">https://idkhts.github.io/2021/04/04/%E4%BA%8C%E5%8F%89%E6%A0%91/</a></p>
         <footer>
             <a href="https://idkhts.github.io">
@@ -210,6 +245,13 @@
         <ul class="article-footer-menu">
             
             
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/算法/" class="color3">算法</a>
+      
+  </li>
+
         </ul>
         
     </footer>
@@ -217,6 +259,12 @@
 </article>
 
 
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86%EF%BC%88DFS%EF%BC%89"><span class="post-toc-text">深度优先遍历（DFS）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86%EF%BC%88WFS%EF%BC%89"><span class="post-toc-text">广度优先遍历（WFS）</span></a></li></ol>
+        </nav>
+    </aside>
+    
 
 <nav id="article-nav">
   
@@ -315,7 +363,7 @@
             
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
+            <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -348,7 +396,7 @@
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
+            <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
         </div>
     </div>
 </div>

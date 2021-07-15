@@ -8,15 +8,15 @@
   
     <meta name="keywords" content="IDKHTS,IDKHTS's Blog" />
   
-  <meta name="description" content="主要构成部分：  用户界面 浏览器引擎（WebCore）负责窗口管理、Tab进程管理 渲染引擎，也叫内核，负责html解析、页面渲染 Js引擎，JsCore，js的解释执行   浏览器为  多进程有四种：渲染进程、插件进程、GPU进程、浏览器进程  多线程（js引擎才是单线程）,主要看渲染进程，它包括  GUI线程，负责解析html、css和渲染页面 相关的 JS引擎线程，负责js的解释执行（统">
+  <meta name="description" content="主要构成部分 用户界面 浏览器引擎（WebCore）负责窗口管理、Tab进程管理 渲染引擎，也叫内核，负责html解析、页面渲染 Js引擎，JsCore，js的解释执行  浏览器 多进程有四种：渲染进程、插件进程、GPU进程、浏览器进程  多线程（js引擎才是单线程）,主要看渲染进程，它包括  GUI线程，负责解析html、css和渲染页面 相关的 JS引擎线程，负责js的解释执行（统一时期只能有">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浏览器">
 <meta property="og:url" content="https://idkhts.github.io/2021/01/19/%E6%B5%8F%E8%A7%88%E5%99%A8/index.html">
 <meta property="og:site_name" content="idkhts&#39;s blog">
-<meta property="og:description" content="主要构成部分：  用户界面 浏览器引擎（WebCore）负责窗口管理、Tab进程管理 渲染引擎，也叫内核，负责html解析、页面渲染 Js引擎，JsCore，js的解释执行   浏览器为  多进程有四种：渲染进程、插件进程、GPU进程、浏览器进程  多线程（js引擎才是单线程）,主要看渲染进程，它包括  GUI线程，负责解析html、css和渲染页面 相关的 JS引擎线程，负责js的解释执行（统">
+<meta property="og:description" content="主要构成部分 用户界面 浏览器引擎（WebCore）负责窗口管理、Tab进程管理 渲染引擎，也叫内核，负责html解析、页面渲染 Js引擎，JsCore，js的解释执行  浏览器 多进程有四种：渲染进程、插件进程、GPU进程、浏览器进程  多线程（js引擎才是单线程）,主要看渲染进程，它包括  GUI线程，负责解析html、css和渲染页面 相关的 JS引擎线程，负责js的解释执行（统一时期只能有">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-01-19T14:30:51.155Z">
-<meta property="article:modified_time" content="2021-04-04T08:02:09.120Z">
+<meta property="article:modified_time" content="2021-07-15T15:43:02.279Z">
 <meta property="article:author" content="idkhts">
 <meta property="article:tag" content="浏览器">
 <meta name="twitter:card" content="summary">
@@ -137,17 +137,13 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <ul>
-<li><p>主要构成部分：</p>
-<ul>
+            <h2 id="主要构成部分"><a href="#主要构成部分" class="headerlink" title="主要构成部分"></a>主要构成部分</h2><ul>
 <li>用户界面</li>
 <li>浏览器引擎（WebCore）负责窗口管理、Tab进程管理</li>
 <li>渲染引擎，也叫内核，负责html解析、页面渲染</li>
 <li>Js引擎，JsCore，js的解释执行</li>
 </ul>
-</li>
-<li><p>浏览器为</p>
-<ul>
+<h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><ul>
 <li><p>多进程有四种：渲染进程、插件进程、GPU进程、浏览器进程</p>
 </li>
 <li><p>多线程（js引擎才是单线程）,主要看渲染进程，它包括</p>
@@ -164,9 +160,7 @@
 <p>应该也是这个原因——不能同时操作一个资源，DOM要么被GUI线程操作（计算布局）要么被js操作（增删改DOM），所以才有上面的注意，js和GUI线程在同一时刻只能执行一个。</p>
 </li>
 </ul>
-</li>
-<li><p>页面渲染：</p>
-<ul>
+<h2 id="页面渲染"><a href="#页面渲染" class="headerlink" title="页面渲染"></a>页面渲染</h2><ul>
 <li>解析html生成Dom树（中间遇到js，停下，执行js）</li>
 <li>解析css生成css对象模型树（CSSOM）</li>
 <li>合并DOM和CSSOM生成渲染树（render树）</li>
@@ -174,17 +168,13 @@
 </ul>
 <p>在应用被使用的过程中可能会产生一些增减DOM节点的操作，由上面过程可以知道，DOM树会被改变，这时就需要重新构建渲染树，再进行渲染，而这过程称重排或者回流（reflowing）；倘若DOM节点改变的只是一些字体背景颜色，不影响布局，不需要重新计算时，只需要重新绘制，这个操作称重绘。</p>
 <p>重排则必定包含重绘；当改变的无关布局的（字体颜色等），则会触发重绘而不必重排</p>
-</li>
-<li><p>浏览器缓存</p>
-<ul>
+<h2 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h2><ul>
 <li><p>由浏览器实现的http缓存：</p>
 <ul>
 <li>强缓存</li>
 <li>协商缓存</li>
 </ul>
-</li>
-<li><p>强缓存：其实就一种比较强制性的匹配缓存规则而已</p>
-<ul>
+<h3 id="强缓存：其实就一种比较强制性的匹配缓存规则而已"><a href="#强缓存：其实就一种比较强制性的匹配缓存规则而已" class="headerlink" title="强缓存：其实就一种比较强制性的匹配缓存规则而已"></a>强缓存：其实就一种比较强制性的匹配缓存规则而已</h3><ul>
 <li>概述：总的的来说就是，服务端第一次响应客户端发送的请求时给予客户端一个时间，表明这些数据在这个时间内一定不会改变数据（改变也可以，但客户端不需要知道），可以直接读缓存，<strong>不用再次发送http请求</strong></li>
 <li>具体使用：<ul>
 <li>http1.0时使用的字段<code>Express</code>，它的值是一个绝对时间，如<code> Wed, 21 Oct 2020 07:28:00 GMT</code>。第一次时，http响应头带着这个字段，浏览器就会缓存下这些数据，并且在应用在这个时间，<code>2020.10.21 07:28:00</code> 前，再次请求这个url时读缓存中的这些数据返回，不发送http请求</li>
@@ -193,9 +183,7 @@
 </li>
 <li>http1.1的记录的相对时间会比绝对时间好一点，因为客户端的时间（用户的电脑）可以是不准确的，如果偏后，那么浏览器就可能读不到缓存直接再次请求数据，缓存就失效了。使用相对时间，无论如何，距离上次请求的一段时间都读缓存，客户端时间无法再干扰到了。</li>
 </ul>
-</li>
-<li><p>协商缓存：另一种的匹配缓存规则</p>
-<ul>
+<h3 id="协商缓存：另一种的匹配缓存规则"><a href="#协商缓存：另一种的匹配缓存规则" class="headerlink" title="协商缓存：另一种的匹配缓存规则"></a>协商缓存：另一种的匹配缓存规则</h3><ul>
 <li><p>概述：相对强缓存由浏览器判断是否读缓冲，协商缓存把这个判断放到了服务端，即<strong>客户端请求会到达服务端</strong>，这个是和强缓存最大的区别。客户端请求时，服务端会返回一个标记，客户端再次请求时，请求头应该带上这个标记，服务端根据这个标记判断客户端上次请求的数据是否还能用，能用就返回一个http状态码，让浏览器读缓存里的数据，不能用就返回能用的数据。</p>
 </li>
 <li><p>具体使用：</p>
@@ -208,8 +196,6 @@
 <p><code>ETag</code>的值是一段内容摘要（hash）。类似的，第一次响应的响应头部也会带上一个<code>ETag</code>字段，下次请求在请求头部加<code>If-None-Match</code>带上这个<code>Etag</code>的值，服务端拿着和现在的数据摘要对比，相同则返回304，不同则返回最新数据；</p>
 <ul>
 <li><code>ETag</code>/<code>If-None-Match</code>相比<code>Last-Modified</code>/<code>If-Modified-Since</code>是一种更强的校验器，<code>Last-Modified</code>的时间只能精确到秒。同时<code>ETag</code>/<code>If-None-Match</code>也比<code>Last-Modified</code>/<code>If-Modified-Since</code>优先级更高。</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -233,7 +219,7 @@
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2021年04月04日 16:02</p>
+        <p>最后更新： 2021年07月15日 23:43</p>
         <p>原始链接： <a class="post-url" href="/2021/01/19/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">https://idkhts.github.io/2021/01/19/%E6%B5%8F%E8%A7%88%E5%99%A8/</a></p>
         <footer>
             <a href="https://idkhts.github.io">
@@ -318,6 +304,12 @@
 </article>
 
 
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%BB%E8%A6%81%E6%9E%84%E6%88%90%E9%83%A8%E5%88%86"><span class="post-toc-text">主要构成部分</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="post-toc-text">浏览器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93"><span class="post-toc-text">页面渲染</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98"><span class="post-toc-text">浏览器缓存</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BC%BA%E7%BC%93%E5%AD%98%EF%BC%9A%E5%85%B6%E5%AE%9E%E5%B0%B1%E4%B8%80%E7%A7%8D%E6%AF%94%E8%BE%83%E5%BC%BA%E5%88%B6%E6%80%A7%E7%9A%84%E5%8C%B9%E9%85%8D%E7%BC%93%E5%AD%98%E8%A7%84%E5%88%99%E8%80%8C%E5%B7%B2"><span class="post-toc-text">强缓存：其实就一种比较强制性的匹配缓存规则而已</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98%EF%BC%9A%E5%8F%A6%E4%B8%80%E7%A7%8D%E7%9A%84%E5%8C%B9%E9%85%8D%E7%BC%93%E5%AD%98%E8%A7%84%E5%88%99"><span class="post-toc-text">协商缓存：另一种的匹配缓存规则</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
 
 <nav id="article-nav">
   
@@ -426,7 +418,7 @@
             
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
+            <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -459,7 +451,7 @@
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
+            <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 20px;">计算机网络</a>
         </div>
     </div>
 </div>
