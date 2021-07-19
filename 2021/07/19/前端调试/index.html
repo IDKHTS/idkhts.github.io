@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>前端调试 | idkhts&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="IDKHTS,IDKHTS's Blog" />
+  
+  <meta name="description" content="调试​    调式是开发必不可缺的一环，但是日常开发中总感觉自己除了看看输出基本就不会其他的东西，平常给页面做了优化都看不出来。。。现在得空，是时候打开新世界的大门了 ​    前端的结果由浏览器展示，那么最好的调试也是在浏览器上进行。chrome浏览器，包括大部分的浏览器都提供了开发者工具给开发人员进行调试。那么具体怎么用？下面记录chrome提供的开发者工具使用 ​    等等，怎么打开发者工">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端调试">
+<meta property="og:url" content="https://idkhts.github.io/2021/07/19/%E5%89%8D%E7%AB%AF%E8%B0%83%E8%AF%95/index.html">
+<meta property="og:site_name" content="idkhts&#39;s blog">
+<meta property="og:description" content="调试​    调式是开发必不可缺的一环，但是日常开发中总感觉自己除了看看输出基本就不会其他的东西，平常给页面做了优化都看不出来。。。现在得空，是时候打开新世界的大门了 ​    前端的结果由浏览器展示，那么最好的调试也是在浏览器上进行。chrome浏览器，包括大部分的浏览器都提供了开发者工具给开发人员进行调试。那么具体怎么用？下面记录chrome提供的开发者工具使用 ​    等等，怎么打开发者工">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/WJvab4.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/WJxLSx.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/WJzynO.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/WYepKH.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/WYeTW8.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/WYKAmQ.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/WYKPl8.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/WYKEwj.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/WYKVTs.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/WYKFOg.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/WYPdln.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/WYPWlR.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/WYP5m6.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/WJz7DS.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/WYA9AK.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/WYkf6s.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/WYkHtU.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/19/WYAzvj.png">
+<meta property="article:published_time" content="2021-07-19T12:02:56.000Z">
+<meta property="article:modified_time" content="2021-07-19T15:56:24.138Z">
+<meta property="article:author" content="idkhts">
+<meta property="article:tag" content="其他">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/07/19/WJvab4.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+  
+
+  
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">IDKHTS&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>首页</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>归档</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于我</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/47650726.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        IDKHTS&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        (⊙﹏⊙)
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="IDKHTS" target="_blank" href="/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/IDKHTS">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-前端调试" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      前端调试
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2021-07-19
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p>​    调式是开发必不可缺的一环，但是日常开发中总感觉自己除了看看输出基本就不会其他的东西，平常给页面做了优化都看不出来。。。现在得空，是时候打开新世界的大门了</p>
+<p>​    前端的结果由浏览器展示，那么最好的调试也是在浏览器上进行。chrome浏览器，包括大部分的浏览器都提供了开发者工具给开发人员进行调试。那么具体怎么用？下面记录chrome提供的开发者工具使用</p>
+<p>​    等等，怎么打开发者工具？？呃，F12或者右击鼠标点击选项“检查”</p>
+<h3 id="页面调试"><a href="#页面调试" class="headerlink" title="页面调试"></a>页面调试</h3><p>​    这部分主要就是和页面或者DOM有关，主要是开发者工具中的<code>Element</code>选项卡，它提供了</p>
+<ul>
+<li>页面当前DOM文档结构/代码，对应到具体元素的样式（内联样式，类）和计算到最后的样式等</li>
+<li>由鼠标选择页面，显示其在DOM文档中的位置</li>
+<li>各种css的调试功能：hover，active等状态的样式，取色，当场修改页面样式</li>
+<li>移动端调试模式</li>
+</ul>
+<p><img src="https://z3.ax1x.com/2021/07/19/WJvab4.png" alt="Elements选项卡"></p>
+<p><img src="https://z3.ax1x.com/2021/07/19/WJxLSx.png" alt="css调式"></p>
+<p><img src="https://z3.ax1x.com/2021/07/19/WJzynO.png" alt="移动端调试"></p>
+<h3 id="输出调式"><a href="#输出调式" class="headerlink" title="输出调式"></a>输出调式</h3><p>其实就是使用开发者工具的<code>Console</code>选项卡了。它提供打印输出（神器）</p>
+<ul>
+<li>不知道结果是什么，打印</li>
+<li>不知道会有什么属性，打印</li>
+<li>不知道是否执行到某一步，打印</li>
+<li>不知道执行的顺序，打印</li>
+<li>不知道。。，总之就是打印</li>
+</ul>
+<p>console其实还有一些比较好用和需要注意的地方</p>
+<ul>
+<li><p>可以直接使用过滤，只看错误/警告/正常输出</p>
+</li>
+<li><p>可以使用正则查找</p>
+<p><img src="https://z3.ax1x.com/2021/07/19/WYepKH.png" alt="输出"></p>
+</li>
+<li><p>不用console.log()换成console.dir()可以把DOM变成一个对象</p>
+</li>
+<li><p>console.log的对象是可以收起/展开的，也即对浏览器来说是要由一个数据源的，所以console.log的对象是会被保存下来的，当页面打印了很多对象时，就会导致页面卡顿。所以一般生产环境要求去掉打印。</p>
+</li>
+<li><p>报错时，浏览器会把对应的调用栈给出来。</p>
+<p><img src="https://z3.ax1x.com/2021/07/19/WYeTW8.png" alt="报错"></p>
+<p>若代码被压缩过，代码指向压缩后的代码，那么这个输出毫无用处。浏览器提供了补救方法，就是source map文件，source map是一个记录了源代码的命名和转换前具体行列位置的文件，浏览器读取后根据一定的规则就可以把变量名换成对应的变量名和给出对应源代码所在原来的行数。</p>
+</li>
+</ul>
+<h3 id="网络调试"><a href="#网络调试" class="headerlink" title="网络调试"></a>网络调试</h3><p>使用的是开发者工具的Network选项卡，它的功能包括但不限于：</p>
+<ul>
+<li><p>看到页面发出的各种网络请求，根据不同的条件进行筛选</p>
+</li>
+<li><p>看到请求头部和响应头部，响应body；响应body甚至贴心的进行了格式化处理</p>
+<p><img src="https://z3.ax1x.com/2021/07/19/WYKAmQ.png" alt="网络调试-请求详细信息"></p>
+<p><img src="https://z3.ax1x.com/2021/07/19/WYKPl8.png" alt="网络调试-数据格式化"></p>
+</li>
+<li><p>也可以看到每个请求的状态码、时间、是否是缓存等</p>
+<p><img src="https://z3.ax1x.com/2021/07/19/WYKEwj.png" alt="网络请求信息"></p>
+</li>
+<li><p>可以设置网络速度和无网络状态（用来测试网络超时，缓慢等问题）<br><img src="https://z3.ax1x.com/2021/07/19/WYKVTs.png" alt="网络调试-设置网速"></p>
+</li>
+<li><p>可以设置url阻塞（用来测试请求失败）</p>
+<p><img src="https://z3.ax1x.com/2021/07/19/WYKFOg.png" alt="网络请求-阻塞"></p>
+</li>
+</ul>
+<h3 id="优化调试"><a href="#优化调试" class="headerlink" title="优化调试"></a>优化调试</h3><p>优化其实就看几个指标，然后找出短板，弥补即可。这里主要是开发者工具中的<code>Performance</code>选项卡，它提供了</p>
+<ul>
+<li>FPS情况，FPS（Frame Per Second）代表的是每秒的帧数，chrome以60 fps为目标。</li>
+<li>CPU占用情况</li>
+<li>堆栈使用情况</li>
+<li>各种阶段（加载脚本，脚本执行，渲染，绘制）的时间占比</li>
+</ul>
+<p>打开发者工具选择Performance选项卡，点击原点开始录制</p>
+<p><img src="https://z3.ax1x.com/2021/07/19/WYPdln.png" alt="开始录制"></p>
+<p><img src="https://z3.ax1x.com/2021/07/19/WYPWlR.png" alt="录制中"></p>
+<p>点击停止stop或者再次点击红圆点完成录制</p>
+<p><img src="https://z3.ax1x.com/2021/07/19/WYP5m6.png" alt="停止录制"></p>
+<p>一段时间后，就可以看到类似以下的报告：</p>
+<p><img src="https://z3.ax1x.com/2021/07/19/WJz7DS.png" alt="performance选项卡"></p>
+<ol>
+<li><p>首先查看FPS栏</p>
+<p><img src="https://z3.ax1x.com/2021/07/19/WYA9AK.png" alt="查看FPS情况"></p>
+<p>绿色高度就是FPS帧率，越高越好，若出现红块则表明当前FPS过低，可能会照成用户体验问题</p>
+<p><img src="https://z3.ax1x.com/2021/07/19/WYkf6s.png" alt="FPS坏的情况"></p>
+<p>可以查看下面的Frames知道具体FPS值</p>
+<p><img src="https://z3.ax1x.com/2021/07/19/WYkHtU.png" alt="Frames查看"></p>
+</li>
+</ol>
+<ol start="2">
+<li><p>查看CPU的情况，CPU各种情况占用和下面的Summary选项卡的图中各种情况的颜色是一样的，紫色是渲染占用，橙色是脚本占用。</p>
+<p><img src="https://z3.ax1x.com/2021/07/19/WYAzvj.png" alt="CUP内存容量"></p>
+</li>
+<li><p>上图所示，Summary选项卡的就是各种阶段的占用时间对比。如果要优化页面，那么也可以看这个图。这个例子中加载loading的时间是最长的，那么可以从它先开始优化，不然即便再把86ms的painting（重绘）再优化90%也不够稍微优化10%的loading取得的成果大。</p>
+</li>
+</ol>
+<h3 id="其他调试"><a href="#其他调试" class="headerlink" title="其他调试"></a>其他调试</h3><ul>
+<li><code>Source</code>选项卡可以查看当前资源</li>
+<li><code>Application</code>选项卡可以查看使用的Cookie，WebStorage，IndexDB等一系列和本地存储有关的东西</li>
+<li></li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://developer.chrome.com/docs/devtools/evaluate-performance/">Analyze runtime performance</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ranyonsue/p/9342839.html">chrome-performance页面性能分析使用教程</a></p>
+</li>
+<li></li>
+</ul>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2021年07月19日 23:56</p>
+        <p>原始链接： <a class="post-url" href="/2021/07/19/%E5%89%8D%E7%AB%AF%E8%B0%83%E8%AF%95/" title="前端调试">https://idkhts.github.io/2021/07/19/%E5%89%8D%E7%AB%AF%E8%B0%83%E8%AF%95/</a></p>
+        <footer>
+            <a href="https://idkhts.github.io">
+                <img src="/images/47650726.png" alt="idkhts">
+                idkhts
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://idkhts.github.io/2021/07/19/%E5%89%8D%E7%AB%AF%E8%B0%83%E8%AF%95/&title=《前端调试》 — idkhts's blog&pic=https://idkhts.github.ioimages/47650726.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://idkhts.github.io/2021/07/19/%E5%89%8D%E7%AB%AF%E8%B0%83%E8%AF%95/&title=《前端调试》 — idkhts's blog&source=idkhts" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://idkhts.github.io/2021/07/19/%E5%89%8D%E7%AB%AF%E8%B0%83%E8%AF%95/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《前端调试》 — idkhts's blog&url=https://idkhts.github.io/2021/07/19/%E5%89%8D%E7%AB%AF%E8%B0%83%E8%AF%95/&via=https://idkhts.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://idkhts.github.io/2021/07/19/%E5%89%8D%E7%AB%AF%E8%B0%83%E8%AF%95/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://idkhts.github.io/2021/07/19/%E5%89%8D%E7%AB%AF%E8%B0%83%E8%AF%95/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/其他/" class="color3">其他</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%B0%83%E8%AF%95"><span class="post-toc-text">调试</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A1%B5%E9%9D%A2%E8%B0%83%E8%AF%95"><span class="post-toc-text">页面调试</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%BE%93%E5%87%BA%E8%B0%83%E5%BC%8F"><span class="post-toc-text">输出调式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BD%91%E7%BB%9C%E8%B0%83%E8%AF%95"><span class="post-toc-text">网络调试</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BC%98%E5%8C%96%E8%B0%83%E8%AF%95"><span class="post-toc-text">优化调试</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B6%E4%BB%96%E8%B0%83%E8%AF%95"><span class="post-toc-text">其他调试</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83"><span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2021/07/16/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">搭建博客</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+        <section class="comments" id="comments">
+            <div id="gitalk-container"></div>
+            <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+            <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script> -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+            <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+            <script>
+                let admins = 'IDKHTS'
+                let arrPathName = (location.pathname).split("/")
+                let gitalkID = ''
+                for (let i = arrPathName.length - 1; i >= 0; i--) {
+                    if (arrPathName[i] != '') { gitalkID = arrPathName[i].substring(0, 49); break }
+                }
+                // console.log(gitalkID)
+                var gitalk = new Gitalk({
+                    clientID: '884f505b74829948187e',
+                    clientSecret: '4e414213f820b3ddde39e15a53c2b5a70c301c5d',
+                    repo: 'idkhts.github.io',
+                    owner: 'IDKHTS',
+                    admin: admins.split(','),
+                    id: gitalkID,//location.pathname,  // Ensure uniqueness and length less than 50
+                    perPage: 50,
+                    distractionFreeMode: 'false'
+                })
+    
+                gitalk.render('gitalk-container')
+            </script>
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2021 idkhts<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://idkhts.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 0
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 16.67px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13.33px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>首页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>归档</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>关于我</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 16.67px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13.33px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+
+<script src="/js/search.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  
+<script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  
+<script src="/js/animate.js"></script>
+
+
+
+  
+<script src="/js/pop-img.js"></script>
+
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
