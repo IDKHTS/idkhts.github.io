@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>图片压缩 | idkhts&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="IDKHTS,IDKHTS's Blog" />
+  
+  <meta name="description" content="图片格式一些前置概念：  图片格式：图片本质上也是文件，写着一些信息，是一些数据；图片用图片浏览软件打开，是软件解析文件，屏幕绘制的结果。即图片是图片信息的编码后的二进制数据，图片格式表示的是图片用何种编码方法。不同图片格式使用的编码方法不一样和有可能对图片进行压缩，如保存图片为jpeg格式，这种格式的编码方式是有损压缩，即可能会丢失一些信息，而png是无损压缩图不丢失（可恢复）到原来输入的数据。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图片压缩">
+<meta property="og:url" content="https://idkhts.github.io/2021/07/23/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/index.html">
+<meta property="og:site_name" content="idkhts&#39;s blog">
+<meta property="og:description" content="图片格式一些前置概念：  图片格式：图片本质上也是文件，写着一些信息，是一些数据；图片用图片浏览软件打开，是软件解析文件，屏幕绘制的结果。即图片是图片信息的编码后的二进制数据，图片格式表示的是图片用何种编码方法。不同图片格式使用的编码方法不一样和有可能对图片进行压缩，如保存图片为jpeg格式，这种格式的编码方式是有损压缩，即可能会丢失一些信息，而png是无损压缩图不丢失（可恢复）到原来输入的数据。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-23T14:26:30.000Z">
+<meta property="article:modified_time" content="2021-07-25T16:22:02.376Z">
+<meta property="article:author" content="idkhts">
+<meta property="article:tag" content="情景">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+  
+
+  
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">IDKHTS&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>首页</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>归档</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于我</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/47650726.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        IDKHTS&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        (⊙﹏⊙)
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="IDKHTS" target="_blank" href="/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/IDKHTS">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-图片压缩" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      图片压缩
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2021-07-23
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="图片格式"><a href="#图片格式" class="headerlink" title="图片格式"></a>图片格式</h2><p>一些前置概念：</p>
+<ul>
+<li>图片格式：图片本质上也是文件，写着一些信息，是一些数据；图片用图片浏览软件打开，是软件解析文件，屏幕绘制的结果。即图片是图片信息的编码后的二进制数据，图片格式表示的是图片用何种编码方法。不同图片格式使用的编码方法不一样和有可能对图片进行压缩，如保存图片为jpeg格式，这种格式的编码方式是有损压缩，即可能会丢失一些信息，而png是无损压缩图不丢失（可恢复）到原来输入的数据。</li>
+<li>无损压缩：指的是资料经过压缩后，信息不被破坏，还能恢复到压缩前；</li>
+<li>灰度：从最暗的黑色到最亮的白色之间的各种值。</li>
+<li>色彩深度或色深：指的是颜色用几位bit来表示，1位两种颜色（黑白），8位256中颜色。</li>
+<li>位图：又称<strong>栅格图</strong>，表示使用像素阵列来表示图像，像素是RGB信息或者灰度值信息。位图根据位深度（像素的色彩深度）又划分多种位图：1、4、8、16、24、32等</li>
+<li>RGB颜色通道和Alpha通道：通常RGB表示三种颜色，R红色，G绿色，B蓝色，每种颜色通道用8bit（256种表示，一个像素拥有三种颜色通道即3*8bit为24bit，这种RGB图形称为真彩位图。若额外再加上透明度，即Alpha通道——用8bit来表示，那么一像素就是24bit + 8bit为32bit。</li>
+</ul>
+<ol>
+<li>PNG（Protable Network Graphics），便携式网络图形，支持无损压缩的位图图形格式，开发目标就是用来替代GIF作为适合网络传输的格式而不需要专利许可，所以广泛应用在互联网上。<ul>
+<li>根据一个像素的位数可以划分多种格式PNG 8（256种颜色）、 PNG 24（RGB三通道） PNG 32（RGB + Alpha 四颜色通道）和 RGB 48（ 16 * 3通道 ）、PNG 64（16 * 4通道）等</li>
+<li>无需专利</li>
+</ul>
+</li>
+<li> GIF（Graphics Interchange Format），图像互换格式，用的是每个像素有8bit的位图。而且使用无损压缩。早期网速慢时，便于传输。可以插入多帧，做成动画；LZW算法专利收费，如何导致开发出了png。</li>
+<li>JPEG（Joint Photographic Experts Group），联合图像专家小组，也可以成为JPG，采用的时有损压缩。</li>
+<li>WebP，比较新的一种文件格式，设计目标就是减少文件大小的同时又保持图片的又PNG等质量，便于网络种传输。同时提供了有损压缩和无损压缩两种方式。</li>
+</ol>
+<h2 id="简单图片压缩的实现"><a href="#简单图片压缩的实现" class="headerlink" title="简单图片压缩的实现"></a>简单图片压缩的实现</h2><p>正常的图片压缩，应该是算法的压缩，减少图片一些次要信息，一些颜色信息，达到压缩图片的目的。但是算法复杂度太高，前端可以借助canvas的API的toBlob的实现简单图片压缩。</p>
+<p><code>canvas.toBlob(cb,type,quality)</code>把整个canvas图形导入为Blob对象，cb为回到函数，type为类型，默认为<code>image/png</code>，quality为导出的质量；导出的图片的分辨率为96dpi</p>
+<p>整体思路为：由<code>input[type=file]</code>取得图片，把图片绘制进canvas种，使用canvas.toBlob导出低质量的图片达到压缩的目的，写个dmeo：</p>
+<ol>
+<li><p>取得本地图片，使用<code>input[type=&quot;file&quot;]</code>，监听<code>onchange</code>，取<code>inputEl.files[0]</code>即可（只处理一张）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 上传文件的元素</span></span><br><span class="line"><span class="keyword">const</span> uploadEl = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;#upload&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 待压缩的文件</span></span><br><span class="line"><span class="keyword">let</span> file</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取文件（只处理一个）</span></span><br><span class="line">uploadEl.onchange = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    file = uploadEl.files[<span class="number">0</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>图片绘制进canvas：图片转换成Image元素，再由canvas读取image元素</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 读文件变成base64</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readFile</span>(<span class="params">file</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> reader = <span class="keyword">new</span> FileReader()</span><br><span class="line">        reader.readAsDataURL(file)</span><br><span class="line">        reader.onload = <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;FileReader&#x27;</span>, data)</span><br><span class="line">            resolve(reader.result)</span><br><span class="line">        &#125;</span><br><span class="line">        reader.onerror = <span class="function">(<span class="params">err</span>) =&gt;</span> reject(err)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 由base64赋值给image元素的src得到图片的image元素</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createImgEl</span>(<span class="params">fileData</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> img = <span class="keyword">new</span> Image()</span><br><span class="line">        img.src = fileData</span><br><span class="line">        img.onload = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(e)</span><br><span class="line">            resolve(img)</span><br><span class="line">        &#125;</span><br><span class="line">        img.onerror = <span class="function">(<span class="params">err</span>) =&gt;</span> reject(err)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 图片元素imgEl绘制进canvas</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCompressCanvas</span>(<span class="params">imgEl</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">&#x27;canvas&#x27;</span>)</span><br><span class="line">    <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">&#x27;2d&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    canvas.width = imgEl.naturalWidth</span><br><span class="line">    canvas.height = imgEl.naturalHeight</span><br><span class="line"></span><br><span class="line">    ctx.drawImage(imgEl, <span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> canvas</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>压缩: 执行canvas.toBlob()，输出低质量的图片</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">compress</span>(<span class="params">file, options = &#123; type: <span class="string">&#x27;image/png&#x27;</span>, quality: <span class="number">0.8</span> &#125;</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> type = options.type || <span class="string">&#x27;image/png&#x27;</span></span><br><span class="line">    <span class="keyword">const</span> quality = options.quality || <span class="number">0.8</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">const</span> fileData = <span class="keyword">await</span> readFile(file)</span><br><span class="line">    <span class="keyword">const</span> imgEl = <span class="keyword">await</span> createImgEl(fileData)</span><br><span class="line">    <span class="keyword">const</span> canvas = getCompressCanvas(imgEl)</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        canvas.toBlob(<span class="function">(<span class="params">blob</span>) =&gt;</span> resolve(blob), type, quality)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>图片压缩实现：图片==》file==》image元素==》canvas==》canvas减低质量输出==》图片</p>
+<p>同时以上只是一个简单的图片压缩思路和demo，dmoe种它还存在缺点：</p>
+<ol>
+<li>压缩png图片时，有可能出现图片大下增大的情况，可以尝试压缩成其他格式或者缩小图片尺寸达到压缩目的</li>
+</ol>
+<p>参考<a target="_blank" rel="noopener" href="https://github.com/IDKHTS/imageHandle">demo地址</a></p>
+<h2 id="随记"><a href="#随记" class="headerlink" title="随记"></a>随记</h2><p>其实这里实现只要就是canvas的使用，一个是image到canvas的API<code>context.drawImage()</code>和canvas输出图形的API<code>canvas.toBlob()</code>。</p>
+<p>搜索<a target="_blank" rel="noopener" href="https://www.zhangxinxu.com/wordpress/2017/07/html5-canvas-image-compress-upload/">资料</a>发现，图片加水印，其实就是合成图片，一张是原图，一张是水印。怎么合成？就是使用image到canvas的API<code>context.drawImage()</code>，先绘制原图再绘制水印，两次或多次即可。大佬们厉害。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000023486410">了解js压缩，这一篇就够了</a></li>
+<li>各词条参考Wiki</li>
+</ul>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2021年07月26日 00:22</p>
+        <p>原始链接： <a class="post-url" href="/2021/07/23/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" title="图片压缩">https://idkhts.github.io/2021/07/23/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/</a></p>
+        <footer>
+            <a href="https://idkhts.github.io">
+                <img src="/images/47650726.png" alt="idkhts">
+                idkhts
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://idkhts.github.io/2021/07/23/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/&title=《图片压缩》 — idkhts's blog&pic=https://idkhts.github.ioimages/47650726.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://idkhts.github.io/2021/07/23/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/&title=《图片压缩》 — idkhts's blog&source=idkhts" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://idkhts.github.io/2021/07/23/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《图片压缩》 — idkhts's blog&url=https://idkhts.github.io/2021/07/23/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/&via=https://idkhts.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://idkhts.github.io/2021/07/23/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://idkhts.github.io/2021/07/23/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/情景/" class="color3">情景</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9B%BE%E7%89%87%E6%A0%BC%E5%BC%8F"><span class="post-toc-text">图片格式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AE%80%E5%8D%95%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">简单图片压缩的实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93"><span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%9A%8F%E8%AE%B0"><span class="post-toc-text">随记</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83"><span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2021/07/21/%E9%95%BF%E5%88%97%E8%A1%A8%E9%97%AE%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">长列表问题</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+        <section class="comments" id="comments">
+            <div id="gitalk-container"></div>
+            <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+            <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script> -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+            <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+            <script>
+                let admins = 'IDKHTS'
+                let arrPathName = (location.pathname).split("/")
+                let gitalkID = ''
+                for (let i = arrPathName.length - 1; i >= 0; i--) {
+                    if (arrPathName[i] != '') { gitalkID = arrPathName[i].substring(0, 49); break }
+                }
+                // console.log(gitalkID)
+                var gitalk = new Gitalk({
+                    clientID: '884f505b74829948187e',
+                    clientSecret: '4e414213f820b3ddde39e15a53c2b5a70c301c5d',
+                    repo: 'idkhts.github.io',
+                    owner: 'IDKHTS',
+                    admin: admins.split(','),
+                    id: gitalkID,//location.pathname,  // Ensure uniqueness and length less than 50
+                    perPage: 50,
+                    distractionFreeMode: 'false'
+                })
+    
+                gitalk.render('gitalk-container')
+            </script>
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2021 idkhts<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://idkhts.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 0
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 16.67px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%83%85%E6%99%AF/" style="font-size: 13.33px;">情景</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13.33px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" style="font-size: 10px;">计算机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>首页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>归档</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>关于我</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 16.67px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%83%85%E6%99%AF/" style="font-size: 13.33px;">情景</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13.33px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" style="font-size: 10px;">计算机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+
+<script src="/js/search.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  
+<script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  
+<script src="/js/animate.js"></script>
+
+
+
+  
+<script src="/js/pop-img.js"></script>
+
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
