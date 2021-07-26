@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>图片截取 | idkhts&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="IDKHTS,IDKHTS's Blog" />
+  
+  <meta name="description" content="CanvasRenderingContext2D.drawimage(el, …)canvas的APIcontext.drawimage(el, ...)，接口详情可以参考MDN，这个接口的作用就是在canvas中画出el元素，el可以是video，image，canvas元素，后面的参数就是一些位置宽高信息，从el元素的什么位置截取多少宽高，得到一个图像，在把这个绘制到当前canvas的什么位置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图片截取">
+<meta property="og:url" content="https://idkhts.github.io/2021/07/26/%E5%9B%BE%E7%89%87%E6%88%AA%E5%8F%96/index.html">
+<meta property="og:site_name" content="idkhts&#39;s blog">
+<meta property="og:description" content="CanvasRenderingContext2D.drawimage(el, …)canvas的APIcontext.drawimage(el, ...)，接口详情可以参考MDN，这个接口的作用就是在canvas中画出el元素，el可以是video，image，canvas元素，后面的参数就是一些位置宽高信息，从el元素的什么位置截取多少宽高，得到一个图像，在把这个绘制到当前canvas的什么位置">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/26/WhQyuR.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/26/WhlZ24.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/26/Wh1CSe.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/26/Wh3d4f.png">
+<meta property="article:published_time" content="2021-07-26T14:35:01.000Z">
+<meta property="article:modified_time" content="2021-07-26T16:00:33.292Z">
+<meta property="article:author" content="idkhts">
+<meta property="article:tag" content="情景">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/07/26/WhQyuR.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+  
+
+  
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">IDKHTS&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>首页</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>归档</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于我</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/47650726.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        IDKHTS&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        (⊙﹏⊙)
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="IDKHTS" target="_blank" href="/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/IDKHTS">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-图片截取" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      图片截取
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2021-07-26
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="CanvasRenderingContext2D-drawimage-el-…"><a href="#CanvasRenderingContext2D-drawimage-el-…" class="headerlink" title="CanvasRenderingContext2D.drawimage(el, …)"></a>CanvasRenderingContext2D.drawimage(el, …)</h2><p>canvas的API<code>context.drawimage(el, ...)</code>，接口详情可以参考<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/drawImage">MDN</a>，这个接口的作用就是在canvas中画出el元素，el可以是video，image，canvas元素，后面的参数就是一些位置宽高信息，从el元素的什么位置截取多少宽高，得到一个图像，在把这个绘制到当前canvas的什么位置宽高。</p>
+<h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p>核心就是<code>context.drawimage(el, ...)</code>，构造Image元素，然后再取得位置信息即可获取截取图片中一小块绘制到canvas上，然后canvas可以设置大小为截取图大小，然后再使用<code>canvas.toDataURL()</code>导出canvas图形即可。</p>
+<p><img src="https://z3.ax1x.com/2021/07/26/WhQyuR.png" alt="图片截取原理"></p>
+<h3 id="截取的位置和宽高"><a href="#截取的位置和宽高" class="headerlink" title="截取的位置和宽高"></a>截取的位置和宽高</h3><p>这里的难点在于，如何获取截取的位置和宽高？</p>
+<p>我们思考把原图Image设想为div矩形parent，截取框设想为div矩形child；如果child的相对parent定位，那么child的top就是所求Top，child的left就是所求的Left，child的宽度width就是所求的Width，child的高度height就是所求的Height。</p>
+<p><img src="https://z3.ax1x.com/2021/07/26/WhlZ24.png" alt="思路"></p>
+<p>所以我们构造父子元素，父元素设置大小为原图大小，子元素为可移动，缩放拉伸的元素；截取的图片就是当前子元素的top,left,width,height;</p>
+<h3 id="截取框的移动和伸缩"><a href="#截取框的移动和伸缩" class="headerlink" title="截取框的移动和伸缩"></a>截取框的移动和伸缩</h3><p>上一节了解，截取框其实就是“child元素“而已。那么现在剩下的问题就是这个子元素的移动伸缩了，因为截取框肯定是大小可变，位置可移的。</p>
+<p><img src="https://z3.ax1x.com/2021/07/26/Wh1CSe.png" alt="不同位置大小截取"><br>移动</p>
+<p>可以利用mousedown、mousemove、mouseup事件来进行实现。</p>
+<ol>
+<li><p>截取框元素中mousedown时，记录状态isMouseDown为true和位置X/Y（由event.pageX/Y取得)</p>
+</li>
+<li><p>截取元素中出啊发mouseup时，记录状态为isMouseDown为false</p>
+</li>
+<li><p>在截取框元素中触发mousemove时，检测状态isMouseDown，若为true说明鼠标点击后移动没放起，即正在拖动元素，那么就进行4；若为false则跳过</p>
+</li>
+<li><p>当前位置（event.pageX/Y）和上一次位置X/Y可以算出位置移动的left和top</p>
+<blockquote>
+<p>left = event.pageX - X</p>
+<p>top = event.pageY - Y</p>
+</blockquote>
+<p>有这个移动信息 可以直接赋值给截取框css的left和top实现移动</p>
+</li>
+</ol>
+<p>   伸缩</p>
+<p>   同理，也是三个鼠标事件的监听，得到鼠标移动的位置信息。移动的时赋值给css的left，top实现移动，那伸缩的就是赋值这些位置信息给css的width和height实现元素的伸缩。</p>
+<p>   不过按照常规的操作习惯，伸缩最好是在一个顶点拉伸，所以截取框中还要做一个小元素作为拉伸点，如何再实现三个事件即可</p>
+<p>   <img src="https://z3.ax1x.com/2021/07/26/Wh3d4f.png" alt="拉伸点"></p>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><h3 id="工具函数"><a href="#工具函数" class="headerlink" title="工具函数"></a>工具函数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 读取文件，返回Promise</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readFile</span>(<span class="params">file</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> reader = <span class="keyword">new</span> FileReader()</span><br><span class="line">        reader.readAsDataURL(file)</span><br><span class="line">        reader.onload = <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;FileReader&#x27;</span>, data)</span><br><span class="line">            resolve(reader.result)</span><br><span class="line">        &#125;</span><br><span class="line">        reader.onerror = <span class="function">(<span class="params">err</span>) =&gt;</span> reject(err)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据fileData创建Image元素并返回，返回Promise</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createImgEl</span>(<span class="params">fileData</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> img = <span class="keyword">new</span> Image()</span><br><span class="line">        img.src = fileData</span><br><span class="line">        img.onload = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(e)</span><br><span class="line">            resolve(img)</span><br><span class="line">        &#125;</span><br><span class="line">        img.onerror = <span class="function">(<span class="params">err</span>) =&gt;</span> reject(err)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建tag标签，子元素是children，children若为字符串，则标签内容为这字符串</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">creatEL</span>(<span class="params">tag, children</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> el = <span class="built_in">document</span>.createElement(tag);</span><br><span class="line">    <span class="keyword">if</span> (children &amp;&amp; <span class="built_in">Array</span>.isArray(children)) &#123;</span><br><span class="line">        children.forEach(<span class="function">(<span class="params">v</span>) =&gt;</span> el.appendChild(v));</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (children &amp;&amp; <span class="keyword">typeof</span> children == <span class="string">&quot;object&quot;</span>) &#123;</span><br><span class="line">        el.appendChild(children);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (children) &#123;</span><br><span class="line">        el.innerHTML = children;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> el;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">delay, fn</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> cando = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">...args</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (cando) &#123;</span><br><span class="line">            fn.apply(<span class="built_in">this</span>, args)</span><br><span class="line">            cando = <span class="literal">false</span></span><br><span class="line">            <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                cando = <span class="literal">true</span></span><br><span class="line">            &#125;, delay);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="构造”父元素“，原图"><a href="#构造”父元素“，原图" class="headerlink" title="构造”父元素“，原图"></a>构造”父元素“，原图</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CropComponent</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">file, options</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!options.el) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;there must have a el as mounted point&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">this</span>.file = file</span><br><span class="line">        <span class="built_in">this</span>.el = options.el <span class="comment">// 用作“父元素”</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建工作台</span></span><br><span class="line">    <span class="keyword">async</span> <span class="function"><span class="title">build</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="comment">// 读取源图片数据</span></span><br><span class="line">        <span class="keyword">const</span> sourceFileData = <span class="keyword">await</span> readFile(<span class="built_in">this</span>.file)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 生成对应的Image元素（获取源图片宽高和作为工作台）</span></span><br><span class="line">        <span class="keyword">const</span> imgEl = <span class="keyword">await</span> createImgEl(sourceFileData)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> naturalWidth = imgEl.naturalWidth</span><br><span class="line">        <span class="keyword">const</span> naturalHeight = imgEl.naturalHeight</span><br><span class="line"></span><br><span class="line">        <span class="built_in">this</span>.el.style.position = <span class="string">`relative`</span></span><br><span class="line">        <span class="built_in">this</span>.el.style.width = <span class="string">`<span class="subst">$&#123;naturalWidth&#125;</span>px`</span></span><br><span class="line">        <span class="built_in">this</span>.el.style.height = <span class="string">`<span class="subst">$&#123;naturalHeight&#125;</span>px`</span></span><br><span class="line">        <span class="built_in">this</span>.el.style.background = <span class="string">`url(<span class="subst">$&#123;sourceFileData&#125;</span>) no-repeat`</span></span><br><span class="line">        <span class="built_in">this</span>.el.style.backgroundSize = <span class="string">&#x27;100% 100%&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="创建“子元素”，裁剪框"><a href="#创建“子元素”，裁剪框" class="headerlink" title="创建“子元素”，裁剪框"></a>创建“子元素”，裁剪框</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 创建裁剪框（带伸缩点）</span></span><br><span class="line"><span class="function"><span class="title">createCropBox</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">//裁剪框</span></span><br><span class="line">    <span class="built_in">this</span>.cutFieldEl = <span class="built_in">document</span>.createElement(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line">    <span class="built_in">this</span>.cutFieldEl.classList.add(<span class="string">&#x27;cropbox&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 伸缩点</span></span><br><span class="line">    <span class="built_in">this</span>.moveFielEl = <span class="built_in">document</span>.createElement(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line">    <span class="built_in">this</span>.moveFielEl.classList.add(<span class="string">&#x27;moveField&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.el.appendChild(<span class="built_in">this</span>.cutFieldEl)</span><br><span class="line">    <span class="built_in">this</span>.cutFieldEl.appendChild(<span class="built_in">this</span>.moveFielEl)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="裁剪框移动实现"><a href="#裁剪框移动实现" class="headerlink" title="裁剪框移动实现"></a>裁剪框移动实现</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CropComponent</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">file, options</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!options.el) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;there must have a el as mounted point&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">this</span>.file = file</span><br><span class="line">        <span class="built_in">this</span>.el = options.el </span><br><span class="line">        <span class="built_in">this</span>.containerEl = options.containerEl</span><br><span class="line">        <span class="built_in">this</span>.cutFieldEl = <span class="literal">null</span></span><br><span class="line">        <span class="built_in">this</span>.moveFielEl = <span class="literal">null</span></span><br><span class="line">        <span class="built_in">this</span>.mouseCtx = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">this</span>.move = <span class="built_in">this</span>._move.bind(<span class="built_in">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建工作台</span></span><br><span class="line">    <span class="keyword">async</span> <span class="function"><span class="title">build</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="comment">// some code</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 多加一行</span></span><br><span class="line">        <span class="built_in">this</span>.createCropBox()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建裁剪框（带伸缩点）</span></span><br><span class="line">    <span class="function"><span class="title">createCropBox</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.cutFieldEl = <span class="built_in">document</span>.createElement(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line">        <span class="built_in">this</span>.cutFieldEl.classList.add(<span class="string">&#x27;cropbox&#x27;</span>)</span><br><span class="line">        <span class="built_in">this</span>.moveFielEl = <span class="built_in">document</span>.createElement(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line">        <span class="built_in">this</span>.moveFielEl.classList.add(<span class="string">&#x27;moveField&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 裁剪框的移动事件监听</span></span><br><span class="line">        <span class="built_in">this</span>.mouseCtx = &#123;</span><br><span class="line">            isMouseDown: <span class="literal">false</span>,</span><br><span class="line">            x: <span class="number">0</span>,</span><br><span class="line">            y: <span class="number">0</span>,</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">this</span>.cutFieldEl.addEventListener(</span><br><span class="line">            <span class="string">&#x27;mousedown&#x27;</span>,</span><br><span class="line">            (e) =&gt; &#123;</span><br><span class="line">                <span class="comment">// console.log(&#x27;mousedown&#x27;)</span></span><br><span class="line">                <span class="built_in">this</span>.mouseCtx = &#123;</span><br><span class="line">                    isMouseDown: <span class="literal">true</span>,</span><br><span class="line">                    x: e.pageX,</span><br><span class="line">                    y: e.pageY,</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="literal">false</span></span><br><span class="line">        )</span><br><span class="line">        <span class="built_in">this</span>.cutFieldEl.addEventListener(</span><br><span class="line">            <span class="string">&#x27;mousemove&#x27;</span>,</span><br><span class="line">            throttle(<span class="number">5</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="comment">// 裁剪框的移动</span></span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">this</span>.mouseCtx.isMouseDown) &#123;</span><br><span class="line">                    <span class="built_in">this</span>.move(e)</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 裁剪框的缩放</span></span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">this</span>.moveMouseCtx.isMouseDown) &#123;</span><br><span class="line">                    <span class="built_in">this</span>.expand(e)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;),</span><br><span class="line">            <span class="literal">false</span></span><br><span class="line">        )</span><br><span class="line">        <span class="built_in">this</span>.cutFieldEl.addEventListener(</span><br><span class="line">            <span class="string">&#x27;mouseup&#x27;</span>,</span><br><span class="line">            (e) =&gt; &#123;</span><br><span class="line">                <span class="comment">// console.log(&#x27;mouseup&#x27;, e)</span></span><br><span class="line">                <span class="built_in">this</span>.mouseCtx.isMouseDown = <span class="literal">false</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="literal">false</span></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        <span class="built_in">this</span>.el.appendChild(<span class="built_in">this</span>.cutFieldEl)</span><br><span class="line">        <span class="built_in">this</span>.cutFieldEl.appendChild(<span class="built_in">this</span>.moveFielEl)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 截取框移动逻辑</span></span><br><span class="line">    <span class="function"><span class="title">_move</span>(<span class="params">e</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> offsetX = e.pageX - <span class="built_in">this</span>.mouseCtx.x</span><br><span class="line">        <span class="keyword">const</span> offsetY = e.pageY - <span class="built_in">this</span>.mouseCtx.y</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 校验不能移出图片工作区</span></span><br><span class="line">        <span class="keyword">const</span> cutFieldStyle = <span class="built_in">window</span>.getComputedStyle(<span class="built_in">this</span>.cutFieldEl)</span><br><span class="line">        <span class="keyword">const</span> workspaceStyle = <span class="built_in">window</span>.getComputedStyle(<span class="built_in">this</span>.el)</span><br><span class="line">        <span class="keyword">let</span> left = cutFieldStyle.left.slice(<span class="number">0</span>, -<span class="number">2</span>) - <span class="number">0</span> + offsetX</span><br><span class="line">        <span class="keyword">let</span> top = cutFieldStyle.top.slice(<span class="number">0</span>, -<span class="number">2</span>) - <span class="number">0</span> + offsetY</span><br><span class="line">        <span class="keyword">const</span> maxLeft =</span><br><span class="line">            workspaceStyle.width.slice(<span class="number">0</span>, -<span class="number">2</span>) - cutFieldStyle.width.slice(<span class="number">0</span>, -<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">const</span> maxTop =</span><br><span class="line">            workspaceStyle.height.slice(<span class="number">0</span>, -<span class="number">2</span>) -</span><br><span class="line">            cutFieldStyle.height.slice(<span class="number">0</span>, -<span class="number">2</span>)</span><br><span class="line">        left = left &lt; <span class="number">0</span> ? <span class="number">0</span> : left</span><br><span class="line">        left = left &gt; maxLeft ? maxLeft : left</span><br><span class="line">        top = top &lt; <span class="number">0</span> ? <span class="number">0</span> : top</span><br><span class="line">        top = top &gt; maxTop ? maxTop : top</span><br><span class="line"></span><br><span class="line">        <span class="built_in">this</span>.cutFieldEl.style.left = left + <span class="string">&#x27;px&#x27;</span></span><br><span class="line">        <span class="built_in">this</span>.cutFieldEl.style.top = top + <span class="string">&#x27;px&#x27;</span></span><br><span class="line">        <span class="built_in">this</span>.mouseCtx.x += offsetX</span><br><span class="line">        <span class="built_in">this</span>.mouseCtx.y += offsetY</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="裁剪框拉伸实现"><a href="#裁剪框拉伸实现" class="headerlink" title="裁剪框拉伸实现"></a>裁剪框拉伸实现</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CropComponent</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">file, options</span>)</span> &#123;</span><br><span class="line">        <span class="comment">// some code</span></span><br><span class="line">        <span class="built_in">this</span>.expand = <span class="built_in">this</span>._expand.bind(<span class="built_in">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建工作台</span></span><br><span class="line">    <span class="keyword">async</span> <span class="function"><span class="title">build</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="comment">// some code</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建裁剪框（带伸缩点）</span></span><br><span class="line">    <span class="function"><span class="title">createCropBox</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="comment">// some code</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 裁剪框的缩放事件监听</span></span><br><span class="line">        <span class="built_in">this</span>.moveMouseCtx = &#123;</span><br><span class="line">            isMouseDown: <span class="literal">false</span>,</span><br><span class="line">            x: <span class="number">0</span>,</span><br><span class="line">            y: <span class="number">0</span>,</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">this</span>.moveFielEl.addEventListener(<span class="string">&#x27;mousedown&#x27;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">            e.stopPropagation()</span><br><span class="line">            <span class="comment">// console.log(&#x27;move mousedown&#x27;)</span></span><br><span class="line">            <span class="built_in">this</span>.moveMouseCtx = &#123;</span><br><span class="line">                isMouseDown: <span class="literal">true</span>,</span><br><span class="line">                x: e.pageX,</span><br><span class="line">                y: e.pageY,</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="built_in">this</span>.moveFielEl.addEventListener(</span><br><span class="line">            <span class="string">&#x27;mousemove&#x27;</span>,</span><br><span class="line">            throttle(<span class="number">5</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">                e.stopPropagation()</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">this</span>.moveMouseCtx.isMouseDown) &#123;</span><br><span class="line">                    <span class="built_in">this</span>.expand(e)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        )</span><br><span class="line">        <span class="built_in">this</span>.moveFielEl.addEventListener(<span class="string">&#x27;mouseup&#x27;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">            e.stopPropagation()</span><br><span class="line">            <span class="comment">// console.log(&#x27;move mouseup&#x27;, e)</span></span><br><span class="line">            <span class="built_in">this</span>.moveMouseCtx.isMouseDown = <span class="literal">false</span></span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果需要，也绑定控制事件到容器元素上</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.containerEl) &#123;</span><br><span class="line">            <span class="built_in">this</span>.handleContainer()</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">this</span>.el.appendChild(<span class="built_in">this</span>.cutFieldEl)</span><br><span class="line">        <span class="built_in">this</span>.cutFieldEl.appendChild(<span class="built_in">this</span>.moveFielEl)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 截取框移动逻辑</span></span><br><span class="line">    <span class="function"><span class="title">_move</span>(<span class="params">e</span>)</span> &#123;</span><br><span class="line">        <span class="comment">// some code</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 截取框拉伸扩展逻辑</span></span><br><span class="line">    <span class="function"><span class="title">_expand</span>(<span class="params">e</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> offsetX = e.pageX - <span class="built_in">this</span>.moveMouseCtx.x</span><br><span class="line">        <span class="keyword">const</span> offsetY = e.pageY - <span class="built_in">this</span>.moveMouseCtx.y</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 裁剪区域扩大</span></span><br><span class="line">        <span class="keyword">const</span> cutFieldStyle = <span class="built_in">window</span>.getComputedStyle(<span class="built_in">this</span>.cutFieldEl)</span><br><span class="line">        <span class="keyword">const</span> workspaceStyle = <span class="built_in">window</span>.getComputedStyle(<span class="built_in">this</span>.el)</span><br><span class="line">        <span class="keyword">let</span> width = cutFieldStyle.width.slice(<span class="number">0</span>, -<span class="number">2</span>) - <span class="number">0</span></span><br><span class="line">        <span class="keyword">let</span> height = cutFieldStyle.height.slice(<span class="number">0</span>, -<span class="number">2</span>) - <span class="number">0</span></span><br><span class="line">        width = width + offsetX</span><br><span class="line">        height = height + offsetY</span><br><span class="line">        <span class="keyword">const</span> maxWidth =</span><br><span class="line">            workspaceStyle.width.slice(<span class="number">0</span>, -<span class="number">2</span>) - cutFieldStyle.left.slice(<span class="number">0</span>, -<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">const</span> maxHeight =</span><br><span class="line">            workspaceStyle.height.slice(<span class="number">0</span>, -<span class="number">2</span>) - cutFieldStyle.top.slice(<span class="number">0</span>, -<span class="number">2</span>)</span><br><span class="line">        width = width &lt; <span class="number">0</span> ? <span class="number">0</span> : width</span><br><span class="line">        width = width &gt; maxWidth ? maxWidth : width</span><br><span class="line">        height = height &lt; <span class="number">0</span> ? <span class="number">0</span> : height</span><br><span class="line">        height = height &gt; maxHeight ? maxHeight : height</span><br><span class="line"></span><br><span class="line">        <span class="built_in">this</span>.cutFieldEl.style.width = width + <span class="string">&#x27;px&#x27;</span></span><br><span class="line">        <span class="built_in">this</span>.cutFieldEl.style.height = height + <span class="string">&#x27;px&#x27;</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">this</span>.moveMouseCtx.x += offsetX</span><br><span class="line">        <span class="built_in">this</span>.moveMouseCtx.y += offsetY</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="获取位置宽高信息"><a href="#获取位置宽高信息" class="headerlink" title="获取位置宽高信息"></a>获取位置宽高信息</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 截图工作台ui组件</span></span><br><span class="line"><span class="comment">// const cropComponent = new CropComponent(file,&#123;el,containerEl&#125;)</span></span><br><span class="line"><span class="comment">// cropComponent.build() // 构建截取框</span></span><br><span class="line"><span class="comment">// const positionMsg = cropComponent.getPositionMsg() // 获取截取位置信息（可直接传递给crop的第二参数）</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CropComponent</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">file, options</span>)</span> &#123;</span><br><span class="line">        <span class="comment">// some code</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建工作台</span></span><br><span class="line">    <span class="keyword">async</span> <span class="function"><span class="title">build</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="comment">// some code</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建裁剪框（带伸缩点）</span></span><br><span class="line">    <span class="function"><span class="title">createCropBox</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="comment">// some code</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 截取框移动逻辑</span></span><br><span class="line">    <span class="function"><span class="title">_move</span>(<span class="params">e</span>)</span> &#123;</span><br><span class="line">        <span class="comment">// some code</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 截取框拉伸扩展逻辑</span></span><br><span class="line">    <span class="function"><span class="title">_expand</span>(<span class="params">e</span>)</span> &#123;</span><br><span class="line">        <span class="comment">// some code</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取当前的截取框位置宽高信息</span></span><br><span class="line">    <span class="function"><span class="title">getPositionMsg</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> cutFieldStyle = <span class="built_in">window</span>.getComputedStyle(<span class="built_in">this</span>.cutFieldEl)</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            top: cutFieldStyle.top.slice(<span class="number">0</span>, -<span class="number">2</span>) - <span class="number">0</span>,</span><br><span class="line">            left: cutFieldStyle.left.slice(<span class="number">0</span>, -<span class="number">2</span>) - <span class="number">0</span>,</span><br><span class="line">            width: cutFieldStyle.width.slice(<span class="number">0</span>, -<span class="number">2</span>) - <span class="number">0</span>,</span><br><span class="line">            height: cutFieldStyle.height.slice(<span class="number">0</span>, -<span class="number">2</span>) - <span class="number">0</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="裁剪逻辑"><a href="#裁剪逻辑" class="headerlink" title="裁剪逻辑"></a>裁剪逻辑</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 截取sourceFile中options内位置信息的图片，返回base64</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">crop</span>(<span class="params">sourceFile, options</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 读取源图片数据</span></span><br><span class="line">    <span class="keyword">const</span> sourceFileData = <span class="keyword">await</span> readFile(sourceFile)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 生成对应的Image元素（获取源图片宽高和绘制sourceCanvas）</span></span><br><span class="line">    <span class="keyword">const</span> imgEl = <span class="keyword">await</span> createImgEl(sourceFileData)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理截图的位置，宽高</span></span><br><span class="line">    <span class="comment">// targetTop, targetLeft, targetWidth, targetHeight</span></span><br><span class="line">    <span class="keyword">const</span> defaultOptions = &#123;</span><br><span class="line">        top: <span class="number">0</span>,</span><br><span class="line">        left: <span class="number">0</span>,</span><br><span class="line">        width: imgEl.naturalWidth,</span><br><span class="line">        height: imgEl.naturalHeight,</span><br><span class="line">        type: <span class="string">&#x27;image/jpeg&#x27;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> realOptions = &#123;</span><br><span class="line">        ...defaultOptions,</span><br><span class="line">        ...options,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 截图</span></span><br><span class="line">    <span class="comment">// 创建resultCanvas</span></span><br><span class="line">    <span class="keyword">const</span> resultCanvas = <span class="built_in">document</span>.createElement(<span class="string">&#x27;canvas&#x27;</span>)</span><br><span class="line">    resultCanvas.width = realOptions.width</span><br><span class="line">    resultCanvas.height = realOptions.height</span><br><span class="line">    <span class="keyword">const</span> resultCtx = resultCanvas.getContext(<span class="string">&#x27;2d&#x27;</span>)</span><br><span class="line">    <span class="comment">// 把截取画面绘制经resultCanvas</span></span><br><span class="line">    resultCtx.drawImage(</span><br><span class="line">        imgEl,</span><br><span class="line">        realOptions.left,</span><br><span class="line">        realOptions.top,</span><br><span class="line">        realOptions.width,</span><br><span class="line">        realOptions.height,</span><br><span class="line">        <span class="number">0</span>,</span><br><span class="line">        <span class="number">0</span>,</span><br><span class="line">        realOptions.width,</span><br><span class="line">        realOptions.height</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 导出</span></span><br><span class="line">    <span class="keyword">const</span> code = resultCanvas.toDataURL(realOptions.type, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> code</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><a target="_blank" rel="noopener" href="https://github.com/IDKHTS/imageHandle/tree/main/crop">参考demo</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6860024132730519560#heading-5">https://juejin.cn/post/6860024132730519560#heading-5</a></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2021年07月27日 00:00</p>
+        <p>原始链接： <a class="post-url" href="/2021/07/26/%E5%9B%BE%E7%89%87%E6%88%AA%E5%8F%96/" title="图片截取">https://idkhts.github.io/2021/07/26/%E5%9B%BE%E7%89%87%E6%88%AA%E5%8F%96/</a></p>
+        <footer>
+            <a href="https://idkhts.github.io">
+                <img src="/images/47650726.png" alt="idkhts">
+                idkhts
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://idkhts.github.io/2021/07/26/%E5%9B%BE%E7%89%87%E6%88%AA%E5%8F%96/&title=《图片截取》 — idkhts's blog&pic=https://idkhts.github.ioimages/47650726.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://idkhts.github.io/2021/07/26/%E5%9B%BE%E7%89%87%E6%88%AA%E5%8F%96/&title=《图片截取》 — idkhts's blog&source=idkhts" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://idkhts.github.io/2021/07/26/%E5%9B%BE%E7%89%87%E6%88%AA%E5%8F%96/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《图片截取》 — idkhts's blog&url=https://idkhts.github.io/2021/07/26/%E5%9B%BE%E7%89%87%E6%88%AA%E5%8F%96/&via=https://idkhts.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://idkhts.github.io/2021/07/26/%E5%9B%BE%E7%89%87%E6%88%AA%E5%8F%96/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://idkhts.github.io/2021/07/26/%E5%9B%BE%E7%89%87%E6%88%AA%E5%8F%96/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/情景/" class="color3">情景</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CanvasRenderingContext2D-drawimage-el-%E2%80%A6"><span class="post-toc-text">CanvasRenderingContext2D.drawimage(el, …)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF"><span class="post-toc-text">实现思路</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%88%AA%E5%8F%96%E7%9A%84%E4%BD%8D%E7%BD%AE%E5%92%8C%E5%AE%BD%E9%AB%98"><span class="post-toc-text">截取的位置和宽高</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%88%AA%E5%8F%96%E6%A1%86%E7%9A%84%E7%A7%BB%E5%8A%A8%E5%92%8C%E4%BC%B8%E7%BC%A9"><span class="post-toc-text">截取框的移动和伸缩</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">具体实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0"><span class="post-toc-text">工具函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9E%84%E9%80%A0%E2%80%9D%E7%88%B6%E5%85%83%E7%B4%A0%E2%80%9C%EF%BC%8C%E5%8E%9F%E5%9B%BE"><span class="post-toc-text">构造”父元素“，原图</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%9B%E5%BB%BA%E2%80%9C%E5%AD%90%E5%85%83%E7%B4%A0%E2%80%9D%EF%BC%8C%E8%A3%81%E5%89%AA%E6%A1%86"><span class="post-toc-text">创建“子元素”，裁剪框</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A3%81%E5%89%AA%E6%A1%86%E7%A7%BB%E5%8A%A8%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">裁剪框移动实现</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A3%81%E5%89%AA%E6%A1%86%E6%8B%89%E4%BC%B8%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">裁剪框拉伸实现</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%8E%B7%E5%8F%96%E4%BD%8D%E7%BD%AE%E5%AE%BD%E9%AB%98%E4%BF%A1%E6%81%AF"><span class="post-toc-text">获取位置宽高信息</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A3%81%E5%89%AA%E9%80%BB%E8%BE%91"><span class="post-toc-text">裁剪逻辑</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83"><span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2021/07/23/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">图片压缩</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+        <section class="comments" id="comments">
+            <div id="gitalk-container"></div>
+            <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+            <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script> -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+            <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+            <script>
+                let admins = 'IDKHTS'
+                let arrPathName = (location.pathname).split("/")
+                let gitalkID = ''
+                for (let i = arrPathName.length - 1; i >= 0; i--) {
+                    if (arrPathName[i] != '') { gitalkID = arrPathName[i].substring(0, 49); break }
+                }
+                // console.log(gitalkID)
+                var gitalk = new Gitalk({
+                    clientID: '884f505b74829948187e',
+                    clientSecret: '4e414213f820b3ddde39e15a53c2b5a70c301c5d',
+                    repo: 'idkhts.github.io',
+                    owner: 'IDKHTS',
+                    admin: admins.split(','),
+                    id: gitalkID,//location.pathname,  // Ensure uniqueness and length less than 50
+                    perPage: 50,
+                    distractionFreeMode: 'false'
+                })
+    
+                gitalk.render('gitalk-container')
+            </script>
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2021 idkhts<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://idkhts.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 0
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 16.67px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%83%85%E6%99%AF/" style="font-size: 16.67px;">情景</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13.33px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" style="font-size: 10px;">计算机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>首页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>归档</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>关于我</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 16.67px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%83%85%E6%99%AF/" style="font-size: 16.67px;">情景</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13.33px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" style="font-size: 10px;">计算机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+
+<script src="/js/search.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  
+<script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  
+<script src="/js/animate.js"></script>
+
+
+
+  
+<script src="/js/pop-img.js"></script>
+
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
