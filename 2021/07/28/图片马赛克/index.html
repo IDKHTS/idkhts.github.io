@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>图片马赛克 | idkhts&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="IDKHTS,IDKHTS's Blog" />
+  
+  <meta name="description" content="ImageData对象 canvas的ctx.getImageData(left.top,width,height)可以获取canvas图像内的特定位置宽高的像素信息，这些信息存放在一个ImageData对象里面。  ImageData内就是数组，根据特定公式获取对应位置的像素的R&#x2F;G&#x2F;B&#x2F;Alpha的信息：  例如，要读取图片中位于第50行，第200列的像素的蓝色部份，你会写以下代码： 1blu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图片马赛克">
+<meta property="og:url" content="https://idkhts.github.io/2021/07/28/%E5%9B%BE%E7%89%87%E9%A9%AC%E8%B5%9B%E5%85%8B/index.html">
+<meta property="og:site_name" content="idkhts&#39;s blog">
+<meta property="og:description" content="ImageData对象 canvas的ctx.getImageData(left.top,width,height)可以获取canvas图像内的特定位置宽高的像素信息，这些信息存放在一个ImageData对象里面。  ImageData内就是数组，根据特定公式获取对应位置的像素的R&#x2F;G&#x2F;B&#x2F;Alpha的信息：  例如，要读取图片中位于第50行，第200列的像素的蓝色部份，你会写以下代码： 1blu">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-28T02:21:48.000Z">
+<meta property="article:modified_time" content="2021-07-28T15:44:43.622Z">
+<meta property="article:author" content="idkhts">
+<meta property="article:tag" content="情景">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+  
+
+  
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">IDKHTS&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>首页</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>归档</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于我</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/47650726.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        IDKHTS&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        (⊙﹏⊙)
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="IDKHTS" target="_blank" href="/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/IDKHTS">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-图片马赛克" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      图片马赛克
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2021-07-28
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="ImageData对象"><a href="#ImageData对象" class="headerlink" title="ImageData对象"></a>ImageData对象</h2><ul>
+<li><p>canvas的<code>ctx.getImageData(left.top,width,height)</code>可以获取canvas图像内的特定位置宽高的像素信息，这些信息存放在一个ImageData对象里面。</p>
+</li>
+<li><p>ImageData内就是数组，根据特定公式获取对应位置的像素的R/G/B/Alpha的信息：</p>
+<blockquote>
+<p>例如，要读取图片中位于第50行，第200列的像素的蓝色部份，你会写以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">blueComponent &#x3D; imageData.data[((50 * (imageData.width * 4)) + (200 * 4)) + 2];</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>根据行、列读取某像素点的R/G/B/A值的公式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">imageData.data[((50 * (imageData.width * 4)) + (200 * 4)) + 0&#x2F;1&#x2F;2&#x2F;3];</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>canvas的<code>ctx.putImageData(imgData, left, top)</code>可以在特定位置写入像素信息。</p>
+</li>
+</ul>
+<p>这个几个API合起来其实就是修改图像的某个地方。相对于直接画，这种方式操作的粒度更细而已。</p>
+<p>更详细查看<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/ImageData">MDN</a></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>像素其实是一个四方形的色块，图片是由不同像素（色块）组成的，在一定大小下，像素越多代表的色块越多那么数据越多，图片也就越清晰；像素少，那么数据少，图片只有寥寥几个色块组成，每个色块就会大。因为大，色块的棱角就会明显，图形也会因此出现一些“锯齿”（可以由此理解抗锯齿），失真。</p>
+<p>马赛克可以是失真，马赛克就是某个区域内的色块更大，相对其他地方，图形更模糊。那么想要某个区域打上马赛克，只需要模糊对应区域，即减少组成的色块数量。</p>
+<p>如何减少色块数量？屏幕的像素数量是固定，即原始色块数量是固定的，这个无法改变。那么就用多个原始色块组成一个大的色块。具体到代码其实就利用ImageData修改某一个区域的像素为同一种颜色。</p>
+<p>整体的实现思路：</p>
+<ol>
+<li><p>获取图片，使用<code>canvasContext.drawImage</code>，canvas元素图片预览</p>
+</li>
+<li><p>canvas监听mousedown、mousemove、mouseup三个事件，mousedown表示鼠标点击下，准备开始打马赛克记录状态<code>isDraw = true</code>；mouseup表示鼠标松开，结束打马赛克，记录状态<code>isDraw = false</code>；mousemove表示图像种鼠标在移动，通过isDraw判断是否在打马赛克；若是执行3，若不是不做操作。</p>
+</li>
+<li><p>马赛克逻辑：通过mousemove的event参数可以获取触发事件元素的位置偏移值、</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">left = event.offsetX</span><br><span class="line">top = event.offsetY</span><br></pre></td></tr></table></figure>
+
+<p>这个位置即当前需要打马赛克的位置。马赛克的宽高可以事先配置</p>
+</li>
+<li><p>canvas的<code>ctx.getImageData(left.top,width,height)</code>获取像素信息</p>
+</li>
+<li><p>获取像素数据的区域，划分比像素更大若干的色块（大的色块），每个色块设置成同一个颜色，这个颜色在色块自身区域随机选取。达成“失真模糊”效果</p>
+</li>
+<li><p>把这块像素数据写回canvas原来位置</p>
+</li>
+</ol>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><h3 id="一些工具函数"><a href="#一些工具函数" class="headerlink" title="一些工具函数"></a>一些工具函数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 读取文件，返回Promise</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readFile</span>(<span class="params">file</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> reader = <span class="keyword">new</span> FileReader()</span><br><span class="line">        reader.readAsDataURL(file)</span><br><span class="line">        reader.onload = <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">            resolve(reader.result)</span><br><span class="line">        &#125;</span><br><span class="line">        reader.onerror = <span class="function">(<span class="params">err</span>) =&gt;</span> reject(err)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据fileData创建Image元素并返回，返回Promise</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createImgEl</span>(<span class="params">fileData</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> img = <span class="keyword">new</span> Image()</span><br><span class="line">        img.src = fileData</span><br><span class="line">        img.onload = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">            resolve(img)</span><br><span class="line">        &#125;</span><br><span class="line">        img.onerror = <span class="function">(<span class="params">err</span>) =&gt;</span> reject(err)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// ImageData获取x行y列颜色为color，obj为ImageData数据对象</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getXY</span>(<span class="params">obj, x, y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> w = obj.width;</span><br><span class="line">    <span class="comment">// var h = obj.height;</span></span><br><span class="line">    <span class="comment">// var d = obj.data;</span></span><br><span class="line">    <span class="keyword">let</span> color = [];</span><br><span class="line">    color[<span class="number">0</span>] = obj.data[<span class="number">4</span> * (y * w + x)];</span><br><span class="line">    color[<span class="number">1</span>] = obj.data[<span class="number">4</span> * (y * w + x) + <span class="number">1</span>];</span><br><span class="line">    color[<span class="number">2</span>] = obj.data[<span class="number">4</span> * (y * w + x) + <span class="number">2</span>];</span><br><span class="line">    color[<span class="number">3</span>] = obj.data[<span class="number">4</span> * (y * w + x) + <span class="number">3</span>];</span><br><span class="line">    <span class="keyword">return</span> color;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ImageData设置x行y列颜色为color，obj为ImageData数据对象</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setXY</span>(<span class="params">obj, x, y, color</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> w = obj.width;</span><br><span class="line">    <span class="comment">// var h = obj.height;</span></span><br><span class="line">    <span class="comment">// var d = obj.data;</span></span><br><span class="line">    obj.data[<span class="number">4</span> * (y * w + x)] = color[<span class="number">0</span>];</span><br><span class="line">    obj.data[<span class="number">4</span> * (y * w + x) + <span class="number">1</span>] = color[<span class="number">1</span>];</span><br><span class="line">    obj.data[<span class="number">4</span> * (y * w + x) + <span class="number">2</span>] = color[<span class="number">2</span>];</span><br><span class="line">    obj.data[<span class="number">4</span> * (y * w + x) + <span class="number">3</span>] = color[<span class="number">3</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="创建canvas"><a href="#创建canvas" class="headerlink" title="创建canvas"></a>创建canvas</h3><p>首先应该实现创建canvas，因为马赛克是在canvas上绘制的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MasaicComponent</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">options</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!options.file) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;musted have file in the options as source picture&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!options.el) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;musted have el in the options as place to work &#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">this</span>.file = options.file</span><br><span class="line">        <span class="built_in">this</span>.el = options.el  <span class="comment">// 挂载点</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">this</span>.canvas = <span class="literal">null</span></span><br><span class="line">        <span class="built_in">this</span>.init()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">async</span> <span class="function"><span class="title">init</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.canvas = <span class="keyword">await</span> <span class="built_in">this</span>.createCanvas()</span><br><span class="line"></span><br><span class="line">        <span class="built_in">this</span>.el.innerHTML = <span class="string">&#x27;&#x27;</span></span><br><span class="line">        <span class="built_in">this</span>.el.appendChild(<span class="built_in">this</span>.canvas)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建画布并且画好图片</span></span><br><span class="line">    <span class="keyword">async</span> <span class="function"><span class="title">createCanvas</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> fileData = <span class="keyword">await</span> readFile(<span class="built_in">this</span>.file)</span><br><span class="line">        <span class="keyword">const</span> imgEl = <span class="keyword">await</span> createImgEl(fileData)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">&#x27;canvas&#x27;</span>)</span><br><span class="line">        <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">&#x27;2d&#x27;</span>)</span><br><span class="line">        canvas.position = <span class="string">&#x27;relative&#x27;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 图片大小适配</span></span><br><span class="line">        <span class="comment">// const proportion = imgEl.naturalWidth / imgEl.naturalHeight</span></span><br><span class="line">        <span class="keyword">const</span> containerStyle = <span class="built_in">window</span>.getComputedStyle(<span class="built_in">this</span>.el)</span><br><span class="line">        <span class="keyword">const</span> maxWidth = containerStyle.width.slice(<span class="number">0</span>, -<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">const</span> maxHeight = containerStyle.height.slice(<span class="number">0</span>, -<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">let</span> width = imgEl.naturalWidth</span><br><span class="line">        <span class="keyword">let</span> height = imgEl.naturalHeight</span><br><span class="line">        <span class="keyword">if</span> (width &gt; maxWidth) &#123;</span><br><span class="line">            width = maxWidth</span><br><span class="line">            height = <span class="built_in">Math</span>.floor((width / maxWidth) * maxHeight)</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (height &gt; maxHeight) &#123;</span><br><span class="line">            width = <span class="built_in">Math</span>.floor((height * maxWidth) / maxHeight)</span><br><span class="line">            height = maxHeight</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        canvas.width = width</span><br><span class="line">        canvas.height = height</span><br><span class="line"></span><br><span class="line">        ctx.drawImage(imgEl, <span class="number">0</span>, <span class="number">0</span>, width, height)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> canvas</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="画笔ui相关"><a href="#画笔ui相关" class="headerlink" title="画笔ui相关"></a>画笔ui相关</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MasaicComponent</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">options</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!options.file) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;musted have file in the options as source picture&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!options.el) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;musted have el in the options as place to work &#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">this</span>.file = options.file</span><br><span class="line">        <span class="built_in">this</span>.el = options.el  <span class="comment">// 挂载点</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">this</span>.canvas = <span class="literal">null</span></span><br><span class="line">        <span class="built_in">this</span>.init()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">async</span> <span class="function"><span class="title">init</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.canvas = <span class="keyword">await</span> <span class="built_in">this</span>.createCanvas()</span><br><span class="line"></span><br><span class="line">        <span class="built_in">this</span>.el.innerHTML = <span class="string">&#x27;&#x27;</span></span><br><span class="line">        <span class="built_in">this</span>.el.appendChild(<span class="built_in">this</span>.canvas)</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 画笔元素</span></span><br><span class="line">        <span class="built_in">this</span>.panEl = <span class="built_in">document</span>.createElement(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line">        <span class="built_in">this</span>.panEl.style.width = <span class="built_in">this</span>.pan.radius + <span class="string">&#x27;px&#x27;</span></span><br><span class="line">        <span class="built_in">this</span>.panEl.style.height = <span class="built_in">this</span>.pan.radius + <span class="string">&#x27;px&#x27;</span></span><br><span class="line">        <span class="built_in">this</span>.panEl.style.borderRadius = <span class="string">&#x27;50%&#x27;</span></span><br><span class="line">        <span class="built_in">this</span>.panEl.style.position = <span class="string">&#x27;absolute&#x27;</span></span><br><span class="line">        <span class="built_in">this</span>.panEl.style.backgroundColor = <span class="string">&#x27;yellow&#x27;</span></span><br><span class="line">        <span class="built_in">this</span>.panEl.style.transform = <span class="string">&#x27;translate(-50%,-50%)&#x27;</span></span><br><span class="line">        <span class="built_in">this</span>.panEl.style.pointerEvents = <span class="string">&#x27;none&#x27;</span></span><br><span class="line">        <span class="built_in">this</span>.panEl.style.display = <span class="string">&#x27;none&#x27;</span></span><br><span class="line">        <span class="built_in">this</span>.panEl.style.opacity = <span class="number">0.5</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 画笔相对于挂载元素的起始偏移</span></span><br><span class="line">        <span class="built_in">this</span>.panOffest = &#123;</span><br><span class="line">            left: <span class="built_in">this</span>.canvas.offsetLeft, <span class="comment">//canvasStyle.left.slice(0, -2) - 0,</span></span><br><span class="line">            top: <span class="built_in">this</span>.canvas.offsetTop, <span class="comment">// canvasStyle.top.slice(0, -2) - 0,</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">this</span>.el.appendChild(<span class="built_in">this</span>.panEl)</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 绘制画笔</span></span><br><span class="line">        <span class="built_in">this</span>.drawPan = <span class="built_in">this</span>._drawPan.bind(<span class="built_in">this</span>)</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建画布并且画好图片</span></span><br><span class="line">    <span class="keyword">async</span> <span class="function"><span class="title">createCanvas</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="comment">// some codes</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 设置画笔大小</span></span><br><span class="line">    <span class="function"><span class="title">setPan</span>(<span class="params">options</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.pan = &#123;</span><br><span class="line">            ...this.pan,</span><br><span class="line">            ...options,</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">this</span>.panEl.style.width = <span class="built_in">this</span>.pan.radius + <span class="string">&#x27;px&#x27;</span></span><br><span class="line">        <span class="built_in">this</span>.panEl.style.height = <span class="built_in">this</span>.pan.radius + <span class="string">&#x27;px&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="title">_drawPan</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.panEl.style.left = <span class="string">`<span class="subst">$&#123;<span class="built_in">this</span>.panOffest.left + <span class="built_in">this</span>.pan.x&#125;</span>px`</span></span><br><span class="line">        <span class="built_in">this</span>.panEl.style.top = <span class="string">`<span class="subst">$&#123;<span class="built_in">this</span>.panOffest.top + <span class="built_in">this</span>.pan.y&#125;</span>px`</span></span><br><span class="line">        <span class="built_in">this</span>.raf = <span class="built_in">window</span>.requestAnimationFrame(<span class="built_in">this</span>.drawPan)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="绑定事件"><a href="#绑定事件" class="headerlink" title="绑定事件"></a>绑定事件</h3><p>点击移动时获取绘制马赛克的位置数据和触发绘制马赛克</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MasaicComponent</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">options</span>)</span> &#123;</span><br><span class="line">        <span class="comment">//some  codes</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">async</span> <span class="function"><span class="title">init</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="comment">// some codes</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 绑定 画笔马赛克操作（点击，移动，放起）</span></span><br><span class="line">        <span class="built_in">this</span>.bindEvent()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建画布并且画好图片</span></span><br><span class="line">    <span class="keyword">async</span> <span class="function"><span class="title">createCanvas</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="comment">// some codes</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">bindEvent</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="comment">// 画笔操作</span></span><br><span class="line">        <span class="keyword">let</span> isDraw = <span class="literal">false</span></span><br><span class="line">        <span class="built_in">this</span>.canvas.addEventListener(<span class="string">&#x27;mousedown&#x27;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">            isDraw = <span class="literal">true</span></span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="built_in">this</span>.canvas.addEventListener(<span class="string">&#x27;mousemove&#x27;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">this</span>.pan.x = e.offsetX</span><br><span class="line">            <span class="built_in">this</span>.pan.y = e.offsetY</span><br><span class="line">            <span class="keyword">if</span> (isDraw) &#123;</span><br><span class="line">                <span class="built_in">this</span>.drawMasaic()</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// ref = window.requestAnimationFrame(this.pan.draw(e))</span></span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="built_in">this</span>.canvas.addEventListener(<span class="string">&#x27;mouseup&#x27;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">            isDraw = <span class="literal">false</span></span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 画笔ui</span></span><br><span class="line">        <span class="built_in">this</span>.raf = <span class="literal">null</span></span><br><span class="line">        <span class="built_in">this</span>.canvas.addEventListener(<span class="string">&#x27;mouseover&#x27;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">this</span>.panEl.style.display = <span class="string">&#x27;block&#x27;</span></span><br><span class="line">            <span class="built_in">this</span>.raf = <span class="built_in">window</span>.requestAnimationFrame(<span class="built_in">this</span>.drawPan)</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        <span class="built_in">this</span>.canvas.addEventListener(<span class="string">&#x27;mouseout&#x27;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">this</span>.panEl.style.display = <span class="string">&#x27;none&#x27;</span></span><br><span class="line">            <span class="built_in">window</span>.cancelAnimationFrame(<span class="built_in">this</span>.raf)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">setPan</span>(<span class="params">options</span>)</span> &#123;</span><br><span class="line">        <span class="comment">// some codes</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">_drawPan</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="comment">// some codes</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="马赛克绘制的逻辑"><a href="#马赛克绘制的逻辑" class="headerlink" title="马赛克绘制的逻辑"></a>马赛克绘制的逻辑</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MasaicComponent</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">options</span>)</span> &#123;</span><br><span class="line">        <span class="comment">//some  codes</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">async</span> <span class="function"><span class="title">init</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="comment">// some codes</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建画布并且画好图片</span></span><br><span class="line">    <span class="keyword">async</span> <span class="function"><span class="title">createCanvas</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="comment">// some codes</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">bindEvent</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="comment">// some codes</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">drawMasaic</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> ctx = <span class="built_in">this</span>.canvas.getContext(<span class="string">&#x27;2d&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> left = <span class="built_in">this</span>.pan.x - <span class="built_in">Math</span>.floor(<span class="built_in">this</span>.pan.radius / <span class="number">2</span>)</span><br><span class="line">        left = left == <span class="number">0</span> ? <span class="number">0</span> : left</span><br><span class="line">        <span class="keyword">let</span> top = <span class="built_in">this</span>.pan.y - <span class="built_in">Math</span>.floor(<span class="built_in">this</span>.pan.radius / <span class="number">2</span>)</span><br><span class="line">        top = top == <span class="number">0</span> ? <span class="number">0</span> : top</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">const</span> imgData = ctx.getImageData(</span><br><span class="line">            <span class="comment">// this.pan.x,</span></span><br><span class="line">            <span class="comment">// this.pan.y,</span></span><br><span class="line">            left,</span><br><span class="line">            top,</span><br><span class="line">            <span class="built_in">this</span>.pan.radius,</span><br><span class="line">            <span class="built_in">this</span>.pan.radius</span><br><span class="line">        )</span><br><span class="line">        <span class="keyword">const</span> w = imgData.width</span><br><span class="line">        <span class="keyword">const</span> h = imgData.height</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> num = <span class="number">2</span></span><br><span class="line">        <span class="keyword">const</span> sw = <span class="built_in">Math</span>.floor(w / num)</span><br><span class="line">        <span class="keyword">const</span> sh = <span class="built_in">Math</span>.floor(h / num)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历选中图片区域，获取其中每一个小区域</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; sh; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; sw; j++) &#123;</span><br><span class="line">                <span class="keyword">let</span> rw = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * num)</span><br><span class="line">                <span class="keyword">let</span> rh = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * num)</span><br><span class="line">                <span class="keyword">const</span> color = getXY(imgData, j * num + rw, i * num + rh)</span><br><span class="line">                </span><br><span class="line">                <span class="comment">// 设置当前小区域为同一种颜色</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">let</span> ii = <span class="number">0</span>; ii &lt; num; ii++) &#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">let</span> jj = <span class="number">0</span>; jj &lt; num; jj++) &#123;</span><br><span class="line">                        setXY(imgData, j * num + jj, i * num + ii, color)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ctx.putImageData(imgData, left, top) <span class="comment">//this.pan.x, this.pan.y)</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="title">setPan</span>(<span class="params">options</span>)</span> &#123;</span><br><span class="line">        <span class="comment">// some codes</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">_drawPan</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="comment">// some codes</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>详细代码 <a target="_blank" rel="noopener" href="https://github.com/IDKHTS/imageHandle/tree/main/mosaic">查看demo</a></p>
+<p>系列推荐：</p>
+<p><a href="https://idkhts.github.io/2021/07/23/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/">图片压缩</a></p>
+<p><a href="https://idkhts.github.io/2021/07/26/%E5%9B%BE%E7%89%87%E6%88%AA%E5%8F%96/">图片裁剪</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/liugang-vip/p/5442878.html">canva实践小实例 —— 马赛克效果</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/ImageData">ImageData——MDN</a></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2021年07月28日 23:44</p>
+        <p>原始链接： <a class="post-url" href="/2021/07/28/%E5%9B%BE%E7%89%87%E9%A9%AC%E8%B5%9B%E5%85%8B/" title="图片马赛克">https://idkhts.github.io/2021/07/28/%E5%9B%BE%E7%89%87%E9%A9%AC%E8%B5%9B%E5%85%8B/</a></p>
+        <footer>
+            <a href="https://idkhts.github.io">
+                <img src="/images/47650726.png" alt="idkhts">
+                idkhts
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://idkhts.github.io/2021/07/28/%E5%9B%BE%E7%89%87%E9%A9%AC%E8%B5%9B%E5%85%8B/&title=《图片马赛克》 — idkhts's blog&pic=https://idkhts.github.ioimages/47650726.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://idkhts.github.io/2021/07/28/%E5%9B%BE%E7%89%87%E9%A9%AC%E8%B5%9B%E5%85%8B/&title=《图片马赛克》 — idkhts's blog&source=idkhts" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://idkhts.github.io/2021/07/28/%E5%9B%BE%E7%89%87%E9%A9%AC%E8%B5%9B%E5%85%8B/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《图片马赛克》 — idkhts's blog&url=https://idkhts.github.io/2021/07/28/%E5%9B%BE%E7%89%87%E9%A9%AC%E8%B5%9B%E5%85%8B/&via=https://idkhts.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://idkhts.github.io/2021/07/28/%E5%9B%BE%E7%89%87%E9%A9%AC%E8%B5%9B%E5%85%8B/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://idkhts.github.io/2021/07/28/%E5%9B%BE%E7%89%87%E9%A9%AC%E8%B5%9B%E5%85%8B/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/情景/" class="color3">情景</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ImageData%E5%AF%B9%E8%B1%A1"><span class="post-toc-text">ImageData对象</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8E%9F%E7%90%86"><span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">具体实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0"><span class="post-toc-text">一些工具函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%9B%E5%BB%BAcanvas"><span class="post-toc-text">创建canvas</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%94%BB%E7%AC%94ui%E7%9B%B8%E5%85%B3"><span class="post-toc-text">画笔ui相关</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BB%91%E5%AE%9A%E4%BA%8B%E4%BB%B6"><span class="post-toc-text">绑定事件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A9%AC%E8%B5%9B%E5%85%8B%E7%BB%98%E5%88%B6%E7%9A%84%E9%80%BB%E8%BE%91"><span class="post-toc-text">马赛克绘制的逻辑</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83"><span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2021/07/26/%E5%9B%BE%E7%89%87%E8%A3%81%E5%89%AA/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">图片裁剪</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+        <section class="comments" id="comments">
+            <div id="gitalk-container"></div>
+            <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+            <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script> -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+            <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+            <script>
+                let admins = 'IDKHTS'
+                let arrPathName = (location.pathname).split("/")
+                let gitalkID = ''
+                for (let i = arrPathName.length - 1; i >= 0; i--) {
+                    if (arrPathName[i] != '') { gitalkID = arrPathName[i].substring(0, 49); break }
+                }
+                // console.log(gitalkID)
+                var gitalk = new Gitalk({
+                    clientID: '884f505b74829948187e',
+                    clientSecret: '4e414213f820b3ddde39e15a53c2b5a70c301c5d',
+                    repo: 'idkhts.github.io',
+                    owner: 'IDKHTS',
+                    admin: admins.split(','),
+                    id: gitalkID,//location.pathname,  // Ensure uniqueness and length less than 50
+                    perPage: 50,
+                    distractionFreeMode: 'false'
+                })
+    
+                gitalk.render('gitalk-container')
+            </script>
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2021 idkhts<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://idkhts.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 0
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/http/" style="font-size: 12.5px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%83%85%E6%99%AF/" style="font-size: 17.5px;">情景</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 12.5px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" style="font-size: 10px;">计算机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 15px;">计算机网络</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>首页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>归档</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>关于我</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/http/" style="font-size: 12.5px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%83%85%E6%99%AF/" style="font-size: 17.5px;">情景</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 12.5px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" style="font-size: 10px;">计算机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 15px;">计算机网络</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+
+<script src="/js/search.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  
+<script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  
+<script src="/js/animate.js"></script>
+
+
+
+  
+<script src="/js/pop-img.js"></script>
+
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
