@@ -107,6 +107,70 @@
       <div class="outer">
         <section id="main" class="body-wrap">
   
+    <article id="post-前端抠图？" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/07/30/%E5%89%8D%E7%AB%AF%E6%8A%A0%E5%9B%BE%EF%BC%9F/"  >前端抠图？</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2021/07/30/%E5%89%8D%E7%AB%AF%E6%8A%A0%E5%9B%BE%EF%BC%9F/" >
+                
+                <img src="https://idkhts.github.io/images/banner.jpg" alt="前端抠图？" title="前端抠图？">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                
+做了之前几篇文章，感觉自己可以了，突然想做一个浏览器的ps可以吗？然后上网搜了一下，发现有公司已经做出产品了。。。all right，伟大构思慢了一步，出生太晚了。
+
+图片拼接？
+drawImage两次，记一下图片的高度即可
+
+图片水印？
+也是两次drawImage。。。一次原图，一次水印
+
+然后发现一个比较有趣的功能——抠图。这个功能应该是特别常见，从原图中获取一部分...
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2021-07-30</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/情景/" class="color3">情景</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2021/07/30/%E5%89%8D%E7%AB%AF%E6%8A%A0%E5%9B%BE%EF%BC%9F/#more" class="article-more-link" >详细阅读 &gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
     <article id="post-图片马赛克" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -132,12 +196,13 @@
         </div>
         <div class="article-feed">
             <p>
-                ImageData对象
+                
+ImageData对象
 canvas的ctx.getImageData(left.top,width,height)可以获取canvas图像内的特定位置宽高的像素信息，这些信息存放在一个ImageData对象里面。
 
 ImageData内就是数组，根据特定公式获取对应位置的像素的R/G/B/Alpha的信息：
 
-例如，要读取图片中位于第50行，第200列的像素的蓝色部份，...
+例如，要读取图片中位于第50行，第200列的像素的蓝色部份...
             </p>
         </div>
       
@@ -192,7 +257,8 @@ ImageData内就是数组，根据特定公式获取对应位置的像素的R/G/B
         </div>
         <div class="article-feed">
             <p>
-                CanvasRenderingContext2D.drawimage(el, …)canvas的APIcontext.drawimage(el, ...)，接口详情可以参考MDN，这个接口的作用就是在canvas中画出el元素，el可以是video，image，canvas元素，后面的参数就是一些位置宽高信息，从el元素的什么位置截取多少宽高，得到一个图像，在把这个绘制到...
+                
+CanvasRenderingContext2D.drawimage(el, …)canvas的APIcontext.drawimage(el, ...)，接口详情可以参考MDN，这个接口的作用就是在canvas中画出el元素，el可以是video，image，canvas元素，后面的参数就是一些位置宽高信息，从el元素的什么位置截取多少宽高，得到一个图像，在把这个绘制...
             </p>
         </div>
       
@@ -636,70 +702,6 @@ Web Worker
 
 
   
-    <article id="post-monorepo和lerna" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/19/monorepo%E5%92%8Clerna/"  >monorepo和lerna</a>
-    </h1>
-  
-
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2021/01/19/monorepo%E5%92%8Clerna/" >
-                
-                <img src="https://idkhts.github.io/images/banner.jpg" alt="monorepo和lerna" title="monorepo和lerna">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                大项目管理
-随着前端的不断发展，代码变得越来越繁杂，为方便管理，减小维护成本，也为了方便复用，大代码库被地划分为更小粒度的代码。那这些小代码库应该如何管理？大致有两类解决方案：
-
-multi reop 即一个包一个库
-  每个包都有独立的库管理，开发自由度高
-  调用时，要像第三方包一样被调用；
-  修改时，源代码要到被调用的库修改，然后由调用者修改调用方式
-
-
-mono...
-            </p>
-        </div>
-      
-        
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2021-01-19</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/其他/" class="color3">其他</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2021/01/19/monorepo%E5%92%8Clerna/#more" class="article-more-link" >详细阅读 &gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -761,7 +763,7 @@ mono...
             
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/http/" style="font-size: 12.5px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%83%85%E6%99%AF/" style="font-size: 17.5px;">情景</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 12.5px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" style="font-size: 10px;">计算机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 15px;">计算机网络</a>
+            <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 16.67px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%83%85%E6%99%AF/" style="font-size: 20px;">情景</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13.33px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" style="font-size: 10px;">计算机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -794,7 +796,7 @@ mono...
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/http/" style="font-size: 12.5px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%83%85%E6%99%AF/" style="font-size: 17.5px;">情景</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 12.5px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" style="font-size: 10px;">计算机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 15px;">计算机网络</a>
+            <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 16.67px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%83%85%E6%99%AF/" style="font-size: 20px;">情景</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13.33px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" style="font-size: 10px;">计算机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a>
         </div>
     </div>
 </div>

@@ -8,23 +8,24 @@
   
     <meta name="keywords" content="IDKHTS,IDKHTS's Blog" />
   
-  <meta name="description" content="CanvasRenderingContext2D.drawimage(el, …)canvas的APIcontext.drawimage(el, ...)，接口详情可以参考MDN，这个接口的作用就是在canvas中画出el元素，el可以是video，image，canvas元素，后面的参数就是一些位置宽高信息，从el元素的什么位置截取多少宽高，得到一个图像，在把这个绘制到当前canvas的什么位置">
+  <meta name="description" content="CanvasRenderingContext2D.drawimage(el, …)canvas的APIcontext.drawimage(el, ...)，接口详情可以参考MDN，这个接口的作用就是在canvas中画出el元素，el可以是video，image，canvas元素，后面的参数就是一些位置宽高信息，从el元素的什么位置截取多少宽高，得到一个图像，在把这个绘制到当前canvas的什么位">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图片裁剪">
 <meta property="og:url" content="https://idkhts.github.io/2021/07/26/%E5%9B%BE%E7%89%87%E8%A3%81%E5%89%AA/index.html">
 <meta property="og:site_name" content="idkhts&#39;s blog">
-<meta property="og:description" content="CanvasRenderingContext2D.drawimage(el, …)canvas的APIcontext.drawimage(el, ...)，接口详情可以参考MDN，这个接口的作用就是在canvas中画出el元素，el可以是video，image，canvas元素，后面的参数就是一些位置宽高信息，从el元素的什么位置截取多少宽高，得到一个图像，在把这个绘制到当前canvas的什么位置">
+<meta property="og:description" content="CanvasRenderingContext2D.drawimage(el, …)canvas的APIcontext.drawimage(el, ...)，接口详情可以参考MDN，这个接口的作用就是在canvas中画出el元素，el可以是video，image，canvas元素，后面的参数就是一些位置宽高信息，从el元素的什么位置截取多少宽高，得到一个图像，在把这个绘制到当前canvas的什么位">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://z3.ax1x.com/2021/07/30/WOvaE8.gif">
 <meta property="og:image" content="https://z3.ax1x.com/2021/07/26/WhQyuR.png">
 <meta property="og:image" content="https://z3.ax1x.com/2021/07/26/WhlZ24.png">
 <meta property="og:image" content="https://z3.ax1x.com/2021/07/26/Wh1CSe.png">
 <meta property="og:image" content="https://z3.ax1x.com/2021/07/26/Wh3d4f.png">
 <meta property="article:published_time" content="2021-07-26T14:35:01.000Z">
-<meta property="article:modified_time" content="2021-07-28T15:36:32.659Z">
+<meta property="article:modified_time" content="2021-07-30T10:43:43.133Z">
 <meta property="article:author" content="idkhts">
 <meta property="article:tag" content="情景">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://z3.ax1x.com/2021/07/26/WhQyuR.png">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/07/30/WOvaE8.gif">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -142,7 +143,8 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <h2 id="CanvasRenderingContext2D-drawimage-el-…"><a href="#CanvasRenderingContext2D-drawimage-el-…" class="headerlink" title="CanvasRenderingContext2D.drawimage(el, …)"></a>CanvasRenderingContext2D.drawimage(el, …)</h2><p>canvas的API<code>context.drawimage(el, ...)</code>，接口详情可以参考<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/drawImage">MDN</a>，这个接口的作用就是在canvas中画出el元素，el可以是video，image，canvas元素，后面的参数就是一些位置宽高信息，从el元素的什么位置截取多少宽高，得到一个图像，在把这个绘制到当前canvas的什么位置宽高。</p>
+            <p><img src="https://z3.ax1x.com/2021/07/30/WOvaE8.gif" alt="图片裁剪"></p>
+<h2 id="CanvasRenderingContext2D-drawimage-el-…"><a href="#CanvasRenderingContext2D-drawimage-el-…" class="headerlink" title="CanvasRenderingContext2D.drawimage(el, …)"></a>CanvasRenderingContext2D.drawimage(el, …)</h2><p>canvas的API<code>context.drawimage(el, ...)</code>，接口详情可以参考<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/drawImage">MDN</a>，这个接口的作用就是在canvas中画出el元素，el可以是video，image，canvas元素，后面的参数就是一些位置宽高信息，从el元素的什么位置截取多少宽高，得到一个图像，在把这个绘制到当前canvas的什么位置宽高。</p>
 <h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p>核心就是<code>context.drawimage(el, ...)</code>，构造Image元素，然后再取得位置信息即可获取截取图片中一小块绘制到canvas上，然后canvas可以设置大小为截取图大小，然后再使用<code>canvas.toDataURL()</code>导出canvas图形即可。</p>
 <p><img src="https://z3.ax1x.com/2021/07/26/WhQyuR.png" alt="图片截取原理"></p>
 <h3 id="截取的位置和宽高"><a href="#截取的位置和宽高" class="headerlink" title="截取的位置和宽高"></a>截取的位置和宽高</h3><p>这里的难点在于，如何获取截取的位置和宽高？</p>
@@ -207,7 +209,7 @@
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2021年07月28日 23:36</p>
+        <p>最后更新： 2021年07月30日 18:43</p>
         <p>原始链接： <a class="post-url" href="/2021/07/26/%E5%9B%BE%E7%89%87%E8%A3%81%E5%89%AA/" title="图片裁剪">https://idkhts.github.io/2021/07/26/%E5%9B%BE%E7%89%87%E8%A3%81%E5%89%AA/</a></p>
         <footer>
             <a href="https://idkhts.github.io">
@@ -406,7 +408,7 @@
             
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/http/" style="font-size: 12.5px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%83%85%E6%99%AF/" style="font-size: 17.5px;">情景</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 12.5px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" style="font-size: 10px;">计算机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 15px;">计算机网络</a>
+            <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 16.67px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%83%85%E6%99%AF/" style="font-size: 20px;">情景</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13.33px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" style="font-size: 10px;">计算机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -439,7 +441,7 @@
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/http/" style="font-size: 12.5px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%83%85%E6%99%AF/" style="font-size: 17.5px;">情景</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 12.5px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" style="font-size: 10px;">计算机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 15px;">计算机网络</a>
+            <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 16.67px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%83%85%E6%99%AF/" style="font-size: 20px;">情景</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13.33px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" style="font-size: 10px;">计算机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a>
         </div>
     </div>
 </div>
