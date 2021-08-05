@@ -3,22 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>TCP与UDP | idkhts&#39;s blog</title>
+  <title>面向对象编程 | idkhts&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="IDKHTS,IDKHTS's Blog" />
   
-  <meta name="description" content="TCP&#x2F;UDP是传输层协议，主要是目标主机到目标主机的通信； TCPTCP是面向连接的、可靠的、基于字节流的传输  面向连接：两台计算机通讯需要建立一个通讯连接，建立过程就是“ 三次握手 ”：客户端发起连接请求，服务端确认连接，客户端确认服务端的应答，建立连接成功。结束关闭连接时利用“ 四次挥手 ”确保连接的中断。  需要三次握手的原因：假设只有两次即可建立，当客户端发送第一次连接请求网络延迟，客">
+  <meta name="description" content="概念​        ”你怎么理解面向对象编程的？“，面试的时候被问到这个问题，我突然才意识到我是不懂面向对象编程，我不知道它和其他范式的区别，为什么要有它？它有什么优势？我能回答出它的三个特征，编程也能写类，但我依然不知为什么要这样做。下面是查了一些资料后的理解。 ​        先来顾名思义吧，”面向对象“，”面向“指的是侧重，更关注。核心是”对象“，对象指的是工作的主体，或者说工作组成的东">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TCP与UDP">
-<meta property="og:url" content="https://idkhts.github.io/2021/01/19/TCP%E5%92%8CUDP/index.html">
+<meta property="og:title" content="面向对象编程">
+<meta property="og:url" content="https://idkhts.github.io/2021/08/05/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/index.html">
 <meta property="og:site_name" content="idkhts&#39;s blog">
-<meta property="og:description" content="TCP&#x2F;UDP是传输层协议，主要是目标主机到目标主机的通信； TCPTCP是面向连接的、可靠的、基于字节流的传输  面向连接：两台计算机通讯需要建立一个通讯连接，建立过程就是“ 三次握手 ”：客户端发起连接请求，服务端确认连接，客户端确认服务端的应答，建立连接成功。结束关闭连接时利用“ 四次挥手 ”确保连接的中断。  需要三次握手的原因：假设只有两次即可建立，当客户端发送第一次连接请求网络延迟，客">
+<meta property="og:description" content="概念​        ”你怎么理解面向对象编程的？“，面试的时候被问到这个问题，我突然才意识到我是不懂面向对象编程，我不知道它和其他范式的区别，为什么要有它？它有什么优势？我能回答出它的三个特征，编程也能写类，但我依然不知为什么要这样做。下面是查了一些资料后的理解。 ​        先来顾名思义吧，”面向对象“，”面向“指的是侧重，更关注。核心是”对象“，对象指的是工作的主体，或者说工作组成的东">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-01-19T14:41:04.903Z">
-<meta property="article:modified_time" content="2021-07-15T15:57:43.658Z">
+<meta property="article:published_time" content="2021-08-05T07:59:23.000Z">
+<meta property="article:modified_time" content="2021-08-05T08:30:36.937Z">
 <meta property="article:author" content="idkhts">
-<meta property="article:tag" content="计算机网络">
+<meta property="article:tag" content="其他">
+<meta property="article:tag" content="计算机">
 <meta name="twitter:card" content="summary">
   
   
@@ -108,20 +109,20 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-TCP和UDP" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-面向对象编程" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      TCP与UDP
+      面向对象编程
     </h1>
     <div class="post-title-bar">
       <ul>
           
         <li>
-          <i class="fa fa-calendar"></i>  2021-01-19
+          <i class="fa fa-calendar"></i>  2021-08-05
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -137,67 +138,56 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <p>TCP/UDP是传输层协议，主要是目标主机到目标主机的通信；</p>
-<h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><p>TCP是<strong>面向连接的、可靠的、基于字节流的传输</strong></p>
-<ul>
-<li><p>面向连接：两台计算机通讯需要建立一个通讯连接，建立过程就是“</p>
-<p>三次握手</p>
-<p>”：客户端发起连接请求，服务端确认连接，客户端确认服务端的应答，建立连接成功。结束关闭连接时利用“</p>
-<p>四次挥手</p>
-<p>”确保连接的中断。</p>
-<ul>
-<li>需要三次握手的原因：假设只有两次即可建立，当客户端发送第一次连接请求网络延迟，客户端认为第一次请求超时重发一次请求，第二次请求正常到达服务端，服务端确认后发送确认，客户端收到确认连接建立，开始发送数据；然而这时第一次请求连接到达了服务端，但是服务端无法知道这是客户端在第二次请求建立连接是之前发送的，然后服务端再次为这个请求发送确认同时开启连接，客户端收到确认建立连接后发送数据却用的是第二次连接，所以延迟建立的连接是无用的，这也就消耗浪费了网络资源；</li>
-<li>四次挥手：由于TCP是全双工的，所以连接A-》B和B-》A都要断。<ul>
-<li>客户端A端发起关闭连接请求【1】</li>
-<li>服务端B端接收确认关闭A-》B的信息流向通道（B不再接受本连接的A的信息）发送确认关闭信息，同时B端也发起关闭连接给A端【2】</li>
-<li>A端接收确认关闭B-》A信息流向通道（A不再接受本连接的B的信息）发送确认关闭信息。【1】</li>
-<li>这里注意最后一次挥手，A向B发确认，这时候A不能马上断开连接，还需要等待2MSL，MSL是报文段的最大生成时间，因为B还没收到A发的确认是还可以发送信息给A的，可能在此期间B又发送了数据，所以为了安全起见，A收到了结束请求发送确认还需要等2MSL才能关闭连接</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>因为三次握手的建立连接过程确保了发送双方的发送和接收能力，同时TCP使用了流量控制和拥塞控制方法控制网络影响，所以TCP提供了可靠的传输</p>
-<ul>
-<li><p>流量控制：用的是<strong>滑动窗口</strong>，流量控制指的的两台计算机的流量控制。主要思路是连接上的两台计算机都维护了一个缓冲区，表示<strong>可接收数据量</strong>，缓存区就叫窗口，接收方需要把窗口大小发送给发送方，让其发送数据要小于这个值，这样接收方就不会因为处理速度问题接收不及所有的数据；滑动窗口指的就是发送方发送数据都是这个窗口大小的数据，可以看作窗口在发送数据不断移动，发送窗口内的数据。</p>
-</li>
-<li><p>拥塞控制：是指整个网络的流量控制，具有<strong>全局性</strong>的。主要思想是慢慢试探，遇到阈值减低速度（一半）然后再试探（死亡边缘疯狂试探……直到非死亡最大值）；发送窗口需要综合考虑网络允许发送的数据量和目的主机可接收数据量确定大小；实际的算法有四种：<strong>慢开始（slow-start）</strong>、<strong>拥塞避免（congestion advoidance）</strong>、<strong>快重传（fast retransmit）</strong>和<strong>快恢复（fast recovery）</strong></p>
-<ul>
-<li><p>拥塞窗口cwnd：是一个状态变量，由网络的拥塞程度决定了拥塞窗口的大小，发送窗口应该小于或等于拥塞窗口</p>
-</li>
-<li><p>慢开始：主机开始发送数据时，不知道网络的负荷情况，不能发送大量的数据进入网络，发送窗口都是从小逐渐增大的：cwnd=1，发送方发送1个报文段，接收返回方返回1个确认，发送方cwnd+1，发送方再发2个报文段，接收方返回2个确认，发送方每收到一个确认cwnd就增加1；这样每经过一个传输轮次，cwnd就会翻倍。</p>
-<p>1=》2=》4=》8,这就是<strong>慢开始</strong>，</p>
-</li>
-<li><p>ssthresh：显然不能然cwnd无限增大，这时后需要设置一个慢开始门限，ssthresh状态变量，开始时设ssthresh = 16</p>
-<ul>
-<li>cwnd &lt; ssthresh时，使用慢开始算法</li>
-<li>cwnd &gt; ssthresh时，使用拥塞避免算法</li>
-<li>cwnd = ssthresh时，既可以是慢开始算法也可以是拥塞避免算法</li>
-</ul>
-</li>
-<li><p>拥塞避免算法：思想是让cwnd缓慢的增大，即每经过一个<strong>往返时间RTT</strong>，cwnd增加1；在拥塞避免阶段遇到了超时时，判断发送了网络拥塞，此时设置ssthresh=cwnd/2，cwnd=1（初始化cwnd，减小ssthresh），然后再执行慢开始</p>
-</li>
-<li><p>快重传算法：接收方按序发送接收报文段，当发现某一个报文段缺失时（M1接收了，然后没有M2但有M3传到）立即发送确认（发送前一个的确认，M1），后面再来两个也都发送这个确认（M4、M5也到了，但是都是发送M2确认），此时接收方就会收到四个<strong>连续重复</strong>的确认（M1、M3、M4、M5发的M1确认），说明有报文缺失（M2），发送方就立即重传这个报文（M2）</p>
-</li>
-<li><p>快恢复算法：像上面，发生了连续重复的三个确认，说明只是个别的报文段发生丢失（并非是网络拥塞造成的超时），不启动慢开始算法，而是<strong>快恢复算法</strong>：ssthresh = cwnd/2 （没有cwnd=1）并开始拥塞避免算法</p>
-</li>
-</ul>
-</li>
-<li><p>基于字节流的传输：TCP中的数据就是一个流，没有明确的边界，也即，发送十次给客户端，因为没边界服务器不知道有几次数据在这里，所以可以一次就把这些数据读取了，也可分100次读取；而UDP的报文是直接加个首部直接发的，有边界，发送一次数据服务器就读一次数据</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h2><p>  UDP是<strong>无连接传输</strong>，所以UDP<strong>不提供可靠传输</strong>也不需要建立连接，同时UDP是<strong>面向报文的</strong>，即对应用层的报文它只是加个UDP首部就交给IP层了，相对来说，TCP的消耗是更大的。总的来说它简单快捷，但是不可靠，功能单一。额外：UDP支持单播、多播、广播</p>
-<ul>
-<li>主要可以用到电话会议这种实时性比较高的场景</li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://juejin.im/post/6844903958624878606#heading-9">面试官，不要问我三次握手和四次挥手</a></p>
-<p>计算机网络（第七版）——谢希仁</p>
+            <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>​        ”你怎么理解面向对象编程的？“，面试的时候被问到这个问题，我突然才意识到我是不懂面向对象编程，我不知道它和其他范式的区别，为什么要有它？它有什么优势？我能回答出它的三个特征，编程也能写类，但我依然不知为什么要这样做。下面是查了一些资料后的理解。</p>
+<p>​        先来顾名思义吧，”面向对象“，”面向“指的是侧重，更关注。核心是”对象“，对象指的是工作的主体，或者说工作组成的东西。面向对象其实就要求了编程思考的角度要从对象出发，即工作的承载体。</p>
+<p>​        js以函数为大，正常编程可能更接近面向过程编程，面向过程指的是编程中思考的是逻辑过程，把程序拆分为多个步骤，用函数实现这些步骤，即一个函数又一个函数的调用。</p>
+<p>​        对比理解一下，面向对象编程，以对象为核心；面向过程编程，以过程为核心；前者关注对象，数据是对象的数据，操作是对象的方法，而后者关注过程，程序是数据和操作组成，是一系列过程（步骤）。</p>
+<p>​        有人认为，面向对象把程序往现实对象思考，更符合客观世界。但笔者个人认为面向对象并不比面向过程更客观，现实世界正常人的思维也是线性，一步一步来也没有脱离现实。他们之间更多只是观察的角度不同，面向对象更贴合人们理解世界的思维而已。</p>
+<h2 id="与面向过程比较"><a href="#与面向过程比较" class="headerlink" title="与面向过程比较"></a>与面向过程比较</h2><p>两者更具体的比较，下面部分参考（引用）<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/7811.html">文章</a></p>
+<blockquote>
+<p>为了进一步理解面向对象和面向过程的不同，以设计一个五子棋程序为例，面向过程的设计思路是，首先分析问题的步骤：① 开始游戏；② 黑子先走；③ 绘制画面；④ 判断输赢；⑤ 轮到白子；⑥ 绘制画面；⑦ 判断输赢；⑧ 返回步骤 ②；⑨ 输出最后结果，然后将上面每个步骤用程序来实现即可。</p>
+<p>面向对象的设计则将程序分为三类对象：① 黑白双方，这两方的行为是一模一样的；② 棋盘系统，负责绘制画面；③ 规则系统，负责判定诸如犯规、输赢等。第 ① 类对象（玩家对象）负责接受用户输入，并告知第 ② 类对象（棋盘对象）棋子布局的变化，棋盘对象接收到了棋子的变化就要负责在屏幕上面显示出这种变化，同时利用第 ③ 类对象（规则系统）来对棋局进行判定。</p>
+<p>可见，面向对象是以功能来划分问题，而不是步骤。同样是绘制棋局，这样的行为在面向过程的设计中分散在了多个步骤中，很可能出现不同的绘制版本，而面向对象的设计中，绘图只可能在棋盘对象中出现，从而保证了绘图的统一。功能上的统一保证了面向对象设计的可扩展性。</p>
+<p>如要加入悔棋功能，若是面向过程设计，则从输入到判断到显示的若干步骤都要改动，甚至步骤之间的先后顺序都可能需要调整。而若是面向对象设计，则只需改动第 ② 类对象（棋盘对象）即可，棋盘对象保存了黑白双方的棋谱和落子先后顺序，简单回溯操作即可实现悔棋功能，并不涉及显示和规则部分，改动是局部可控的。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>面向对象</th>
+<th>面向过程</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>特性</td>
+<td>抽象、继承、封装、多态</td>
+<td>功能模块化，代码流程化</td>
+</tr>
+<tr>
+<td>优点</td>
+<td>易维护、易复用、易扩展、低耦合</td>
+<td>性能高，适合资源紧张、实时性强的场合</td>
+</tr>
+<tr>
+<td>缺点</td>
+<td>性能比面向过程低</td>
+<td>没有面向对象易维护、易复用、易扩展</td>
+</tr>
+</tbody></table>
+<p>​        面向对象是在软件系统逐渐膨胀后产生，目的就是使得复杂系统更加容易维护：</p>
+<p>​        面向过程是划分步骤，一步一步逐渐实现，以上面五子棋为例，现在只有9步，但若不断增加功能，步骤增加，100步，1000步；同时增加步骤可能要修改了某些步骤，1000步中100步要修改。。。</p>
+<p>​        而面向对象做到数据隔离（不同对象），需要扩展就在内部进行修改或者修改使用的接口而已。</p>
+<h2 id="面向对象的三个特征"><a href="#面向对象的三个特征" class="headerlink" title="面向对象的三个特征"></a>面向对象的三个特征</h2><p>封装：把数据和方法封装在一起，保护起来，只能通过特定方法去修改数据，降低耦合。联系实际，比如人类需要氧气、存储氧气，但是人不能直接增加人（自身除外）的氧气，只能生成通过本身的呼吸来改变本身氧气含量，其他人想要增加某人的氧气，让他呼吸即可（。。。）；类的封装类似，私密属性只能通过方法修改，修改过程对外透明，外界不必关心实现，只需要知道用即可。</p>
+<p>继承：子类继承父类，又抽象向更具体的变化，强调了程序设计和代码重用。父类动物类，狗类、鱼类继承了动物类，那么动物类本类本身的定义的方法属性就可以直接体现了狗类和鱼类上而不用各自重复定义一次。</p>
+<p>多态：与继承结合，接口可以有多种实现，不同类的可以使用同一接口。动物类定义方法呼吸，如狗类和鱼类各自实现具体的逻辑，狗类是吸直接空气中的氧气，而鱼类是鳃过滤水中氧气。使用时都是同一使用方法<code>实例.呼吸</code>。</p>
+<h2 id="指导编程（总结）"><a href="#指导编程（总结）" class="headerlink" title="指导编程（总结）"></a>指导编程（总结）</h2><p>一路看下来，内容虽然不多但总能对面向对象多一点了解。接下来就是应该这么用这些方法论去指导我们编写代码呢？其实在第二节面向对象的比较中例子就是很好的例子了，面向编程很简单，就是注意编程前的思考和思考前方式，首先根据<strong>功能</strong>划分出类（对象），然后再逐步实现各个类的功能。最终的代码质量，取决于贯穿全程的对功能的需求理解和抽象设计（使用三大特性，各种设计模式等）。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="http://c.biancheng.net/view/7811.html">面向对象和面向过程的区别和联系</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hawksoft/article/details/7021435">编程思想的理解（POP,OOP,SOA,AOP）</a></p>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2021年07月15日 23:57</p>
-        <p>原始链接： <a class="post-url" href="/2021/01/19/TCP%E5%92%8CUDP/" title="TCP与UDP">https://idkhts.github.io/2021/01/19/TCP%E5%92%8CUDP/</a></p>
+        <p>最后更新： 2021年08月05日 16:30</p>
+        <p>原始链接： <a class="post-url" href="/2021/08/05/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" title="面向对象编程">https://idkhts.github.io/2021/08/05/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</a></p>
         <footer>
             <a href="https://idkhts.github.io">
                 <img src="/images/47650726.png" alt="idkhts">
@@ -223,7 +213,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://idkhts.github.io/2021/01/19/TCP%E5%92%8CUDP/&title=《TCP与UDP》 — idkhts's blog&pic=https://idkhts.github.ioimages/47650726.png" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://idkhts.github.io/2021/08/05/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/&title=《面向对象编程》 — idkhts's blog&pic=https://idkhts.github.ioimages/47650726.png" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -233,22 +223,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://idkhts.github.io/2021/01/19/TCP%E5%92%8CUDP/&title=《TCP与UDP》 — idkhts's blog&source=idkhts" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://idkhts.github.io/2021/08/05/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/&title=《面向对象编程》 — idkhts's blog&source=idkhts" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://idkhts.github.io/2021/01/19/TCP%E5%92%8CUDP/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://idkhts.github.io/2021/08/05/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《TCP与UDP》 — idkhts's blog&url=https://idkhts.github.io/2021/01/19/TCP%E5%92%8CUDP/&via=https://idkhts.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《面向对象编程》 — idkhts's blog&url=https://idkhts.github.io/2021/08/05/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/&via=https://idkhts.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://idkhts.github.io/2021/01/19/TCP%E5%92%8CUDP/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://idkhts.github.io/2021/08/05/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -258,7 +248,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://idkhts.github.io/2021/01/19/TCP%E5%92%8CUDP/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://idkhts.github.io/2021/08/05/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -270,7 +260,9 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/计算机网络/" class="color1">计算机网络</a>
+    <a href="/tags/其他/" class="color3">其他</a>
+      
+    <a href="/tags/计算机/" class="color4">计算机</a>
       
   </li>
 
@@ -283,26 +275,16 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TCP"><span class="post-toc-text">TCP</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#UDP"><span class="post-toc-text">UDP</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83"><span class="post-toc-text">参考</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%8E%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E6%AF%94%E8%BE%83"><span class="post-toc-text">与面向过程比较</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E4%B8%AA%E7%89%B9%E5%BE%81"><span class="post-toc-text">面向对象的三个特征</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8C%87%E5%AF%BC%E7%BC%96%E7%A8%8B%EF%BC%88%E6%80%BB%E7%BB%93%EF%BC%89"><span class="post-toc-text">指导编程（总结）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83"><span class="post-toc-text">参考</span></a></li></ol>
         </nav>
     </aside>
     
 
 <nav id="article-nav">
   
-    <a href="/2021/01/19/DNS/" id="article-nav-newer" class="article-nav-link-wrap">
-
-      <span class="article-nav-title">
-        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
-        
-          DNS
-        
-      </span>
-    </a>
   
-  
-    <a href="/2021/01/19/%E4%BA%94%E5%B1%82%E5%8D%8F%E8%AE%AE/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">五层协议</span>
+    <a href="/2021/08/03/%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1%E5%8E%9F%E7%90%86%EF%BC%88vue-router%E6%BA%90%E7%A0%81%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">前端路由原理（vue-router源码）</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   
