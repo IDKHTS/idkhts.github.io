@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ES6:Iterator、Gengerator、Async/Await | idkhts&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="IDKHTS,IDKHTS's Blog" />
+  
+  <meta name="description" content="Iterator概念iterator遍历器，为了给js中多种的数据结构（原来的Array，String和ES6的Set，Map）加一个统一简单的调用，加上了一个Iterator接口，可以统一使用for...of来按一定顺序遍历数据结构。【嗯，还有扩展运算符...】 ES6为以下一些结构实现了iterator接口  Array String Set Map arguments NodeList  【">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6:Iterator、Gengerator、Async&#x2F;Await">
+<meta property="og:url" content="https://idkhts.github.io/2021/08/07/ES6-Iterator%E3%80%81Gengerator%E3%80%81Async-Await/index.html">
+<meta property="og:site_name" content="idkhts&#39;s blog">
+<meta property="og:description" content="Iterator概念iterator遍历器，为了给js中多种的数据结构（原来的Array，String和ES6的Set，Map）加一个统一简单的调用，加上了一个Iterator接口，可以统一使用for...of来按一定顺序遍历数据结构。【嗯，还有扩展运算符...】 ES6为以下一些结构实现了iterator接口  Array String Set Map arguments NodeList  【">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://z3.ax1x.com/2021/08/07/fKoJvd.png">
+<meta property="article:published_time" content="2021-08-07T05:59:04.000Z">
+<meta property="article:modified_time" content="2021-08-07T08:17:15.378Z">
+<meta property="article:author" content="idkhts">
+<meta property="article:tag" content="ES6">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/08/07/fKoJvd.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+  
+
+  
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">IDKHTS&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>首页</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>归档</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于我</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/47650726.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        IDKHTS&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        (⊙﹏⊙)
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="IDKHTS" target="_blank" href="/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/IDKHTS">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-ES6-Iterator、Gengerator、Async-Await" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      ES6:Iterator、Gengerator、Async/Await
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2021-08-07
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>iterator遍历器，为了给js中多种的数据结构（原来的Array，String和ES6的Set，Map）加一个统一简单的调用，加上了一个Iterator接口，可以统一使用<code>for...of</code>来按一定顺序遍历数据结构。【嗯，还有扩展运算符<code>...</code>】</p>
+<p>ES6为以下一些结构实现了iterator接口</p>
+<ul>
+<li>Array</li>
+<li>String</li>
+<li>Set</li>
+<li>Map</li>
+<li>arguments</li>
+<li>NodeList</li>
+</ul>
+<p>【注意没有Object，因为Object结构遍历的顺序是由开发者定义的，想要使用遍历器的语法，可以自行实现遍历器接口】</p>
+<h3 id="实现遍历器接口"><a href="#实现遍历器接口" class="headerlink" title="实现遍历器接口"></a>实现遍历器接口</h3><ul>
+<li><p>所有数据结构有属性名为<code>Symbol.iterator</code>，值为一个返回拥有next属性的对象（遍历器对象）的函数即可，next函数一般就返回一个拥有done和value两个属性对象，value的值就是遍历的值，done为布尔值表示能(false)否(true)继续遍历；next函数每被调用一次就往下一个遍历值移动</p>
+<p>【接口<code>Symbol.iterator</code>，其实是一个Symbol值，因而可以作为一个对象的属性名】</p>
+</li>
+<li><p>示例代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a:<span class="string">&#x27;first&#x27;</span>,</span><br><span class="line">    b:<span class="string">&#x27;second&#x27;</span>,</span><br><span class="line">    c:<span class="string">&#x27;third&#x27;</span>,</span><br><span class="line">    d:<span class="string">&#x27;fourth&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">obj[<span class="built_in">Symbol</span>.iterator]=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> ary = [<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>]</span><br><span class="line">    <span class="keyword">const</span> self = <span class="built_in">this</span></span><br><span class="line">    <span class="keyword">let</span> index = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 返回遍历器对象</span></span><br><span class="line">    <span class="keyword">return</span> &#123; </span><br><span class="line">        <span class="comment">// 遍历器对象的next属性</span></span><br><span class="line">        next:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> index&lt;ary.length?</span><br><span class="line">                &#123;<span class="attr">value</span>:self[ary[index++]],<span class="attr">done</span>:<span class="literal">false</span>&#125; :</span><br><span class="line">            	&#123;<span class="attr">value</span>:<span class="literal">undefined</span>,<span class="attr">done</span>:<span class="literal">true</span>&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> val <span class="keyword">of</span> obj)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(val) <span class="comment">// first second third fourth</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h2 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><blockquote>
+<p>Generator 函数是 ES6 提供的一种异步编程解决方案，语法行为与传统函数完全不同。</p>
+</blockquote>
+<ul>
+<li><p>Generator函数的写法是, <code>function *generatorDemo()&#123; ... yield val1; ... yield val2; ... return val3&#125;</code>函数名前关键字function后加*号，函数体使用yield关键字</p>
+</li>
+<li><p>它内部逻辑是，调用函数，然后返回一个iterator遍历器对象（对象，带属性next，next为函数），不执行函数代码；然后每次调用遍历器对象的next方法就会执行代码到定义时Generator函数体yield关键字后表达式，并返回yield后表达式的值作为next返回对象value属性的值；这样多次，直到最后的return。</p>
+</li>
+<li><p>普通使用例子</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">generatorDemo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">yield</span> <span class="string">&#x27;hello&#x27;</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">yield</span> <span class="string">&#x27;generator&#x27;</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">3</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;done&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> gd = generatorDemo()</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;------------&#x27;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(gd.next())</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;------------&#x27;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(gd.next())</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;------------&#x27;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(gd.next())</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;------------&#x27;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(gd.next())</span><br><span class="line"><span class="comment">// ------------</span></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// &#123;value:hello,done:false&#125;</span></span><br><span class="line"><span class="comment">// ------------</span></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// &#123;value:generator,done:false&#125;</span></span><br><span class="line"><span class="comment">// ------------</span></span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line"><span class="comment">// &#123;value:done,done:false&#125;</span></span><br><span class="line"><span class="comment">// ------------</span></span><br><span class="line"><span class="comment">// &#123;value:undefined,done:true&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h3 id="yield返回值"><a href="#yield返回值" class="headerlink" title="yield返回值"></a>yield返回值</h3><p>  yield 也可以返回值，外部传值到Generator函数内部；比较值得注意的时传值的时机。</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">var</span> val = <span class="keyword">yield</span> <span class="number">66</span></span><br><span class="line">    <span class="built_in">console</span>.log(val)</span><br><span class="line">    <span class="keyword">return</span> val</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> test = f()</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;------------&#x27;</span>)</span><br><span class="line"><span class="comment">// 并不是这里传的值，因为第一个词调用时，只是执行到var val=yield 66的右侧</span></span><br><span class="line"><span class="built_in">console</span>.log(test.next()) </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;------------&#x27;</span>)</span><br><span class="line"> <span class="comment">// 第二次执行时才是上一个yield完成的地方，所以在第二次传值进去，上一个yield结束后返回这次传的值。</span></span><br><span class="line"><span class="built_in">console</span>.log(test.next(<span class="number">2</span>))</span><br><span class="line"><span class="comment">// ------------</span></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// &#123;value:66, done:false&#125;</span></span><br><span class="line"><span class="comment">// ------------</span></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// &#123;value:2, done:false&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="yield"><a href="#yield" class="headerlink" title="yield*"></a>yield*</h3><p>Generator嵌套，yield*  语法。因为当yied 后表达式也是一个Generator时可以使用yield*把后面的表达式的next给“暴露”出去调用；</p>
+<p>  【所有实现了Iterator接口的数据结构都可以被yield*解析处理（yield不行）】</p>
+<p>  【yield* 只能处理遍历器对象，单纯的数字这些会报错】</p>
+<p>  【yield* 可以接收返回值，当表达式是Generator函数调用并这个函数有return语句】</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 需求：for of遍历两个生成器函数A，B，期望按序先遍历了一个生成器A的再遍历另外一个B的</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ************无 yield* 语法，A时*********</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span>* <span class="title">A</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">yield</span> <span class="string">&#x27;a&#x27;</span></span><br><span class="line">        <span class="keyword">yield</span> <span class="string">&#x27;b&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span>* <span class="title">B</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">yield</span> A()</span><br><span class="line">        <span class="keyword">yield</span> <span class="string">&#x27;c&#x27;</span></span><br><span class="line">        <span class="keyword">yield</span> <span class="string">&#x27;d&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> g = B()</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> g) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(item)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 原本期望打印a b c d</span></span><br><span class="line">    <span class="comment">// 但是事实上却打印了 f &#123;&lt;suspended&gt;&#125; c d</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ************无 yield* 语法时*********</span></span><br><span class="line"><span class="comment">// 需要自己手动写嵌套语法, 以下改写B</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span>* <span class="title">A</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">yield</span> <span class="string">&#x27;a&#x27;</span></span><br><span class="line">        <span class="keyword">yield</span> <span class="string">&#x27;b&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span>* <span class="title">B</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> g = A()</span><br><span class="line">        <span class="keyword">let</span> itObj = g.next()</span><br><span class="line">        <span class="keyword">while</span> (!itObj.done) &#123;</span><br><span class="line">            <span class="keyword">yield</span> itObj.value</span><br><span class="line">            itObj = g.next()</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">yield</span> <span class="string">&#x27;c&#x27;</span></span><br><span class="line">        <span class="keyword">yield</span> <span class="string">&#x27;d&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> g = B()</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> g) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(item)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 原本期望打印a b c d</span></span><br><span class="line">    <span class="comment">// 事实上打印a b c d</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ************有 yield* 语法时*********</span></span><br><span class="line"><span class="comment">// 为了方便，ES6写了个语法糖，yield* 可实现上面的改写，再改写B</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test3</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span>* <span class="title">A</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">yield</span> <span class="string">&#x27;a&#x27;</span></span><br><span class="line">        <span class="keyword">yield</span> <span class="string">&#x27;b&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span>* <span class="title">B</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">yield</span>* A()</span><br><span class="line">        <span class="keyword">yield</span> <span class="string">&#x27;c&#x27;</span></span><br><span class="line">        <span class="keyword">yield</span> <span class="string">&#x27;d&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> g = B()</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> g) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(item)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 原本期望打印a b c d</span></span><br><span class="line">    <span class="comment">// 事实上打印a b c d</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test1()</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;------------&#x27;</span>)</span><br><span class="line">test2()</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;------------&#x27;</span>)</span><br><span class="line">test3()</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><ul>
+<li><p>延迟调用：从普通使用例子可以知道，不执行next，代码是不会被执行的，所以当没有使用yield时，只有return，那么只有调用一次next时函数才会被执行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">delayRun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;run&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> tmp = delayRun()</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;------------&#x27;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(tmp.next())</span><br><span class="line"><span class="comment">// ------------</span></span><br><span class="line"><span class="comment">// run</span></span><br><span class="line"><span class="comment">// &#123;value:undefined,done:true&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>因为Generator返回的就是遍历器，而Iterator接口函数要的也是一个返回遍历器的函数，那么可以使用Generator函数来简化Iterator接口的编写，按照期望的顺序来写yield 表达式即可（妙啊）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a:<span class="string">&#x27;first&#x27;</span>,</span><br><span class="line">    b:<span class="string">&#x27;second&#x27;</span>,</span><br><span class="line">    c:<span class="string">&#x27;third&#x27;</span>,</span><br><span class="line">    d:<span class="string">&#x27;fourth&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">obj[<span class="built_in">Symbol</span>.iterator] = <span class="function"><span class="keyword">function</span> *(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="built_in">this</span>.a</span><br><span class="line">    <span class="keyword">yield</span> <span class="built_in">this</span>.b</span><br><span class="line">    <span class="keyword">yield</span> <span class="built_in">this</span>.c</span><br><span class="line">    <span class="comment">// 这里不能写return，for...of语法是不会识别到return的，因为return返回的done为true了，不会被for...of遍历</span></span><br><span class="line">    <span class="keyword">yield</span> <span class="built_in">this</span>.d </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> val <span class="keyword">of</span> obj)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(val) <span class="comment">// first second third fourth</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+</li>
+</ul>
+<h2 id="async-await"><a href="#async-await" class="headerlink" title="async/await"></a>async/await</h2><h3 id="概念-2"><a href="#概念-2" class="headerlink" title="概念"></a>概念</h3><p>直接看使用例子，不阻塞的情况下，使用同步代码实现异步调用的；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 正常promise调用</span></span><br><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(...)</span><br><span class="line">p.then(p1).then(p2).then(p3)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以改成以下这种方式, async返回的值是一个promise</span></span><br><span class="line"><span class="comment">// 若res是一个值，则类似返回一个promise.resolve(res)</span></span><br><span class="line"><span class="comment">// 若res是一个promise，则返回这个promise</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> p1 = <span class="keyword">await</span> p()</span><br><span class="line">    <span class="keyword">let</span> p2 = <span class="keyword">await</span> p1()</span><br><span class="line">    <span class="keyword">let</span> res = <span class="keyword">await</span> p2()</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里的重点是如何理解“同步代码实现异步调用”，async函数是异步的，每个await都会完成异步任务后才执行后面的代码。</p>
+<p><img src="https://z3.ax1x.com/2021/08/07/fKoJvd.png" alt="async/await"></p>
+<p>和promise一样的时机调用，但语法上比promise阅读流畅很多。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>async/await可以说是Generator的一个语法糖，它的原理就是使用Generator实现的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 按照async/await方式调用generator</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">runAsAsync</span>(<span class="params">gen</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> generator = gen()</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">runNext</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">            <span class="comment">// genertort取出iterator</span></span><br><span class="line">            <span class="keyword">const</span> iterator = generator.next(data)</span><br><span class="line">            <span class="comment">// console.log(iterator)</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// iterator中value为结果promise</span></span><br><span class="line">            <span class="keyword">const</span> p = iterator.value</span><br><span class="line"></span><br><span class="line">            <span class="comment">// return时，done为true，直接返回值；没有return时，done为true，value为undefined，也直接返回</span></span><br><span class="line">            <span class="keyword">if</span> (iterator.done) &#123;</span><br><span class="line">                resolve(p)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 完成时pormise的结果再传入generator内，作为下一次的值</span></span><br><span class="line">            p.then(</span><br><span class="line">                (data) =&gt; runNext(data),</span><br><span class="line">                (err) =&gt; reject(err)</span><br><span class="line">            )</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        runNext()</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 异步函数（返回promise）</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">asyncFn</span>(<span class="params">p</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(p)</span><br><span class="line">            resolve(p + <span class="string">&#x27; result&#x27;</span>)</span><br><span class="line">        &#125;, <span class="number">500</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// generator 模拟await</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">gen</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> res1 = <span class="keyword">yield</span> asyncFn(<span class="string">&#x27;p1&#x27;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(res1)</span><br><span class="line">    <span class="keyword">let</span> res2 = <span class="keyword">yield</span> asyncFn(<span class="string">&#x27;p2&#x27;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(res2)</span><br><span class="line">    <span class="keyword">let</span> res3 = <span class="keyword">yield</span> asyncFn(<span class="string">&#x27;p3&#x27;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(res3)</span><br><span class="line">    <span class="keyword">let</span> res4 = <span class="keyword">yield</span> asyncFn(<span class="string">&#x27;p4&#x27;</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(res4)</span><br><span class="line">    <span class="comment">// return res4</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> res = runAsAsync(gen)</span><br><span class="line">res.then(<span class="function">(<span class="params">v</span>) =&gt;</span> <span class="built_in">console</span>.log(v))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/#docs/generator">Iterator 和 for…of 循环 - ECMAScript 6入门</a></p>
+<p><a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/#docs/generator">Generator 函数的语法 - ECMAScript 6入门</a></p>
+<p><a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/#docs/async">async 函数</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators">MDN</a></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2021年08月07日 16:17</p>
+        <p>原始链接： <a class="post-url" href="/2021/08/07/ES6-Iterator%E3%80%81Gengerator%E3%80%81Async-Await/" title="ES6:Iterator、Gengerator、Async/Await">https://idkhts.github.io/2021/08/07/ES6-Iterator%E3%80%81Gengerator%E3%80%81Async-Await/</a></p>
+        <footer>
+            <a href="https://idkhts.github.io">
+                <img src="/images/47650726.png" alt="idkhts">
+                idkhts
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://idkhts.github.io/2021/08/07/ES6-Iterator%E3%80%81Gengerator%E3%80%81Async-Await/&title=《ES6:Iterator、Gengerator、Async/Await》 — idkhts's blog&pic=https://idkhts.github.ioimages/47650726.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://idkhts.github.io/2021/08/07/ES6-Iterator%E3%80%81Gengerator%E3%80%81Async-Await/&title=《ES6:Iterator、Gengerator、Async/Await》 — idkhts's blog&source=idkhts" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://idkhts.github.io/2021/08/07/ES6-Iterator%E3%80%81Gengerator%E3%80%81Async-Await/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ES6:Iterator、Gengerator、Async/Await》 — idkhts's blog&url=https://idkhts.github.io/2021/08/07/ES6-Iterator%E3%80%81Gengerator%E3%80%81Async-Await/&via=https://idkhts.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://idkhts.github.io/2021/08/07/ES6-Iterator%E3%80%81Gengerator%E3%80%81Async-Await/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://idkhts.github.io/2021/08/07/ES6-Iterator%E3%80%81Gengerator%E3%80%81Async-Await/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/ES6/" class="color4">ES6</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Iterator"><span class="post-toc-text">Iterator</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%9E%E7%8E%B0%E9%81%8D%E5%8E%86%E5%99%A8%E6%8E%A5%E5%8F%A3"><span class="post-toc-text">实现遍历器接口</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Generator"><span class="post-toc-text">Generator</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A6%82%E5%BF%B5-1"><span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#yield%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="post-toc-text">yield返回值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#yield"><span class="post-toc-text">yield*</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BA%94%E7%94%A8"><span class="post-toc-text">应用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#async-await"><span class="post-toc-text">async&#x2F;await</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A6%82%E5%BF%B5-2"><span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8E%9F%E7%90%86"><span class="post-toc-text">原理</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83"><span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2021/08/05/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">面向对象编程</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+        <section class="comments" id="comments">
+            <div id="gitalk-container"></div>
+            <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+            <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script> -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+            <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+            <script>
+                let admins = 'IDKHTS'
+                let arrPathName = (location.pathname).split("/")
+                let gitalkID = ''
+                for (let i = arrPathName.length - 1; i >= 0; i--) {
+                    if (arrPathName[i] != '') { gitalkID = arrPathName[i].substring(0, 49); break }
+                }
+                // console.log(gitalkID)
+                var gitalk = new Gitalk({
+                    clientID: '884f505b74829948187e',
+                    clientSecret: '4e414213f820b3ddde39e15a53c2b5a70c301c5d',
+                    repo: 'idkhts.github.io',
+                    owner: 'IDKHTS',
+                    admin: admins.split(','),
+                    id: gitalkID,//location.pathname,  // Ensure uniqueness and length less than 50
+                    perPage: 50,
+                    distractionFreeMode: 'false'
+                })
+    
+                gitalk.render('gitalk-container')
+            </script>
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2021 idkhts<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://idkhts.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 0
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/http/" style="font-size: 12px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%83%85%E6%99%AF/" style="font-size: 18px;">情景</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 12px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" style="font-size: 12px;">计算机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 14px;">计算机网络</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>首页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>归档</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>关于我</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/http/" style="font-size: 12px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E6%83%85%E6%99%AF/" style="font-size: 18px;">情景</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 12px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" style="font-size: 12px;">计算机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 14px;">计算机网络</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+
+<script src="/js/search.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  
+<script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  
+<script src="/js/animate.js"></script>
+
+
+
+  
+<script src="/js/pop-img.js"></script>
+
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
