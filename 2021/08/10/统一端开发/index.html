@@ -3,23 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>面向对象编程 | idkhts&#39;s blog</title>
+  <title>统一端开发 | idkhts&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="IDKHTS,IDKHTS's Blog" />
   
-  <meta name="description" content="概念​        ”你怎么理解面向对象编程的？“，面试的时候被问到这个问题，我突然才意识到我是不懂面向对象编程，我不知道它和其他范式的区别，为什么要有它？它有什么优势？我能回答出它的三个特征，编程也能写类，但我依然不知为什么要这样做。下面是查了一些资料后的理解。 ​        先来顾名思义吧，”面向对象“，”面向“指的是侧重，更关注。核心是”对象“，对象指的是工作的主体，或者说工作组成的东">
+  <meta name="description" content="移动App开发 Native App Native App开发指的是移动端原生APP开发，比如qq，微信这种应用，不需要用浏览器打开的。原生应用的开发主要依赖于手机的操作体统，开发者调用操作系统的一些API完成一些交互。手机的操作系统主要有Android和IOS两种，这种不同操作系统都有各自的主流开发语言：  Android使用Java IOS使用Object-c  这里就出现了 Android开">
 <meta property="og:type" content="article">
-<meta property="og:title" content="面向对象编程">
-<meta property="og:url" content="https://idkhts.github.io/2021/08/05/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/index.html">
+<meta property="og:title" content="统一端开发">
+<meta property="og:url" content="https://idkhts.github.io/2021/08/10/%E7%BB%9F%E4%B8%80%E7%AB%AF%E5%BC%80%E5%8F%91/index.html">
 <meta property="og:site_name" content="idkhts&#39;s blog">
-<meta property="og:description" content="概念​        ”你怎么理解面向对象编程的？“，面试的时候被问到这个问题，我突然才意识到我是不懂面向对象编程，我不知道它和其他范式的区别，为什么要有它？它有什么优势？我能回答出它的三个特征，编程也能写类，但我依然不知为什么要这样做。下面是查了一些资料后的理解。 ​        先来顾名思义吧，”面向对象“，”面向“指的是侧重，更关注。核心是”对象“，对象指的是工作的主体，或者说工作组成的东">
+<meta property="og:description" content="移动App开发 Native App Native App开发指的是移动端原生APP开发，比如qq，微信这种应用，不需要用浏览器打开的。原生应用的开发主要依赖于手机的操作体统，开发者调用操作系统的一些API完成一些交互。手机的操作系统主要有Android和IOS两种，这种不同操作系统都有各自的主流开发语言：  Android使用Java IOS使用Object-c  这里就出现了 Android开">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-08-05T07:59:23.000Z">
-<meta property="article:modified_time" content="2021-08-05T08:30:36.937Z">
+<meta property="article:published_time" content="2021-08-10T07:38:57.000Z">
+<meta property="article:modified_time" content="2021-08-10T17:23:45.973Z">
 <meta property="article:author" content="idkhts">
-<meta property="article:tag" content="其他">
-<meta property="article:tag" content="计算机">
+<meta property="article:tag" content="前端">
 <meta name="twitter:card" content="summary">
   
   
@@ -109,20 +108,20 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-面向对象编程" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-统一端开发" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      面向对象编程
+      统一端开发
     </h1>
     <div class="post-title-bar">
       <ul>
           
         <li>
-          <i class="fa fa-calendar"></i>  2021-08-05
+          <i class="fa fa-calendar"></i>  2021-08-10
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -138,56 +137,93 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>​        ”你怎么理解面向对象编程的？“，面试的时候被问到这个问题，我突然才意识到我是不懂面向对象编程，我不知道它和其他范式的区别，为什么要有它？它有什么优势？我能回答出它的三个特征，编程也能写类，但我依然不知为什么要这样做。下面是查了一些资料后的理解。</p>
-<p>​        先来顾名思义吧，”面向对象“，”面向“指的是侧重，更关注。核心是”对象“，对象指的是工作的主体，或者说工作组成的东西。面向对象其实就要求了编程思考的角度要从对象出发，即工作的承载体。</p>
-<p>​        js以函数为大，正常编程可能更接近面向过程编程，面向过程指的是编程中思考的是逻辑过程，把程序拆分为多个步骤，用函数实现这些步骤，即一个函数又一个函数的调用。</p>
-<p>​        对比理解一下，面向对象编程，以对象为核心；面向过程编程，以过程为核心；前者关注对象，数据是对象的数据，操作是对象的方法，而后者关注过程，程序是数据和操作组成，是一系列过程（步骤）。</p>
-<p>​        有人认为，面向对象把程序往现实对象思考，更符合客观世界。但笔者个人认为面向对象并不比面向过程更客观，现实世界正常人的思维也是线性，一步一步来也没有脱离现实。他们之间更多只是观察的角度不同，面向对象更贴合人们理解世界的思维而已。</p>
-<h2 id="与面向过程比较"><a href="#与面向过程比较" class="headerlink" title="与面向过程比较"></a>与面向过程比较</h2><p>两者更具体的比较，下面部分参考（引用）<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/7811.html">文章</a></p>
+            <h2 id="移动App开发"><a href="#移动App开发" class="headerlink" title="移动App开发"></a>移动App开发</h2><ul>
+<li><p>Native App</p>
+<p>Native App开发指的是移动端原生APP开发，比如qq，微信这种应用，不需要用浏览器打开的。原生应用的开发主要依赖于手机的操作体统，开发者调用操作系统的一些API完成一些交互。手机的操作系统主要有Android和IOS两种，这种不同操作系统都有各自的主流开发语言：</p>
+<ul>
+<li>Android使用Java</li>
+<li>IOS使用Object-c</li>
+</ul>
+<p>这里就出现了 Android开发 和 IOS开发</p>
+</li>
+<li><p>WebView</p>
+<p>WebView翻译成Web视图，是手机操作系统的提供的一个控件。主要用来显示的一个web页面。</p>
+</li>
+</ul>
+<h2 id="Hybird开发"><a href="#Hybird开发" class="headerlink" title="Hybird开发"></a>Hybird开发</h2><p>​    Hybird，混合。Hybrid开发又称<strong>混合开发</strong>，这里的“混合”指的原本的Native开发和Web开发混合开发，“开发”指的是开发移动app。</p>
+<p>​    Hybird开发是基于WebView使用Native + H5开发的，主要原理是使用WebView的一些API实现一个称JsBridgge的东西，JsBridge的功能就是桥接Native和JS，使得js可以操作一些Native的API，Native访问js中的变量。</p>
+<p>​    因为js要使用Native的一些接口，那么js开发就必须了解这些接口，那么对于开发来说Native和js两者都要会了，所以又有Hybird开发一说。</p>
+<p>​    为什么要有Hybird开发？</p>
+<ul>
+<li>H5开发简单敏捷，使用混合h5开发后提升开发效率。</li>
+<li>同时因为JsBridge可以抽象Android和IOS的webview接口，即js不关心移动操作系统，使用同一个接口调用原生的Api，使得同一个页面就用同一套代码，跨平台开发，统一端开发。</li>
+<li>h5页面的<strong>动态性高</strong>，开源随时发布新内容。而移动端应用迭代速度慢，跟不上业务发展的速度，应用发布需要应用市场审核、用户下载更新。</li>
+</ul>
+<h2 id="React-Native-和-Weex"><a href="#React-Native-和-Weex" class="headerlink" title="React-Native 和 Weex"></a>React-Native 和 Weex</h2><p>Hybird开发很有创造性，但是因为它是舍弃了原生的更接近操作系统的渲染转而使用webview的浏览器渲染，性能上表现并不是很友好。</p>
+<p>2015年，Facebook开源了React-Native，一种性能更优的使用h5开发移动app的框架。它的原理比hybird更粗暴，直接抽象组件为原生ui控件：</p>
+<ul>
+<li>用户手机下载应用，下载结果中包含<ul>
+<li>简单的js解析器JsEngine，可以用来执行js代码</li>
+<li>ReactJS，就是维护virsual dom的逻辑，也即通过交互得到一些绘制指令</li>
+<li>Bridge，ReacJS和Bridge通讯，ReactJS得到的绘制指令会通过Bridge调用Native 代码操作原生控件。同时Bridge也会把用户交互反馈给ReactJS，React通过维护virsual dom得到绘制指令又传递给Bridge。如此往复完成交互。</li>
+</ul>
+</li>
+<li>然后由开发者这里发布一个JsBundle包到服务器。bundle里面就是编写的ui和交互逻辑（开发者真正开发的东西）</li>
+<li>用户使用了app，app访问服务器得到JsBundle包（有更新就获取，无则用本地的）</li>
+<li>JsEngine解析执行ReactJS和JsBundle，得到初始的virsual dom然后通过Bridge绘制最初界面，然后开始交互。</li>
+</ul>
+<p>其实相对于React来说，它们基本逻辑是一样的，不同的逻辑在于最终如何绘制，绘制到哪里。React的由浏览器执行js和由浏览器绘制界面。React-Native的是由自己写的一个js解析器执行js，js逻辑通过Bridge操纵Native控件最终由手机操作系统绘制界面。</p>
+<p>​    Android的、IOS的、Web的，    React-Native真正做到了统一端开发。同时，因为React-Native最终是Native原生控件渲染，性能方面大大提升，避免了Hybird的尴尬。</p>
+<p>由阿里开源的Weex，大体上和React-Native一致，最终产物也是Native原生代码。开发体验上可能会有不同Weex拥抱web前端框架Vue而React-Native使用的web前端框架React的语法。weex的口号也与React-Native的口号“一次学习，随处编写”相对的是”一次编写，处处运行“。</p>
+<h2 id="Flutter"><a href="#Flutter" class="headerlink" title="Flutter"></a>Flutter</h2><p>到了2017年，google又推出了一个跨平台开发SDK——Flutter。Flutter首先仅是一个SDK（一些工具，文档、测试），不是一个框架（已经是一个应用，只是你还要填补一些空白）。然后Flutter是应用独立的一套语言Dart开发，有自己的高新能渲染引擎，有丰富漂亮的ui小部件（组件）。</p>
 <blockquote>
-<p>为了进一步理解面向对象和面向过程的不同，以设计一个五子棋程序为例，面向过程的设计思路是，首先分析问题的步骤：① 开始游戏；② 黑子先走；③ 绘制画面；④ 判断输赢；⑤ 轮到白子；⑥ 绘制画面；⑦ 判断输赢；⑧ 返回步骤 ②；⑨ 输出最后结果，然后将上面每个步骤用程序来实现即可。</p>
-<p>面向对象的设计则将程序分为三类对象：① 黑白双方，这两方的行为是一模一样的；② 棋盘系统，负责绘制画面；③ 规则系统，负责判定诸如犯规、输赢等。第 ① 类对象（玩家对象）负责接受用户输入，并告知第 ② 类对象（棋盘对象）棋子布局的变化，棋盘对象接收到了棋子的变化就要负责在屏幕上面显示出这种变化，同时利用第 ③ 类对象（规则系统）来对棋局进行判定。</p>
-<p>可见，面向对象是以功能来划分问题，而不是步骤。同样是绘制棋局，这样的行为在面向过程的设计中分散在了多个步骤中，很可能出现不同的绘制版本，而面向对象的设计中，绘图只可能在棋盘对象中出现，从而保证了绘图的统一。功能上的统一保证了面向对象设计的可扩展性。</p>
-<p>如要加入悔棋功能，若是面向过程设计，则从输入到判断到显示的若干步骤都要改动，甚至步骤之间的先后顺序都可能需要调整。而若是面向对象设计，则只需改动第 ② 类对象（棋盘对象）即可，棋盘对象保存了黑白双方的棋谱和落子先后顺序，简单回溯操作即可实现悔棋功能，并不涉及显示和规则部分，改动是局部可控的。</p>
+<p>Flutter is different than most other options for building mobile apps because it doesn’t rely on web browser technology nor the set of widgets that ship with each device. Instead, Flutter uses its own high-performance rendering engine to draw widgets.</p>
 </blockquote>
+<p>Flutter于React-Native的一些区别：</p>
+<ul>
+<li>使用的语言不同，Flutter的Dart和React-Native的Javascript</li>
+<li>Flutter自己渲染，React-Native依赖原生控件渲染</li>
+<li>Flutter只支持Android和IOS但是正在逐步支持Web和PC原生应用，React-Native支持Android，IOS，Web应用</li>
+<li>（呃，受限限于知识匮乏，只能做些大体上的对比了）</li>
+</ul>
+<p>对Flutter于React-Native的区别做一个不那么贴切的比喻，React-Native类比成Web开发的各种的开发框架，还是借助原有的技术体系js和浏览器内核。那Flutter就是直接自己写了个解析器，解析另外一门语言，并且绘制结果。</p>
+<p>目前来说，Flutter社区基本已经追上React-Native了</p>
+<p>GitHub上（2021.8.11）</p>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>面向对象</th>
-<th>面向过程</th>
+<th>Start</th>
+<th>Fork</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>特性</td>
-<td>抽象、继承、封装、多态</td>
-<td>功能模块化，代码流程化</td>
+<td>Flutter</td>
+<td>127k</td>
+<td>18.2k</td>
 </tr>
 <tr>
-<td>优点</td>
-<td>易维护、易复用、易扩展、低耦合</td>
-<td>性能高，适合资源紧张、实时性强的场合</td>
-</tr>
-<tr>
-<td>缺点</td>
-<td>性能比面向过程低</td>
-<td>没有面向对象易维护、易复用、易扩展</td>
+<td>React-Native</td>
+<td>97.1k</td>
+<td>21.1k</td>
 </tr>
 </tbody></table>
-<p>​        面向对象是在软件系统逐渐膨胀后产生，目的就是使得复杂系统更加容易维护：</p>
-<p>​        面向过程是划分步骤，一步一步逐渐实现，以上面五子棋为例，现在只有9步，但若不断增加功能，步骤增加，100步，1000步；同时增加步骤可能要修改了某些步骤，1000步中100步要修改。。。</p>
-<p>​        而面向对象做到数据隔离（不同对象），需要扩展就在内部进行修改或者修改使用的接口而已。</p>
-<h2 id="面向对象的三个特征"><a href="#面向对象的三个特征" class="headerlink" title="面向对象的三个特征"></a>面向对象的三个特征</h2><p>封装：把数据和方法封装在一起，保护起来，只能通过特定方法去修改数据，降低耦合。联系实际，比如人类需要氧气、存储氧气，但是人不能直接增加人（自身除外）的氧气，只能生成通过本身的呼吸来改变本身氧气含量，其他人想要增加某人的氧气，让他呼吸即可（。。。）；类的封装类似，私密属性只能通过方法修改，修改过程对外透明，外界不必关心实现，只需要知道用即可。</p>
-<p>继承：子类继承父类，又抽象向更具体的变化，强调了程序设计和代码重用。父类动物类，狗类、鱼类继承了动物类，那么动物类本类本身的定义的方法属性就可以直接体现了狗类和鱼类上而不用各自重复定义一次。</p>
-<p>多态：与继承结合，接口可以有多种实现，不同类的可以使用同一接口。动物类定义方法呼吸，如狗类和鱼类各自实现具体的逻辑，狗类是吸直接空气中的氧气，而鱼类是鳃过滤水中氧气。使用时都是同一使用方法<code>实例.呼吸</code>。</p>
-<h2 id="指导编程（总结）"><a href="#指导编程（总结）" class="headerlink" title="指导编程（总结）"></a>指导编程（总结）</h2><p>一路看下来，内容虽然不多但总能对面向对象多一点了解。接下来就是应该这么用这些方法论去指导我们编写代码呢？其实在第二节面向对象的比较中例子就是很好的例子了，面向编程很简单，就是注意编程前的思考和思考前方式，首先根据<strong>功能</strong>划分出类（对象），然后再逐步实现各个类的功能。最终的代码质量，取决于贯穿全程的对功能的需求理解和抽象设计（使用三大特性，各种设计模式等）。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="http://c.biancheng.net/view/7811.html">面向对象和面向过程的区别和联系</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hawksoft/article/details/7021435">编程思想的理解（POP,OOP,SOA,AOP）</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000011154120">https://segmentfault.com/a/1190000011154120</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.android.com/guide/webapps/webview">https://developer.android.com/guide/webapps/webview</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/41502551">https://zhuanlan.zhihu.com/p/41502551</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zoo.team/article/jsbridge">https://www.zoo.team/article/jsbridge</a></p>
+<p><a target="_blank" rel="noopener" href="https://reactnative.cn/docs/getting-started">https://reactnative.cn/docs/getting-started</a></p>
+<p><a target="_blank" rel="noopener" href="http://doc.weex.io/zh/guide/introduction.html#%E6%A6%82%E8%BF%B0">http://doc.weex.io/zh/guide/introduction.html#%E6%A6%82%E8%BF%B0</a></p>
+<p><a target="_blank" rel="noopener" href="https://fechat.org/topics/5">https://fechat.org/topics/5</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1481116">https://cloud.tencent.com/developer/article/1481116</a></p>
+<p><a target="_blank" rel="noopener" href="http://blog.poetries.top/2019/10/02/rn-yuanli/">React Native之原理浅析</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6847902221275758600">week的工作原理</a></p>
+<p><a target="_blank" rel="noopener" href="https://ask.dcloud.net.cn/article/36083">flutter、rn、uni-app比较</a></p>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2021年08月05日 16:30</p>
-        <p>原始链接： <a class="post-url" href="/2021/08/05/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" title="面向对象编程">https://idkhts.github.io/2021/08/05/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</a></p>
+        <p>最后更新： 2021年08月11日 01:23</p>
+        <p>原始链接： <a class="post-url" href="/2021/08/10/%E7%BB%9F%E4%B8%80%E7%AB%AF%E5%BC%80%E5%8F%91/" title="统一端开发">https://idkhts.github.io/2021/08/10/%E7%BB%9F%E4%B8%80%E7%AB%AF%E5%BC%80%E5%8F%91/</a></p>
         <footer>
             <a href="https://idkhts.github.io">
                 <img src="/images/47650726.png" alt="idkhts">
@@ -213,7 +249,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://idkhts.github.io/2021/08/05/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/&title=《面向对象编程》 — idkhts's blog&pic=https://idkhts.github.ioimages/47650726.png" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://idkhts.github.io/2021/08/10/%E7%BB%9F%E4%B8%80%E7%AB%AF%E5%BC%80%E5%8F%91/&title=《统一端开发》 — idkhts's blog&pic=https://idkhts.github.ioimages/47650726.png" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -223,22 +259,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://idkhts.github.io/2021/08/05/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/&title=《面向对象编程》 — idkhts's blog&source=idkhts" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://idkhts.github.io/2021/08/10/%E7%BB%9F%E4%B8%80%E7%AB%AF%E5%BC%80%E5%8F%91/&title=《统一端开发》 — idkhts's blog&source=idkhts" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://idkhts.github.io/2021/08/05/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://idkhts.github.io/2021/08/10/%E7%BB%9F%E4%B8%80%E7%AB%AF%E5%BC%80%E5%8F%91/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《面向对象编程》 — idkhts's blog&url=https://idkhts.github.io/2021/08/05/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/&via=https://idkhts.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《统一端开发》 — idkhts's blog&url=https://idkhts.github.io/2021/08/10/%E7%BB%9F%E4%B8%80%E7%AB%AF%E5%BC%80%E5%8F%91/&via=https://idkhts.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://idkhts.github.io/2021/08/05/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://idkhts.github.io/2021/08/10/%E7%BB%9F%E4%B8%80%E7%AB%AF%E5%BC%80%E5%8F%91/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -248,7 +284,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://idkhts.github.io/2021/08/05/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://idkhts.github.io/2021/08/10/%E7%BB%9F%E4%B8%80%E7%AB%AF%E5%BC%80%E5%8F%91/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -260,9 +296,7 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/其他/" class="color3">其他</a>
-      
-    <a href="/tags/计算机/" class="color4">计算机</a>
+    <a href="/tags/前端/" class="color3">前端</a>
       
   </li>
 
@@ -275,26 +309,16 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%8E%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E6%AF%94%E8%BE%83"><span class="post-toc-text">与面向过程比较</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E4%B8%AA%E7%89%B9%E5%BE%81"><span class="post-toc-text">面向对象的三个特征</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8C%87%E5%AF%BC%E7%BC%96%E7%A8%8B%EF%BC%88%E6%80%BB%E7%BB%93%EF%BC%89"><span class="post-toc-text">指导编程（总结）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83"><span class="post-toc-text">参考</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%A7%BB%E5%8A%A8App%E5%BC%80%E5%8F%91"><span class="post-toc-text">移动App开发</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Hybird%E5%BC%80%E5%8F%91"><span class="post-toc-text">Hybird开发</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#React-Native-%E5%92%8C-Weex"><span class="post-toc-text">React-Native 和 Weex</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Flutter"><span class="post-toc-text">Flutter</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83"><span class="post-toc-text">参考</span></a></li></ol>
         </nav>
     </aside>
     
 
 <nav id="article-nav">
   
-    <a href="/2021/08/07/ES6-Iterator%E3%80%81Gengerator%E3%80%81Async-Await/" id="article-nav-newer" class="article-nav-link-wrap">
-
-      <span class="article-nav-title">
-        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
-        
-          ES6:Iterator、Gengerator、Async/Await
-        
-      </span>
-    </a>
   
-  
-    <a href="/2021/08/03/%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1%E5%8E%9F%E7%90%86%EF%BC%88vue-router%E6%BA%90%E7%A0%81%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">前端路由原理（vue-router源码）</span>
+    <a href="/2021/08/08/three-js%E5%AD%A6%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">three.js学习</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   
