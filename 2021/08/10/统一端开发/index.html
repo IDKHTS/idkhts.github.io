@@ -16,7 +16,7 @@
 <meta property="og:description" content="移动App开发 Native App Native App开发指的是移动端原生APP开发，比如qq，微信这种应用，不需要用浏览器打开的。原生应用的开发主要依赖于手机的操作体统，开发者调用操作系统的一些API完成一些交互。手机的操作系统主要有Android和IOS两种，这种不同操作系统都有各自的主流开发语言：  Android使用Java IOS使用Object-c  这里就出现了 Android开">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-08-10T07:38:57.000Z">
-<meta property="article:modified_time" content="2021-08-11T15:43:01.455Z">
+<meta property="article:modified_time" content="2021-08-11T15:51:23.324Z">
 <meta property="article:author" content="idkhts">
 <meta property="article:tag" content="前端">
 <meta name="twitter:card" content="summary">
@@ -147,19 +147,19 @@
 <p>这里就出现了 Android开发 和 IOS开发</p>
 </li>
 <li><p>WebView</p>
-<p>WebView翻译成Web视图，是手机操作系统的提供的一个控件。主要用来显示的一个web页面。</p>
+<p>WebView翻译成Web视图，是手机操作系统提供的一个控件。主要用来在应用里面显示的一个web页面。</p>
 </li>
 </ul>
 <h2 id="Hybird开发"><a href="#Hybird开发" class="headerlink" title="Hybird开发"></a>Hybird开发</h2><p>​    Hybird，混合。Hybrid开发又称<strong>混合开发</strong>，这里的“混合”指的原本的Native开发和Web开发混合开发，“开发”指的是开发移动app。</p>
-<p>​    Hybird开发是基于WebView使用Native + H5开发的，主要原理是使用WebView的一些API实现一个称JsBridgge的东西，JsBridge的功能就是桥接Native和JS，使得js可以操作一些Native的API，Native访问js中的变量。</p>
-<p>​    因为js要使用Native的一些接口，那么js开发就必须了解这些接口，那么对于开发来说Native和js两者都要会了，所以又有Hybird开发一说。</p>
+<p>​    Hybird开发是基于WebView使用Native + H5开发的，主要原理是使用WebView的一些API实现一个被称为JsBridgge的东西，JsBridge的功能就是桥接Native和JS，使得js可以操作一些Native的API，Native访问js中的变量。</p>
+<p>​    因为js要使用Native的一些接口，那么js开发者就必须了解这些接口，那么对于开发者来说Native和js两者都要会了，所以又有Hybird开发一说。</p>
 <p>​    为什么要有Hybird开发？</p>
 <ul>
 <li>H5开发简单敏捷，使用混合h5开发后提升开发效率。</li>
 <li>同时因为JsBridge可以抽象Android和IOS的webview接口，即js不关心移动操作系统，使用同一个接口调用原生的Api，使得同一个页面就用同一套代码，跨平台开发，统一端开发。</li>
 <li>h5页面的<strong>动态性高</strong>，开源随时发布新内容。而移动端应用迭代速度慢，跟不上业务发展的速度，应用发布需要应用市场审核、用户下载更新。</li>
 </ul>
-<h2 id="React-Native-和-Weex"><a href="#React-Native-和-Weex" class="headerlink" title="React-Native 和 Weex"></a>React-Native 和 Weex</h2><p>Hybird开发很有创造性，但是因为它是舍弃了原生的更接近操作系统的渲染转而使用webview的浏览器渲染，性能上表现并不是很友好。</p>
+<h2 id="React-Native-和-Weex"><a href="#React-Native-和-Weex" class="headerlink" title="React-Native 和 Weex"></a>React-Native 和 Weex</h2><p>Hybird开发很有创造性，但是因为它是舍弃了原生的更接近操作系统的渲染，转而使用webview的浏览器渲染，所以在性能上表现并不是很理想。</p>
 <p>2015年，Facebook开源了React-Native，一种性能更优的使用h5开发移动app的框架。它的原理比hybird更粗暴，直接抽象组件为原生ui控件：</p>
 <ul>
 <li>用户手机下载应用，下载结果中包含<ul>
@@ -172,7 +172,7 @@
 <li>用户使用了app，app访问服务器得到JsBundle包（有更新就获取，无则用本地的）</li>
 <li>JsEngine解析执行ReactJS和JsBundle，得到初始的virsual dom然后通过Bridge绘制最初界面，然后开始交互。</li>
 </ul>
-<p>其实相对于React来说，它们基本逻辑是一样的，不同的逻辑在于最终如何绘制，绘制到哪里。React的由浏览器执行js和由浏览器绘制界面。React-Native的是由自己写的一个js解析器执行js，js逻辑通过Bridge操纵Native控件最终由手机操作系统绘制界面。</p>
+<p>其实相对于React来说，它们基本逻辑是一样的，不同的逻辑在于最终如何绘制，绘制到哪里。React的由浏览器执行js和由浏览器绘制界面。React-Native的则是由自己写的一个js解析器执行js，js逻辑通过Bridge操纵Native控件最终由手机操作系统绘制界面。</p>
 <p>​    Android的、IOS的、Web的，    React-Native真正做到了统一端开发。同时，因为React-Native最终是Native原生控件渲染，性能方面大大提升，避免了Hybird的尴尬。</p>
 <p>由阿里开源的Weex，大体上和React-Native一致，最终产物也是Native原生代码。开发体验上可能会有不同Weex拥抱web前端框架Vue而React-Native使用的web前端框架React的语法。weex的口号也与React-Native的口号“一次学习，随处编写”相对的是”一次编写，处处运行“。</p>
 <h2 id="Flutter"><a href="#Flutter" class="headerlink" title="Flutter"></a>Flutter</h2><p>到了2017年，google又推出了一个跨平台开发SDK——Flutter。Flutter首先仅是一个SDK（一些工具，文档、测试），不是一个框架（已经是一个应用，只是你还要填补一些空白）。然后Flutter是应用独立的一套语言Dart开发，有自己的高新能渲染引擎，有丰富漂亮的ui小部件（组件）。</p>
@@ -186,7 +186,7 @@
 <li>Flutter只支持Android和IOS但是正在逐步支持Web和PC原生应用，React-Native支持Android，IOS，Web应用</li>
 <li>（呃，受限限于知识匮乏，只能做些大体上的对比了）</li>
 </ul>
-<p>对Flutter于React-Native的区别做一个不那么贴切的比喻，React-Native类比成Web开发的各种的开发框架，还是借助原有的技术体系js和浏览器内核。那Flutter就是直接自己写了个解析器，解析另外一门语言，并且绘制结果。</p>
+<p>对Flutter于React-Native的区别做一个不那么贴切的比喻，React-Native类比成Web开发的各种的开发框架，还是借助原有的技术体系js和浏览器内核。那Flutter就是直接自己写了个解析器，解析另外一门语言，并且用自己的渲染器绘制页面结果。</p>
 <p>目前来说，Flutter社区基本已经追上React-Native了</p>
 <p>GitHub上（2021.8.11）</p>
 <table>
@@ -230,7 +230,7 @@
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2021年08月11日 23:43</p>
+        <p>最后更新： 2021年08月11日 23:51</p>
         <p>原始链接： <a class="post-url" href="/2021/08/10/%E7%BB%9F%E4%B8%80%E7%AB%AF%E5%BC%80%E5%8F%91/" title="统一端开发">https://idkhts.github.io/2021/08/10/%E7%BB%9F%E4%B8%80%E7%AB%AF%E5%BC%80%E5%8F%91/</a></p>
         <footer>
             <a href="https://idkhts.github.io">
@@ -323,6 +323,16 @@
     
 
 <nav id="article-nav">
+  
+    <a href="/2021/08/18/js%E6%A8%A1%E5%9D%97%E5%8C%96/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          js模块化
+        
+      </span>
+    </a>
   
   
     <a href="/2021/08/08/three-js%E5%AD%A6%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
@@ -419,7 +429,7 @@
             
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/http/" style="font-size: 12px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/three-js/" style="font-size: 10px;">three.js</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E6%83%85%E6%99%AF/" style="font-size: 18px;">情景</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 12px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" style="font-size: 12px;">计算机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 14px;">计算机网络</a>
+            <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/http/" style="font-size: 12px;">http</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/three-js/" style="font-size: 10px;">three.js</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E6%83%85%E6%99%AF/" style="font-size: 18px;">情景</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 12px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" style="font-size: 12px;">计算机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 14px;">计算机网络</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -452,7 +462,7 @@
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/http/" style="font-size: 12px;">http</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/three-js/" style="font-size: 10px;">three.js</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E6%83%85%E6%99%AF/" style="font-size: 18px;">情景</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 12px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" style="font-size: 12px;">计算机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 14px;">计算机网络</a>
+            <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/http/" style="font-size: 12px;">http</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/three-js/" style="font-size: 10px;">three.js</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 20px;">其他</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E6%83%85%E6%99%AF/" style="font-size: 18px;">情景</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 12px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" style="font-size: 12px;">计算机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 14px;">计算机网络</a>
         </div>
     </div>
 </div>
